@@ -40,6 +40,7 @@ function ScatterTooltip({ active, payload }: { active?: boolean; payload?: { pay
       <div className="font-medium text-slate-900">{point.school}</div>
       <div className="text-slate-500">{point.municipality} · {point.source}</div>
       <div className="mt-2 grid grid-cols-2 gap-x-4 gap-y-1 tabular-nums">
+        <span className="text-slate-500">Huvudman</span><span className="text-right text-slate-900">{point.isAcadeMedia ? "AcadeMedia" : point.huvudman}</span>
         <span className="text-slate-500">Merit</span><span className="text-right text-slate-900">{fmt(point.merit)}</span>
         <span className="text-slate-500">Högre</span><span className="text-right text-slate-900">{pct(point.andelHogre)}</span>
         <span className="text-slate-500">Netto</span><span className="text-right text-slate-900">{pp(point.netDeviation)}</span>
@@ -55,6 +56,8 @@ export function AdmissionsMeritInsight({ insight }: Props) {
       ? insight.lowMeritAvgHogre - insight.highMeritAvgHogre
       : null;
   const topSources = insight.sourceSummaries.slice(0, 10);
+  const acadeMediaPoints = insight.points.filter((point) => point.isAcadeMedia);
+  const otherPoints = insight.points.filter((point) => !point.isAcadeMedia);
 
   return (
     <div className="space-y-8">
@@ -165,8 +168,12 @@ export function AdmissionsMeritInsight({ insight }: Props) {
             <div>
               <div className="text-sm font-medium text-slate-800">Lägre merit tenderar att ligga högre på avvikelseaxeln</div>
               <div className="text-xs text-slate-500">X: antagningsmerit. Y: andel elever med högre kursbetyg än NP-resultat.</div>
+              <div className="mt-2 flex flex-wrap gap-3 text-xs text-slate-600">
+                <span className="inline-flex items-center gap-1.5"><span className="h-2.5 w-2.5 rounded-full bg-teal-700" />Övriga skolor</span>
+                <span className="inline-flex items-center gap-1.5"><span className="h-2.5 w-2.5 rounded-full bg-purple-600" />AcadeMedia</span>
+              </div>
             </div>
-            <div className="text-xs tabular-nums text-slate-500">n={insight.matchedSchools}</div>
+            <div className="text-xs tabular-nums text-slate-500">n={insight.matchedSchools} · AcadeMedia {acadeMediaPoints.length}</div>
           </div>
           <div className="h-[360px] w-full">
             <ResponsiveContainer>
@@ -189,7 +196,8 @@ export function AdmissionsMeritInsight({ insight }: Props) {
                   tickFormatter={(value) => `${fmt(Number(value), 0)} %`}
                 />
                 <Tooltip content={<ScatterTooltip />} cursor={{ stroke: "#94a3b8", strokeDasharray: "3 3" }} />
-                <Scatter data={insight.points} fill="#0f766e" fillOpacity={0.72} />
+                <Scatter name="Övriga skolor" data={otherPoints} fill="#0f766e" fillOpacity={0.68} />
+                <Scatter name="AcadeMedia" data={acadeMediaPoints} fill="#9333ea" fillOpacity={0.92} />
               </ScatterChart>
             </ResponsiveContainer>
           </div>

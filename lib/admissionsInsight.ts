@@ -19,6 +19,10 @@ interface DatasetPayload {
   rows: Row[];
 }
 
+interface AcadeMediaPayload {
+  orgnrs: string[];
+}
+
 interface SchoolAdmissionAggregate {
   sourceRegions: Set<string>;
   school: string;
@@ -33,6 +37,8 @@ interface SchoolAdmissionAggregate {
 interface SchoolNpAggregate {
   school: string;
   municipality: string;
+  orgnr: string;
+  huvudman: string;
   antal: number;
   andelHogre: number | null;
   andelLagre: number | null;
@@ -52,6 +58,9 @@ export interface AdmissionsScatterPoint {
   programRows: number;
   matchMethod: "exact" | "unique-school-name";
   meritMetric: "mean" | "median";
+  orgnr: string;
+  huvudman: string;
+  isAcadeMedia: boolean;
 }
 
 export interface MeritBandSummary {
@@ -181,6 +190,8 @@ function aggregateNp(rows: Row[]): Map<string, SchoolNpAggregate> {
     out.set(k, {
       school: group[0].skola,
       municipality: group[0].kommun,
+      orgnr: group[0].orgnr,
+      huvudman: group[0].huvudman,
       antal,
       andelHogre,
       andelLagre,
@@ -261,6 +272,8 @@ export function loadAdmissionsInsight(): AdmissionsInsight {
   if (cache) return cache;
   const admissions = JSON.parse(readFileSync(join(process.cwd(), "data", "generated", "admissions-gymnasium.json"), "utf8")) as AdmissionsPayload;
   const dataset = JSON.parse(readFileSync(join(process.cwd(), "data", "generated", "dataset.json"), "utf8")) as DatasetPayload;
+  const acadeMedia = JSON.parse(readFileSync(join(process.cwd(), "data", "academedia.json"), "utf8")) as AcadeMediaPayload;
+  const acadeMediaOrgnrs = new Set(acadeMedia.orgnrs);
 
   const admissionBySchool = aggregateAdmissions(admissions.rows);
   const admissionAggregates = Array.from(admissionBySchool.values());
@@ -287,6 +300,9 @@ export function loadAdmissionsInsight(): AdmissionsInsight {
       programRows: admission.programRows,
       matchMethod: exactNp ? "exact" : "unique-school-name",
       meritMetric: admission.weightedMean !== null || admission.unweightedMean !== null ? "mean" : "median",
+      orgnr: np.orgnr,
+      huvudman: np.huvudman,
+      isAcadeMedia: acadeMediaOrgnrs.has(np.orgnr),
     });
   }
 
