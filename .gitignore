@@ -5,3 +5,4 @@ out/
 *.log
 data/generated/
 tsconfig.tsbuildinfo
+data_admissions/gymnasium/raw/

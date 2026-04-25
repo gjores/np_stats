@@ -4,6 +4,8 @@
   "private": true,
   "scripts": {
     "build:data": "tsx scripts/build-dataset.ts && tsx scripts/build-dataset-grund.ts",
+    "admissions:discover": "tsx scripts/admissions-discover.ts",
+    "admissions:download": "tsx scripts/admissions-download.ts",
     "copy:csv": "mkdir -p public/data_np/grund && cp data_np/*.csv public/data_np/ && cp data_np/grund/*.csv public/data_np/grund/",
     "predev": "npm run build:data && npm run copy:csv",
     "prebuild": "npm run build:data && npm run copy:csv",
