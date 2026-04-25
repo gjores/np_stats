@@ -1,0 +1,4435 @@
+{
+  "generatedAt": "2026-04-25T10:19:42.185Z",
+  "canonicalSource": "https://www.skolverket.se/styrning-och-ansvar/regler-och-ansvar/stod-for-gymnasieantagning/antagningskanslier",
+  "apiBase": "https://antagningskanslier.skolverket.se/api",
+  "boardCount": 49,
+  "boards": [
+    {
+      "id": "2e15cfb5-b18d-4819-b3ac-a3cd8cd378b3",
+      "name": "Antagning Fyrbodal",
+      "web": "https://antagning.fyrbodal.se/",
+      "email": "antagning@fyrbodal.se",
+      "phone": "0522-440830 +440850",
+      "municipalityCount": 13,
+      "municipalities": [
+        {
+          "code": "1460",
+          "name": "Bengtsfors"
+        },
+        {
+          "code": "1438",
+          "name": "Dals-Ed"
+        },
+        {
+          "code": "1439",
+          "name": "Färgelanda"
+        },
+        {
+          "code": "1484",
+          "name": "Lysekil"
+        },
+        {
+          "code": "1461",
+          "name": "Mellerud"
+        },
+        {
+          "code": "1430",
+          "name": "Munkedal"
+        },
+        {
+          "code": "1421",
+          "name": "Orust"
+        },
+        {
+          "code": "1427",
+          "name": "Sotenäs"
+        },
+        {
+          "code": "1486",
+          "name": "Strömstad"
+        },
+        {
+          "code": "1435",
+          "name": "Tanum"
+        },
+        {
+          "code": "1488",
+          "name": "Trollhättan"
+        },
+        {
+          "code": "1485",
+          "name": "Uddevalla"
+        },
+        {
+          "code": "1487",
+          "name": "Vänersborg"
+        }
+      ],
+      "schoolUnitCount": 57,
+      "statisticsSourceId": "fyrbodal",
+      "statisticsSourceName": "Antagning Fyrbodal",
+      "statisticsSourceUrl": "https://antagning.fyrbodal.se/statistik-rapporter/",
+      "statisticsCoverageStatus": "statistics-source-linked"
+    },
+    {
+      "id": "82fb08bd-b72a-4870-8ea9-9a206f023356",
+      "name": "Antagning gymnasieskola Uppsala",
+      "web": "https://uppsala.dexter-ist.com/Uppsala/Default.asp?page=auth/common/login",
+      "email": "antagning.gymnasieskola@uppsala.se",
+      "phone": null,
+      "municipalityCount": 5,
+      "municipalities": [
+        {
+          "code": "0331",
+          "name": "Heby"
+        },
+        {
+          "code": "0330",
+          "name": "Knivsta"
+        },
+        {
+          "code": "0360",
+          "name": "Tierp"
+        },
+        {
+          "code": "0380",
+          "name": "Uppsala"
+        },
+        {
+          "code": "0382",
+          "name": "Östhammar"
+        }
+      ],
+      "schoolUnitCount": 34,
+      "statisticsSourceId": "uppsala",
+      "statisticsSourceName": "Uppsala region",
+      "statisticsSourceUrl": "https://www.uppsala.se/skola-forskola-och-komvux/gymnasieskola/hitta-och-ansok/antagning-till-gymnasiet/#antagningsstatistik",
+      "statisticsCoverageStatus": "statistics-source-linked"
+    },
+    {
+      "id": "226df843-392c-4e18-b283-ec40c6b34dba",
+      "name": "Antagningsenheten Sjuhärad",
+      "web": "https://www.gymnasievalsjuharad.se/",
+      "email": "gymnasieantagningen@boras.se",
+      "phone": "033-357525",
+      "municipalityCount": 8,
+      "municipalities": [
+        {
+          "code": "1443",
+          "name": "Bollebygd"
+        },
+        {
+          "code": "1490",
+          "name": "Borås"
+        },
+        {
+          "code": "1466",
+          "name": "Herrljunga"
+        },
+        {
+          "code": "1463",
+          "name": "Mark"
+        },
+        {
+          "code": "1465",
+          "name": "Svenljunga"
+        },
+        {
+          "code": "1452",
+          "name": "Tranemo"
+        },
+        {
+          "code": "1491",
+          "name": "Ulricehamn"
+        },
+        {
+          "code": "1442",
+          "name": "Vårgårda"
+        }
+      ],
+      "schoolUnitCount": 42,
+      "statisticsSourceId": "sjuharad",
+      "statisticsSourceName": "Gymnasieval Sjuhärad",
+      "statisticsSourceUrl": "https://gymnasievalsjuharad.se/antagning/antagningsstatistik",
+      "statisticsCoverageStatus": "statistics-source-linked"
+    },
+    {
+      "id": "cf8215ff-1234-4378-8a3b-338379872229",
+      "name": "Antagningskansli Europaskolan Strängnäs",
+      "web": "https://www.europaskolan.se/strangnas/ansokan/",
+      "email": "info@europaskolan.se",
+      "phone": "0152-331100",
+      "municipalityCount": 1,
+      "municipalities": [
+        {
+          "code": "0486",
+          "name": "Strängnäs"
+        }
+      ],
+      "schoolUnitCount": 1,
+      "statisticsSourceId": null,
+      "statisticsSourceName": null,
+      "statisticsSourceUrl": null,
+      "statisticsCoverageStatus": "statistics-source-missing"
+    },
+    {
+      "id": "1d4acf50-c322-4d76-8684-35fb0cf1b32d",
+      "name": "Antagningskansliet för Karlshamn, Olofström och Ronneby",
+      "web": "http://www.skanegy.se/",
+      "email": "liselotte.svensson@karlshamn.se",
+      "phone": "0454-81519",
+      "municipalityCount": 3,
+      "municipalities": [
+        {
+          "code": "1082",
+          "name": "Karlshamn"
+        },
+        {
+          "code": "1060",
+          "name": "Olofström"
+        },
+        {
+          "code": "1081",
+          "name": "Ronneby"
+        }
+      ],
+      "schoolUnitCount": 14,
+      "statisticsSourceId": null,
+      "statisticsSourceName": null,
+      "statisticsSourceUrl": null,
+      "statisticsCoverageStatus": "statistics-source-missing"
+    },
+    {
+      "id": "25f824c3-1bfb-4bc8-9325-4d25a77f6c16",
+      "name": "Antagningskansliet i Gislaved",
+      "web": "https://ggv.dexter-ist.com/GGV/Default.asp?page=auth/common/login",
+      "email": "britt-marie.berger.einarsson@gislaved.se",
+      "phone": "0371-81999",
+      "municipalityCount": 1,
+      "municipalities": [
+        {
+          "code": "0662",
+          "name": "Gislaved"
+        }
+      ],
+      "schoolUnitCount": 3,
+      "statisticsSourceId": null,
+      "statisticsSourceName": null,
+      "statisticsSourceUrl": null,
+      "statisticsCoverageStatus": "statistics-source-missing"
+    },
+    {
+      "id": "bc408ad8-ecc2-4291-a777-721ccbb82213",
+      "name": "Antagningskansliet i Gnosjö",
+      "web": "https://ggv.dexter-ist.com/GGV/Default.asp?page=auth/common/login",
+      "email": "carin.ollhage@gkc.se",
+      "phone": "0370-331405",
+      "municipalityCount": 1,
+      "municipalities": [
+        {
+          "code": "0617",
+          "name": "Gnosjö"
+        }
+      ],
+      "schoolUnitCount": 1,
+      "statisticsSourceId": null,
+      "statisticsSourceName": null,
+      "statisticsSourceUrl": null,
+      "statisticsCoverageStatus": "statistics-source-missing"
+    },
+    {
+      "id": "aeff3434-e55c-439c-b8d6-0ff0fb5be807",
+      "name": "Antagningskansliet i Hultsfred",
+      "web": "https://vastervik.dexter-ist.com/Vastervik/Default.asp?page=auth/common/login&operation=INTAG",
+      "email": "hanna.waern.andersson@hultsfred.se",
+      "phone": "010-3542610",
+      "municipalityCount": 1,
+      "municipalities": [
+        {
+          "code": "0860",
+          "name": "Hultsfred"
+        }
+      ],
+      "schoolUnitCount": 3,
+      "statisticsSourceId": null,
+      "statisticsSourceName": null,
+      "statisticsSourceUrl": null,
+      "statisticsCoverageStatus": "statistics-source-missing"
+    },
+    {
+      "id": "b425173a-50ba-421a-a8fd-ee775ae67baa",
+      "name": "Antagningskansliet i Högsby",
+      "web": "https://www.gymnasieregionen.se",
+      "email": "ulrika.claesson@hogsby.se",
+      "phone": "010-3565252",
+      "municipalityCount": 1,
+      "municipalities": [
+        {
+          "code": "0821",
+          "name": "Högsby"
+        }
+      ],
+      "schoolUnitCount": 1,
+      "statisticsSourceId": null,
+      "statisticsSourceName": null,
+      "statisticsSourceUrl": null,
+      "statisticsCoverageStatus": "statistics-source-missing"
+    },
+    {
+      "id": "7ab69b5f-87be-4218-82c3-97470626894d",
+      "name": "Antagningskansliet i KAK, Kungsör, Arboga, Köping",
+      "web": "https://www.gymnasieantagning.vastmanland.se/Vland/Default.asp?page=auth/common/login&kansli=INTAG2",
+      "email": "gymnasieantagningKAK@koping.se",
+      "phone": "0221-25616",
+      "municipalityCount": 3,
+      "municipalities": [
+        {
+          "code": "1984",
+          "name": "Arboga"
+        },
+        {
+          "code": "1960",
+          "name": "Kungsör"
+        },
+        {
+          "code": "1983",
+          "name": "Köping"
+        }
+      ],
+      "schoolUnitCount": 8,
+      "statisticsSourceId": null,
+      "statisticsSourceName": null,
+      "statisticsSourceUrl": null,
+      "statisticsCoverageStatus": "statistics-source-missing"
+    },
+    {
+      "id": "e5157271-8566-43ca-83f1-c88439e505d2",
+      "name": "Antagningskansliet i Ljungby",
+      "web": "https://eduwebb.ljungby.se/gymnasieintagning/inloggning2.asp",
+      "email": "antagningskansliet@skola.ljungby.se",
+      "phone": "0372-784077",
+      "municipalityCount": 1,
+      "municipalities": [
+        {
+          "code": "0781",
+          "name": "Ljungby"
+        }
+      ],
+      "schoolUnitCount": 5,
+      "statisticsSourceId": null,
+      "statisticsSourceName": null,
+      "statisticsSourceUrl": null,
+      "statisticsCoverageStatus": "statistics-source-missing"
+    },
+    {
+      "id": "1da91fd8-0f06-4349-a1d3-30f1b4828a69",
+      "name": "Antagningskansliet i Markaryd",
+      "web": "https://eduwebb.ljungby.se/gymnasieintagning/inloggning2.asp",
+      "email": "jessica.tillberg@markaryd.se",
+      "phone": "0433-72208",
+      "municipalityCount": 1,
+      "municipalities": [
+        {
+          "code": "0767",
+          "name": "Markaryd"
+        }
+      ],
+      "schoolUnitCount": 1,
+      "statisticsSourceId": null,
+      "statisticsSourceName": null,
+      "statisticsSourceUrl": null,
+      "statisticsCoverageStatus": "statistics-source-missing"
+    },
+    {
+      "id": "ed4c4e05-d547-445c-81d2-f17bfb9a94fc",
+      "name": "Antagningskansliet i Nyköping",
+      "web": "https://www.nykoping.se/mitt-gymnasieval",
+      "email": "antagningskansliet@nykoping.se",
+      "phone": "0155-248080",
+      "municipalityCount": 3,
+      "municipalities": [
+        {
+          "code": "0480",
+          "name": "Nyköping"
+        },
+        {
+          "code": "0481",
+          "name": "Oxelösund"
+        },
+        {
+          "code": "0488",
+          "name": "Trosa"
+        }
+      ],
+      "schoolUnitCount": 11,
+      "statisticsSourceId": null,
+      "statisticsSourceName": null,
+      "statisticsSourceUrl": null,
+      "statisticsCoverageStatus": "statistics-source-missing"
+    },
+    {
+      "id": "75c7fc5c-f5fe-4840-9227-8826aa7e6d0e",
+      "name": "Antagningskansliet i Oskarshamn",
+      "web": "https://www.gymnasieregionen.se/",
+      "email": "intag@oskarshamn.se",
+      "phone": "010-3561018",
+      "municipalityCount": 1,
+      "municipalities": [
+        {
+          "code": "0882",
+          "name": "Oskarshamn"
+        }
+      ],
+      "schoolUnitCount": 3,
+      "statisticsSourceId": null,
+      "statisticsSourceName": null,
+      "statisticsSourceUrl": null,
+      "statisticsCoverageStatus": "statistics-source-missing"
+    },
+    {
+      "id": "bf197942-9096-463d-83a4-921ce23e6608",
+      "name": "Antagningskansliet i Tranås",
+      "web": "https://tranas-intag.dexter-ist.com/Tranas/default.asp?page=auth/common/login&operation=INTAG",
+      "email": "gyantag@tranas.se",
+      "phone": "0140-68502",
+      "municipalityCount": 2,
+      "municipalities": [
+        {
+          "code": "0687",
+          "name": "Tranås"
+        },
+        {
+          "code": "0512",
+          "name": "Ydre"
+        }
+      ],
+      "schoolUnitCount": 4,
+      "statisticsSourceId": null,
+      "statisticsSourceName": null,
+      "statisticsSourceUrl": null,
+      "statisticsCoverageStatus": "statistics-source-missing"
+    },
+    {
+      "id": "4083249c-a690-488a-98eb-97a436c0d35f",
+      "name": "Antagningskansliet i Vimmerby",
+      "web": "https://gymnasieregionen.se/",
+      "email": "anna-carin.bergman@utb.vimmerby.se",
+      "phone": "010-3569254",
+      "municipalityCount": 1,
+      "municipalities": [
+        {
+          "code": "0884",
+          "name": "Vimmerby"
+        }
+      ],
+      "schoolUnitCount": 3,
+      "statisticsSourceId": null,
+      "statisticsSourceName": null,
+      "statisticsSourceUrl": null,
+      "statisticsCoverageStatus": "statistics-source-missing"
+    },
+    {
+      "id": "473e9411-49b4-461d-9ba2-00c01f567822",
+      "name": "Antagningskansliet i Värnamo",
+      "web": "https://ggv.dexter-ist.com/GGV/Default.asp?page=auth/common/login",
+      "email": "marie.ahsberg@edu.varnamo.se",
+      "phone": "0370-377341",
+      "municipalityCount": 1,
+      "municipalities": [
+        {
+          "code": "0683",
+          "name": "Värnamo"
+        }
+      ],
+      "schoolUnitCount": 5,
+      "statisticsSourceId": null,
+      "statisticsSourceName": null,
+      "statisticsSourceUrl": null,
+      "statisticsCoverageStatus": "statistics-source-missing"
+    },
+    {
+      "id": "d3be9e68-d15f-4f5e-9062-1675e76c080c",
+      "name": "Antagningskansliet i Västervik",
+      "web": "https://gymnasieregionen.se/",
+      "email": "gymnasieantagningen@vastervik.se",
+      "phone": "010-3554275",
+      "municipalityCount": 1,
+      "municipalities": [
+        {
+          "code": "0883",
+          "name": "Västervik"
+        }
+      ],
+      "schoolUnitCount": 4,
+      "statisticsSourceId": null,
+      "statisticsSourceName": null,
+      "statisticsSourceUrl": null,
+      "statisticsCoverageStatus": "statistics-source-missing"
+    },
+    {
+      "id": "a042e0f0-87e9-4798-a19b-95dbfede2f56",
+      "name": "Antagningskansliet Torsås",
+      "web": "https://www.korr.se/",
+      "email": "info@korr.se",
+      "phone": "0486-443464",
+      "municipalityCount": 290,
+      "municipalities": [
+        {
+          "code": "1440",
+          "name": "Ale"
+        },
+        {
+          "code": "1489",
+          "name": "Alingsås"
+        },
+        {
+          "code": "0764",
+          "name": "Alvesta"
+        },
+        {
+          "code": "0604",
+          "name": "Aneby"
+        },
+        {
+          "code": "1984",
+          "name": "Arboga"
+        },
+        {
+          "code": "2506",
+          "name": "Arjeplog"
+        },
+        {
+          "code": "2505",
+          "name": "Arvidsjaur"
+        },
+        {
+          "code": "1784",
+          "name": "Arvika"
+        },
+        {
+          "code": "1882",
+          "name": "Askersund"
+        },
+        {
+          "code": "2084",
+          "name": "Avesta"
+        },
+        {
+          "code": "1460",
+          "name": "Bengtsfors"
+        },
+        {
+          "code": "2326",
+          "name": "Berg"
+        },
+        {
+          "code": "2403",
+          "name": "Bjurholm"
+        },
+        {
+          "code": "1260",
+          "name": "Bjuv"
+        },
+        {
+          "code": "2582",
+          "name": "Boden"
+        },
+        {
+          "code": "1443",
+          "name": "Bollebygd"
+        },
+        {
+          "code": "2183",
+          "name": "Bollnäs"
+        },
+        {
+          "code": "0885",
+          "name": "Borgholm"
+        },
+        {
+          "code": "2081",
+          "name": "Borlänge"
+        },
+        {
+          "code": "1490",
+          "name": "Borås"
+        },
+        {
+          "code": "0127",
+          "name": "Botkyrka"
+        },
+        {
+          "code": "0560",
+          "name": "Boxholm"
+        },
+        {
+          "code": "1272",
+          "name": "Bromölla"
+        },
+        {
+          "code": "2305",
+          "name": "Bräcke"
+        },
+        {
+          "code": "1231",
+          "name": "Burlöv"
+        },
+        {
+          "code": "1278",
+          "name": "Båstad"
+        },
+        {
+          "code": "1438",
+          "name": "Dals-Ed"
+        },
+        {
+          "code": "0162",
+          "name": "Danderyd"
+        },
+        {
+          "code": "1862",
+          "name": "Degerfors"
+        },
+        {
+          "code": "2425",
+          "name": "Dorotea"
+        },
+        {
+          "code": "1730",
+          "name": "Eda"
+        },
+        {
+          "code": "0125",
+          "name": "Ekerö"
+        },
+        {
+          "code": "0686",
+          "name": "Eksjö"
+        },
+        {
+          "code": "0862",
+          "name": "Emmaboda"
+        },
+        {
+          "code": "0381",
+          "name": "Enköping"
+        },
+        {
+          "code": "0484",
+          "name": "Eskilstuna"
+        },
+        {
+          "code": "1285",
+          "name": "Eslöv"
+        },
+        {
+          "code": "1445",
+          "name": "Essunga"
+        },
+        {
+          "code": "1982",
+          "name": "Fagersta"
+        },
+        {
+          "code": "1382",
+          "name": "Falkenberg"
+        },
+        {
+          "code": "1499",
+          "name": "Falköping"
+        },
+        {
+          "code": "2080",
+          "name": "Falun"
+        },
+        {
+          "code": "1782",
+          "name": "Filipstad"
+        },
+        {
+          "code": "0562",
+          "name": "Finspång"
+        },
+        {
+          "code": "0482",
+          "name": "Flen"
+        },
+        {
+          "code": "1763",
+          "name": "Forshaga"
+        },
+        {
+          "code": "1439",
+          "name": "Färgelanda"
+        },
+        {
+          "code": "2026",
+          "name": "Gagnef"
+        },
+        {
+          "code": "0662",
+          "name": "Gislaved"
+        },
+        {
+          "code": "0461",
+          "name": "Gnesta"
+        },
+        {
+          "code": "0617",
+          "name": "Gnosjö"
+        },
+        {
+          "code": "0980",
+          "name": "Gotland"
+        },
+        {
+          "code": "1764",
+          "name": "Grums"
+        },
+        {
+          "code": "1444",
+          "name": "Grästorp"
+        },
+        {
+          "code": "1447",
+          "name": "Gullspång"
+        },
+        {
+          "code": "2523",
+          "name": "Gällivare"
+        },
+        {
+          "code": "2180",
+          "name": "Gävle"
+        },
+        {
+          "code": "1480",
+          "name": "Göteborg"
+        },
+        {
+          "code": "1471",
+          "name": "Götene"
+        },
+        {
+          "code": "0643",
+          "name": "Habo"
+        },
+        {
+          "code": "1783",
+          "name": "Hagfors"
+        },
+        {
+          "code": "1861",
+          "name": "Hallsberg"
+        },
+        {
+          "code": "1961",
+          "name": "Hallstahammar"
+        },
+        {
+          "code": "1380",
+          "name": "Halmstad"
+        },
+        {
+          "code": "1761",
+          "name": "Hammarö"
+        },
+        {
+          "code": "0136",
+          "name": "Haninge"
+        },
+        {
+          "code": "2583",
+          "name": "Haparanda"
+        },
+        {
+          "code": "0331",
+          "name": "Heby"
+        },
+        {
+          "code": "2083",
+          "name": "Hedemora"
+        },
+        {
+          "code": "1283",
+          "name": "Helsingborg"
+        },
+        {
+          "code": "1466",
+          "name": "Herrljunga"
+        },
+        {
+          "code": "1497",
+          "name": "Hjo"
+        },
+        {
+          "code": "2104",
+          "name": "Hofors"
+        },
+        {
+          "code": "0126",
+          "name": "Huddinge"
+        },
+        {
+          "code": "2184",
+          "name": "Hudiksvall"
+        },
+        {
+          "code": "0860",
+          "name": "Hultsfred"
+        },
+        {
+          "code": "1315",
+          "name": "Hylte"
+        },
+        {
+          "code": "1863",
+          "name": "Hällefors"
+        },
+        {
+          "code": "2361",
+          "name": "Härjedalen"
+        },
+        {
+          "code": "2280",
+          "name": "Härnösand"
+        },
+        {
+          "code": "1401",
+          "name": "Härryda"
+        },
+        {
+          "code": "1293",
+          "name": "Hässleholm"
+        },
+        {
+          "code": "0305",
+          "name": "Håbo"
+        },
+        {
+          "code": "1284",
+          "name": "Höganäs"
+        },
+        {
+          "code": "0821",
+          "name": "Högsby"
+        },
+        {
+          "code": "1266",
+          "name": "Hörby"
+        },
+        {
+          "code": "1267",
+          "name": "Höör"
+        },
+        {
+          "code": "2510",
+          "name": "Jokkmokk"
+        },
+        {
+          "code": "0123",
+          "name": "Järfälla"
+        },
+        {
+          "code": "0680",
+          "name": "Jönköping"
+        },
+        {
+          "code": "2514",
+          "name": "Kalix"
+        },
+        {
+          "code": "0880",
+          "name": "Kalmar"
+        },
+        {
+          "code": "1446",
+          "name": "Karlsborg"
+        },
+        {
+          "code": "1082",
+          "name": "Karlshamn"
+        },
+        {
+          "code": "1883",
+          "name": "Karlskoga"
+        },
+        {
+          "code": "1080",
+          "name": "Karlskrona"
+        },
+        {
+          "code": "1780",
+          "name": "Karlstad"
+        },
+        {
+          "code": "0483",
+          "name": "Katrineholm"
+        },
+        {
+          "code": "1715",
+          "name": "Kil"
+        },
+        {
+          "code": "0513",
+          "name": "Kinda"
+        },
+        {
+          "code": "2584",
+          "name": "Kiruna"
+        },
+        {
+          "code": "1276",
+          "name": "Klippan"
+        },
+        {
+          "code": "0330",
+          "name": "Knivsta"
+        },
+        {
+          "code": "2282",
+          "name": "Kramfors"
+        },
+        {
+          "code": "1290",
+          "name": "Kristianstad"
+        },
+        {
+          "code": "1781",
+          "name": "Kristinehamn"
+        },
+        {
+          "code": "2309",
+          "name": "Krokom"
+        },
+        {
+          "code": "1881",
+          "name": "Kumla"
+        },
+        {
+          "code": "1384",
+          "name": "Kungsbacka"
+        },
+        {
+          "code": "1960",
+          "name": "Kungsör"
+        },
+        {
+          "code": "1482",
+          "name": "Kungälv"
+        },
+        {
+          "code": "1261",
+          "name": "Kävlinge"
+        },
+        {
+          "code": "1983",
+          "name": "Köping"
+        },
+        {
+          "code": "1381",
+          "name": "Laholm"
+        },
+        {
+          "code": "1282",
+          "name": "Landskrona"
+        },
+        {
+          "code": "1860",
+          "name": "Laxå"
+        },
+        {
+          "code": "1814",
+          "name": "Lekeberg"
+        },
+        {
+          "code": "2029",
+          "name": "Leksand"
+        },
+        {
+          "code": "1441",
+          "name": "Lerum"
+        },
+        {
+          "code": "0761",
+          "name": "Lessebo"
+        },
+        {
+          "code": "0186",
+          "name": "Lidingö"
+        },
+        {
+          "code": "1494",
+          "name": "Lidköping"
+        },
+        {
+          "code": "1462",
+          "name": "Lilla Edet"
+        },
+        {
+          "code": "1885",
+          "name": "Lindesberg"
+        },
+        {
+          "code": "0580",
+          "name": "Linköping"
+        },
+        {
+          "code": "0781",
+          "name": "Ljungby"
+        },
+        {
+          "code": "2161",
+          "name": "Ljusdal"
+        },
+        {
+          "code": "1864",
+          "name": "Ljusnarsberg"
+        },
+        {
+          "code": "1262",
+          "name": "Lomma"
+        },
+        {
+          "code": "2085",
+          "name": "Ludvika"
+        },
+        {
+          "code": "2580",
+          "name": "Luleå"
+        },
+        {
+          "code": "1281",
+          "name": "Lund"
+        },
+        {
+          "code": "2481",
+          "name": "Lycksele"
+        },
+        {
+          "code": "1484",
+          "name": "Lysekil"
+        },
+        {
+          "code": "1280",
+          "name": "Malmö"
+        },
+        {
+          "code": "2023",
+          "name": "Malung-Sälen"
+        },
+        {
+          "code": "2418",
+          "name": "Malå"
+        },
+        {
+          "code": "1493",
+          "name": "Mariestad"
+        },
+        {
+          "code": "1463",
+          "name": "Mark"
+        },
+        {
+          "code": "0767",
+          "name": "Markaryd"
+        },
+        {
+          "code": "1461",
+          "name": "Mellerud"
+        },
+        {
+          "code": "0586",
+          "name": "Mjölby"
+        },
+        {
+          "code": "2062",
+          "name": "Mora"
+        },
+        {
+          "code": "0583",
+          "name": "Motala"
+        },
+        {
+          "code": "0642",
+          "name": "Mullsjö"
+        },
+        {
+          "code": "1430",
+          "name": "Munkedal"
+        },
+        {
+          "code": "1762",
+          "name": "Munkfors"
+        },
+        {
+          "code": "1481",
+          "name": "Mölndal"
+        },
+        {
+          "code": "0861",
+          "name": "Mönsterås"
+        },
+        {
+          "code": "0840",
+          "name": "Mörbylånga"
+        },
+        {
+          "code": "0182",
+          "name": "Nacka"
+        },
+        {
+          "code": "1884",
+          "name": "Nora"
+        },
+        {
+          "code": "1962",
+          "name": "Norberg"
+        },
+        {
+          "code": "2132",
+          "name": "Nordanstig"
+        },
+        {
+          "code": "2401",
+          "name": "Nordmaling"
+        },
+        {
+          "code": "0581",
+          "name": "Norrköping"
+        },
+        {
+          "code": "0188",
+          "name": "Norrtälje"
+        },
+        {
+          "code": "2417",
+          "name": "Norsjö"
+        },
+        {
+          "code": "0881",
+          "name": "Nybro"
+        },
+        {
+          "code": "0140",
+          "name": "Nykvarn"
+        },
+        {
+          "code": "0480",
+          "name": "Nyköping"
+        },
+        {
+          "code": "0192",
+          "name": "Nynäshamn"
+        },
+        {
+          "code": "0682",
+          "name": "Nässjö"
+        },
+        {
+          "code": "2101",
+          "name": "Ockelbo"
+        },
+        {
+          "code": "1060",
+          "name": "Olofström"
+        },
+        {
+          "code": "2034",
+          "name": "Orsa"
+        },
+        {
+          "code": "1421",
+          "name": "Orust"
+        },
+        {
+          "code": "1273",
+          "name": "Osby"
+        },
+        {
+          "code": "0882",
+          "name": "Oskarshamn"
+        },
+        {
+          "code": "2121",
+          "name": "Ovanåker"
+        },
+        {
+          "code": "0481",
+          "name": "Oxelösund"
+        },
+        {
+          "code": "2521",
+          "name": "Pajala"
+        },
+        {
+          "code": "1402",
+          "name": "Partille"
+        },
+        {
+          "code": "1275",
+          "name": "Perstorp"
+        },
+        {
+          "code": "2581",
+          "name": "Piteå"
+        },
+        {
+          "code": "2303",
+          "name": "Ragunda"
+        },
+        {
+          "code": "2409",
+          "name": "Robertsfors"
+        },
+        {
+          "code": "1081",
+          "name": "Ronneby"
+        },
+        {
+          "code": "2031",
+          "name": "Rättvik"
+        },
+        {
+          "code": "1981",
+          "name": "Sala"
+        },
+        {
+          "code": "0128",
+          "name": "Salem"
+        },
+        {
+          "code": "2181",
+          "name": "Sandviken"
+        },
+        {
+          "code": "0191",
+          "name": "Sigtuna"
+        },
+        {
+          "code": "1291",
+          "name": "Simrishamn"
+        },
+        {
+          "code": "1265",
+          "name": "Sjöbo"
+        },
+        {
+          "code": "1495",
+          "name": "Skara"
+        },
+        {
+          "code": "2482",
+          "name": "Skellefteå"
+        },
+        {
+          "code": "1904",
+          "name": "Skinnskatteberg"
+        },
+        {
+          "code": "1264",
+          "name": "Skurup"
+        },
+        {
+          "code": "1496",
+          "name": "Skövde"
+        },
+        {
+          "code": "2061",
+          "name": "Smedjebacken"
+        },
+        {
+          "code": "2283",
+          "name": "Sollefteå"
+        },
+        {
+          "code": "0163",
+          "name": "Sollentuna"
+        },
+        {
+          "code": "0184",
+          "name": "Solna"
+        },
+        {
+          "code": "2422",
+          "name": "Sorsele"
+        },
+        {
+          "code": "1427",
+          "name": "Sotenäs"
+        },
+        {
+          "code": "1230",
+          "name": "Staffanstorp"
+        },
+        {
+          "code": "1415",
+          "name": "Stenungsund"
+        },
+        {
+          "code": "0180",
+          "name": "Stockholm"
+        },
+        {
+          "code": "1760",
+          "name": "Storfors"
+        },
+        {
+          "code": "2421",
+          "name": "Storuman"
+        },
+        {
+          "code": "0486",
+          "name": "Strängnäs"
+        },
+        {
+          "code": "1486",
+          "name": "Strömstad"
+        },
+        {
+          "code": "2313",
+          "name": "Strömsund"
+        },
+        {
+          "code": "0183",
+          "name": "Sundbyberg"
+        },
+        {
+          "code": "2281",
+          "name": "Sundsvall"
+        },
+        {
+          "code": "1766",
+          "name": "Sunne"
+        },
+        {
+          "code": "1907",
+          "name": "Surahammar"
+        },
+        {
+          "code": "1214",
+          "name": "Svalöv"
+        },
+        {
+          "code": "1263",
+          "name": "Svedala"
+        },
+        {
+          "code": "1465",
+          "name": "Svenljunga"
+        },
+        {
+          "code": "1785",
+          "name": "Säffle"
+        },
+        {
+          "code": "2082",
+          "name": "Säter"
+        },
+        {
+          "code": "0684",
+          "name": "Sävsjö"
+        },
+        {
+          "code": "2182",
+          "name": "Söderhamn"
+        },
+        {
+          "code": "0582",
+          "name": "Söderköping"
+        },
+        {
+          "code": "0181",
+          "name": "Södertälje"
+        },
+        {
+          "code": "1083",
+          "name": "Sölvesborg"
+        },
+        {
+          "code": "1435",
+          "name": "Tanum"
+        },
+        {
+          "code": "1472",
+          "name": "Tibro"
+        },
+        {
+          "code": "1498",
+          "name": "Tidaholm"
+        },
+        {
+          "code": "0360",
+          "name": "Tierp"
+        },
+        {
+          "code": "2262",
+          "name": "Timrå"
+        },
+        {
+          "code": "0763",
+          "name": "Tingsryd"
+        },
+        {
+          "code": "1419",
+          "name": "Tjörn"
+        },
+        {
+          "code": "1270",
+          "name": "Tomelilla"
+        },
+        {
+          "code": "1737",
+          "name": "Torsby"
+        },
+        {
+          "code": "0834",
+          "name": "Torsås"
+        },
+        {
+          "code": "1452",
+          "name": "Tranemo"
+        },
+        {
+          "code": "0687",
+          "name": "Tranås"
+        },
+        {
+          "code": "1287",
+          "name": "Trelleborg"
+        },
+        {
+          "code": "1488",
+          "name": "Trollhättan"
+        },
+        {
+          "code": "0488",
+          "name": "Trosa"
+        },
+        {
+          "code": "0138",
+          "name": "Tyresö"
+        },
+        {
+          "code": "0160",
+          "name": "Täby"
+        },
+        {
+          "code": "1473",
+          "name": "Töreboda"
+        },
+        {
+          "code": "1485",
+          "name": "Uddevalla"
+        },
+        {
+          "code": "1491",
+          "name": "Ulricehamn"
+        },
+        {
+          "code": "2480",
+          "name": "Umeå"
+        },
+        {
+          "code": "0114",
+          "name": "Upplands Väsby"
+        },
+        {
+          "code": "0139",
+          "name": "Upplands-Bro"
+        },
+        {
+          "code": "0380",
+          "name": "Uppsala"
+        },
+        {
+          "code": "0760",
+          "name": "Uppvidinge"
+        },
+        {
+          "code": "0584",
+          "name": "Vadstena"
+        },
+        {
+          "code": "0665",
+          "name": "Vaggeryd"
+        },
+        {
+          "code": "0563",
+          "name": "Valdemarsvik"
+        },
+        {
+          "code": "0115",
+          "name": "Vallentuna"
+        },
+        {
+          "code": "2021",
+          "name": "Vansbro"
+        },
+        {
+          "code": "1470",
+          "name": "Vara"
+        },
+        {
+          "code": "1383",
+          "name": "Varberg"
+        },
+        {
+          "code": "0187",
+          "name": "Vaxholm"
+        },
+        {
+          "code": "1233",
+          "name": "Vellinge"
+        },
+        {
+          "code": "0685",
+          "name": "Vetlanda"
+        },
+        {
+          "code": "2462",
+          "name": "Vilhelmina"
+        },
+        {
+          "code": "0884",
+          "name": "Vimmerby"
+        },
+        {
+          "code": "2404",
+          "name": "Vindeln"
+        },
+        {
+          "code": "0428",
+          "name": "Vingåker"
+        },
+        {
+          "code": "1487",
+          "name": "Vänersborg"
+        },
+        {
+          "code": "2460",
+          "name": "Vännäs"
+        },
+        {
+          "code": "0120",
+          "name": "Värmdö"
+        },
+        {
+          "code": "0683",
+          "name": "Värnamo"
+        },
+        {
+          "code": "0883",
+          "name": "Västervik"
+        },
+        {
+          "code": "1980",
+          "name": "Västerås"
+        },
+        {
+          "code": "0780",
+          "name": "Växjö"
+        },
+        {
+          "code": "1442",
+          "name": "Vårgårda"
+        },
+        {
+          "code": "0512",
+          "name": "Ydre"
+        },
+        {
+          "code": "1286",
+          "name": "Ystad"
+        },
+        {
+          "code": "0765",
+          "name": "Älmhult"
+        },
+        {
+          "code": "2039",
+          "name": "Älvdalen"
+        },
+        {
+          "code": "0319",
+          "name": "Älvkarleby"
+        },
+        {
+          "code": "2560",
+          "name": "Älvsbyn"
+        },
+        {
+          "code": "1292",
+          "name": "Ängelholm"
+        },
+        {
+          "code": "1492",
+          "name": "Åmål"
+        },
+        {
+          "code": "2260",
+          "name": "Ånge"
+        },
+        {
+          "code": "2321",
+          "name": "Åre"
+        },
+        {
+          "code": "1765",
+          "name": "Årjäng"
+        },
+        {
+          "code": "2463",
+          "name": "Åsele"
+        },
+        {
+          "code": "1277",
+          "name": "Åstorp"
+        },
+        {
+          "code": "0561",
+          "name": "Åtvidaberg"
+        },
+        {
+          "code": "1407",
+          "name": "Öckerö"
+        },
+        {
+          "code": "0509",
+          "name": "Ödeshög"
+        },
+        {
+          "code": "1880",
+          "name": "Örebro"
+        },
+        {
+          "code": "1257",
+          "name": "Örkelljunga"
+        },
+        {
+          "code": "2284",
+          "name": "Örnsköldsvik"
+        },
+        {
+          "code": "2380",
+          "name": "Östersund"
+        },
+        {
+          "code": "0117",
+          "name": "Österåker"
+        },
+        {
+          "code": "0382",
+          "name": "Östhammar"
+        },
+        {
+          "code": "1256",
+          "name": "Östra Göinge"
+        },
+        {
+          "code": "2513",
+          "name": "Överkalix"
+        },
+        {
+          "code": "2518",
+          "name": "Övertorneå"
+        }
+      ],
+      "schoolUnitCount": 2,
+      "statisticsSourceId": null,
+      "statisticsSourceName": null,
+      "statisticsSourceUrl": null,
+      "statisticsCoverageStatus": "statistics-source-missing"
+    },
+    {
+      "id": "7f1268ac-0eaf-4f37-9c0e-b3ae4c041cae",
+      "name": "Antagningskansliet Värmland",
+      "web": "https://sites.google.com/arvika.com/elevantagningen-varmland",
+      "email": "elevantagningen@karlstad.se",
+      "phone": "054-5400000",
+      "municipalityCount": 17,
+      "municipalities": [
+        {
+          "code": "1784",
+          "name": "Arvika"
+        },
+        {
+          "code": "1730",
+          "name": "Eda"
+        },
+        {
+          "code": "1782",
+          "name": "Filipstad"
+        },
+        {
+          "code": "1763",
+          "name": "Forshaga"
+        },
+        {
+          "code": "1764",
+          "name": "Grums"
+        },
+        {
+          "code": "1783",
+          "name": "Hagfors"
+        },
+        {
+          "code": "1761",
+          "name": "Hammarö"
+        },
+        {
+          "code": "1780",
+          "name": "Karlstad"
+        },
+        {
+          "code": "1715",
+          "name": "Kil"
+        },
+        {
+          "code": "1781",
+          "name": "Kristinehamn"
+        },
+        {
+          "code": "1762",
+          "name": "Munkfors"
+        },
+        {
+          "code": "1760",
+          "name": "Storfors"
+        },
+        {
+          "code": "1766",
+          "name": "Sunne"
+        },
+        {
+          "code": "1785",
+          "name": "Säffle"
+        },
+        {
+          "code": "1737",
+          "name": "Torsby"
+        },
+        {
+          "code": "1492",
+          "name": "Åmål"
+        },
+        {
+          "code": "1765",
+          "name": "Årjäng"
+        }
+      ],
+      "schoolUnitCount": 50,
+      "statisticsSourceId": null,
+      "statisticsSourceName": null,
+      "statisticsSourceUrl": null,
+      "statisticsCoverageStatus": "statistics-source-missing"
+    },
+    {
+      "id": "52e09939-25c1-435f-b8b4-e65a4ae1679b",
+      "name": "Antagningskansliet Växjö",
+      "web": "https://gymnasium.kronoberg.se/",
+      "email": "gymnasieantagningen@vaxjo.se",
+      "phone": "0470-41000",
+      "municipalityCount": 6,
+      "municipalities": [
+        {
+          "code": "0764",
+          "name": "Alvesta"
+        },
+        {
+          "code": "0761",
+          "name": "Lessebo"
+        },
+        {
+          "code": "0763",
+          "name": "Tingsryd"
+        },
+        {
+          "code": "0760",
+          "name": "Uppvidinge"
+        },
+        {
+          "code": "0780",
+          "name": "Växjö"
+        },
+        {
+          "code": "0765",
+          "name": "Älmhult"
+        }
+      ],
+      "schoolUnitCount": 31,
+      "statisticsSourceId": null,
+      "statisticsSourceName": null,
+      "statisticsSourceUrl": null,
+      "statisticsCoverageStatus": "statistics-source-missing"
+    },
+    {
+      "id": "7d80eada-f53f-4ee2-8120-600035f449db",
+      "name": "Gamlebygymnasiet",
+      "web": "https://gamlebygymnasiet.nu/sok-hit/ ",
+      "email": "jenny.djerf@hushallningssallskapet.se",
+      "phone": "0734-142111",
+      "municipalityCount": 3,
+      "municipalities": [
+        {
+          "code": "0880",
+          "name": "Kalmar"
+        },
+        {
+          "code": "0883",
+          "name": "Västervik"
+        },
+        {
+          "code": "0780",
+          "name": "Växjö"
+        }
+      ],
+      "schoolUnitCount": 4,
+      "statisticsSourceId": null,
+      "statisticsSourceName": null,
+      "statisticsSourceUrl": null,
+      "statisticsCoverageStatus": "statistics-source-missing"
+    },
+    {
+      "id": "dd1549ed-21d9-48e3-8556-4c3b631124f6",
+      "name": "Gymnasieantagning Halland",
+      "web": "http://gymnasiehalland.se/",
+      "email": "gymnasieantagning@falkenberg.se",
+      "phone": "0346-886897",
+      "municipalityCount": 5,
+      "municipalities": [
+        {
+          "code": "1382",
+          "name": "Falkenberg"
+        },
+        {
+          "code": "1380",
+          "name": "Halmstad"
+        },
+        {
+          "code": "1315",
+          "name": "Hylte"
+        },
+        {
+          "code": "1381",
+          "name": "Laholm"
+        },
+        {
+          "code": "1383",
+          "name": "Varberg"
+        }
+      ],
+      "schoolUnitCount": 43,
+      "statisticsSourceId": "halland",
+      "statisticsSourceName": "Gymnasieantagning Halland",
+      "statisticsSourceUrl": "https://www.gymnasiehalland.se/antagning/statistik",
+      "statisticsCoverageStatus": "statistics-source-linked"
+    },
+    {
+      "id": "eeb2388a-077a-4a21-beaf-3ddf9a46bfcb",
+      "name": "Gymnasieantagning Nord",
+      "web": "https://gymnasieantagningnord.dexter-ist.com/",
+      "email": "gymnasieantagningnord@lulea.se",
+      "phone": "0920-453000",
+      "municipalityCount": 14,
+      "municipalities": [
+        {
+          "code": "2506",
+          "name": "Arjeplog"
+        },
+        {
+          "code": "2505",
+          "name": "Arvidsjaur"
+        },
+        {
+          "code": "2582",
+          "name": "Boden"
+        },
+        {
+          "code": "2523",
+          "name": "Gällivare"
+        },
+        {
+          "code": "2583",
+          "name": "Haparanda"
+        },
+        {
+          "code": "2510",
+          "name": "Jokkmokk"
+        },
+        {
+          "code": "2514",
+          "name": "Kalix"
+        },
+        {
+          "code": "2584",
+          "name": "Kiruna"
+        },
+        {
+          "code": "2580",
+          "name": "Luleå"
+        },
+        {
+          "code": "2521",
+          "name": "Pajala"
+        },
+        {
+          "code": "2581",
+          "name": "Piteå"
+        },
+        {
+          "code": "2560",
+          "name": "Älvsbyn"
+        },
+        {
+          "code": "2513",
+          "name": "Överkalix"
+        },
+        {
+          "code": "2518",
+          "name": "Övertorneå"
+        }
+      ],
+      "schoolUnitCount": 45,
+      "statisticsSourceId": null,
+      "statisticsSourceName": null,
+      "statisticsSourceUrl": null,
+      "statisticsCoverageStatus": "statistics-source-missing"
+    },
+    {
+      "id": "4275bc1f-eb1a-48e8-b795-6594851286de",
+      "name": "Gymnasieantagningen för Dalarna och Gävleborg",
+      "web": "https://dalarna.dexter-ist.com/Dalarna/Default.asp?page=auth/common/login",
+      "email": "info@antagdalarna.se",
+      "phone": "023-83588",
+      "municipalityCount": 26,
+      "municipalities": [
+        {
+          "code": "2084",
+          "name": "Avesta"
+        },
+        {
+          "code": "2183",
+          "name": "Bollnäs"
+        },
+        {
+          "code": "2081",
+          "name": "Borlänge"
+        },
+        {
+          "code": "2080",
+          "name": "Falun"
+        },
+        {
+          "code": "2026",
+          "name": "Gagnef"
+        },
+        {
+          "code": "2180",
+          "name": "Gävle"
+        },
+        {
+          "code": "2083",
+          "name": "Hedemora"
+        },
+        {
+          "code": "2104",
+          "name": "Hofors"
+        },
+        {
+          "code": "2184",
+          "name": "Hudiksvall"
+        },
+        {
+          "code": "2029",
+          "name": "Leksand"
+        },
+        {
+          "code": "2161",
+          "name": "Ljusdal"
+        },
+        {
+          "code": "2085",
+          "name": "Ludvika"
+        },
+        {
+          "code": "2023",
+          "name": "Malung-Sälen"
+        },
+        {
+          "code": "2062",
+          "name": "Mora"
+        },
+        {
+          "code": "2132",
+          "name": "Nordanstig"
+        },
+        {
+          "code": "2101",
+          "name": "Ockelbo"
+        },
+        {
+          "code": "2034",
+          "name": "Orsa"
+        },
+        {
+          "code": "2121",
+          "name": "Ovanåker"
+        },
+        {
+          "code": "2031",
+          "name": "Rättvik"
+        },
+        {
+          "code": "2181",
+          "name": "Sandviken"
+        },
+        {
+          "code": "2061",
+          "name": "Smedjebacken"
+        },
+        {
+          "code": "2082",
+          "name": "Säter"
+        },
+        {
+          "code": "2182",
+          "name": "Söderhamn"
+        },
+        {
+          "code": "2021",
+          "name": "Vansbro"
+        },
+        {
+          "code": "2039",
+          "name": "Älvdalen"
+        },
+        {
+          "code": "0319",
+          "name": "Älvkarleby"
+        }
+      ],
+      "schoolUnitCount": 76,
+      "statisticsSourceId": "dalarna-gavleborg",
+      "statisticsSourceName": "Gymnasieantagningen Dalarna",
+      "statisticsSourceUrl": "https://antagdalarna.se/statistik/",
+      "statisticsCoverageStatus": "statistics-source-linked"
+    },
+    {
+      "id": "0ddabeba-de51-4d33-bbaf-25b2cdfb2035",
+      "name": "Gymnasieantagningen för Västerbottens län",
+      "web": "https://www.gymnasieantagningen.nu/",
+      "email": "gymnasieantagningen@vindeln.se",
+      "phone": "0933-14000",
+      "municipalityCount": 15,
+      "municipalities": [
+        {
+          "code": "2403",
+          "name": "Bjurholm"
+        },
+        {
+          "code": "2425",
+          "name": "Dorotea"
+        },
+        {
+          "code": "2481",
+          "name": "Lycksele"
+        },
+        {
+          "code": "2418",
+          "name": "Malå"
+        },
+        {
+          "code": "2401",
+          "name": "Nordmaling"
+        },
+        {
+          "code": "2417",
+          "name": "Norsjö"
+        },
+        {
+          "code": "2409",
+          "name": "Robertsfors"
+        },
+        {
+          "code": "2482",
+          "name": "Skellefteå"
+        },
+        {
+          "code": "2422",
+          "name": "Sorsele"
+        },
+        {
+          "code": "2421",
+          "name": "Storuman"
+        },
+        {
+          "code": "2480",
+          "name": "Umeå"
+        },
+        {
+          "code": "2462",
+          "name": "Vilhelmina"
+        },
+        {
+          "code": "2404",
+          "name": "Vindeln"
+        },
+        {
+          "code": "2460",
+          "name": "Vännäs"
+        },
+        {
+          "code": "2463",
+          "name": "Åsele"
+        }
+      ],
+      "schoolUnitCount": 44,
+      "statisticsSourceId": null,
+      "statisticsSourceName": null,
+      "statisticsSourceUrl": null,
+      "statisticsCoverageStatus": "statistics-source-missing"
+    },
+    {
+      "id": "006773f9-baac-408a-85cb-47cc5cfa0b3a",
+      "name": "Gymnasieantagningen Gotland",
+      "web": "https://edext.gotland.se/gymnasieintagning",
+      "email": "gymnasieantagning@edu.gotland.se",
+      "phone": "0498-269000",
+      "municipalityCount": 1,
+      "municipalities": [
+        {
+          "code": "0980",
+          "name": "Gotland"
+        }
+      ],
+      "schoolUnitCount": 7,
+      "statisticsSourceId": null,
+      "statisticsSourceName": null,
+      "statisticsSourceUrl": null,
+      "statisticsCoverageStatus": "statistics-source-missing"
+    },
+    {
+      "id": "e765fa7b-2fa9-48ea-99c7-ee2de646e58a",
+      "name": "Gymnasieantagningen Göteborgsregionen",
+      "web": "https://gymnasieantagningen.goteborgsregionen.se/",
+      "email": "gymnasieantagningen@goteborgsregionen.se",
+      "phone": "031-3355130",
+      "municipalityCount": 13,
+      "municipalities": [
+        {
+          "code": "1440",
+          "name": "Ale"
+        },
+        {
+          "code": "1489",
+          "name": "Alingsås"
+        },
+        {
+          "code": "1480",
+          "name": "Göteborg"
+        },
+        {
+          "code": "1401",
+          "name": "Härryda"
+        },
+        {
+          "code": "1384",
+          "name": "Kungsbacka"
+        },
+        {
+          "code": "1482",
+          "name": "Kungälv"
+        },
+        {
+          "code": "1441",
+          "name": "Lerum"
+        },
+        {
+          "code": "1462",
+          "name": "Lilla Edet"
+        },
+        {
+          "code": "1481",
+          "name": "Mölndal"
+        },
+        {
+          "code": "1402",
+          "name": "Partille"
+        },
+        {
+          "code": "1415",
+          "name": "Stenungsund"
+        },
+        {
+          "code": "1419",
+          "name": "Tjörn"
+        },
+        {
+          "code": "1407",
+          "name": "Öckerö"
+        }
+      ],
+      "schoolUnitCount": 147,
+      "statisticsSourceId": "goteborgsregionen",
+      "statisticsSourceName": "Gymnasieantagningen i Göteborgsregionen",
+      "statisticsSourceUrl": "https://goteborgsregionen.se/antagningsstatistik",
+      "statisticsCoverageStatus": "statistics-source-linked"
+    },
+    {
+      "id": "b87e9196-d1a1-49d6-b316-c7a2c3105094",
+      "name": "Gymnasieantagningen i Helsingborg",
+      "web": "http://www.skanegy.se/",
+      "email": "gymnasieantagningen@helsingborg.se",
+      "phone": "042-104700",
+      "municipalityCount": 11,
+      "municipalities": [
+        {
+          "code": "1260",
+          "name": "Bjuv"
+        },
+        {
+          "code": "1278",
+          "name": "Båstad"
+        },
+        {
+          "code": "1283",
+          "name": "Helsingborg"
+        },
+        {
+          "code": "1284",
+          "name": "Höganäs"
+        },
+        {
+          "code": "1276",
+          "name": "Klippan"
+        },
+        {
+          "code": "1282",
+          "name": "Landskrona"
+        },
+        {
+          "code": "1275",
+          "name": "Perstorp"
+        },
+        {
+          "code": "1214",
+          "name": "Svalöv"
+        },
+        {
+          "code": "1292",
+          "name": "Ängelholm"
+        },
+        {
+          "code": "1277",
+          "name": "Åstorp"
+        },
+        {
+          "code": "1257",
+          "name": "Örkelljunga"
+        }
+      ],
+      "schoolUnitCount": 56,
+      "statisticsSourceId": "skanegy",
+      "statisticsSourceName": "Skånegy",
+      "statisticsSourceUrl": "https://skanegy.se/om-ansokan/forberedelser-infor-gymnasievalet/meritvarde/",
+      "statisticsCoverageStatus": "statistics-source-linked"
+    },
+    {
+      "id": "792648d4-b535-41e0-9939-e6448173280a",
+      "name": "Gymnasieantagningen i Katrineholm",
+      "web": "https://antag.katrineholm.se/gymnasieantagning/",
+      "email": "gymnasieantagningen@katrineholm.se",
+      "phone": "0150-57222",
+      "municipalityCount": 3,
+      "municipalities": [
+        {
+          "code": "0482",
+          "name": "Flen"
+        },
+        {
+          "code": "0483",
+          "name": "Katrineholm"
+        },
+        {
+          "code": "0428",
+          "name": "Vingåker"
+        }
+      ],
+      "schoolUnitCount": 9,
+      "statisticsSourceId": null,
+      "statisticsSourceName": null,
+      "statisticsSourceUrl": null,
+      "statisticsCoverageStatus": "statistics-source-missing"
+    },
+    {
+      "id": "f119228d-12c1-4a7f-b863-81cd42925147",
+      "name": "Gymnasieantagningen i Linköping",
+      "web": "http://www.gymnasiestudera.se/",
+      "email": "gymnasieantagningen@utb.linkoping.se",
+      "phone": "013-208820",
+      "municipalityCount": 8,
+      "municipalities": [
+        {
+          "code": "0560",
+          "name": "Boxholm"
+        },
+        {
+          "code": "0513",
+          "name": "Kinda"
+        },
+        {
+          "code": "0580",
+          "name": "Linköping"
+        },
+        {
+          "code": "0586",
+          "name": "Mjölby"
+        },
+        {
+          "code": "0583",
+          "name": "Motala"
+        },
+        {
+          "code": "0584",
+          "name": "Vadstena"
+        },
+        {
+          "code": "0561",
+          "name": "Åtvidaberg"
+        },
+        {
+          "code": "0509",
+          "name": "Ödeshög"
+        }
+      ],
+      "schoolUnitCount": 44,
+      "statisticsSourceId": "ostergotland",
+      "statisticsSourceName": "Gymnasieantagningen i Östergötlands län",
+      "statisticsSourceUrl": "https://www.gymnasiestudera.se/statistik/",
+      "statisticsCoverageStatus": "statistics-source-linked"
+    },
+    {
+      "id": "f0b07623-6f87-41d6-bbf6-a8f3edc62497",
+      "name": "Gymnasieantagningen i Västerås",
+      "web": "https://www.gymnasieantagning.vastmanland.se/Vland/Default.asp?page=auth/common/login",
+      "email": "gymnasieantagningen@vasteras.se",
+      "phone": "021-390600",
+      "municipalityCount": 10,
+      "municipalities": [
+        {
+          "code": "0381",
+          "name": "Enköping"
+        },
+        {
+          "code": "0484",
+          "name": "Eskilstuna"
+        },
+        {
+          "code": "1982",
+          "name": "Fagersta"
+        },
+        {
+          "code": "1961",
+          "name": "Hallstahammar"
+        },
+        {
+          "code": "1962",
+          "name": "Norberg"
+        },
+        {
+          "code": "1981",
+          "name": "Sala"
+        },
+        {
+          "code": "1904",
+          "name": "Skinnskatteberg"
+        },
+        {
+          "code": "0486",
+          "name": "Strängnäs"
+        },
+        {
+          "code": "1907",
+          "name": "Surahammar"
+        },
+        {
+          "code": "1980",
+          "name": "Västerås"
+        }
+      ],
+      "schoolUnitCount": 49,
+      "statisticsSourceId": null,
+      "statisticsSourceName": null,
+      "statisticsSourceUrl": null,
+      "statisticsCoverageStatus": "statistics-source-missing"
+    },
+    {
+      "id": "ab502900-eae5-407f-bc8c-ee9ad6164f9f",
+      "name": "Gymnasieantagningen i Örebro län",
+      "web": "https://extra.orebro.se/gymnasieantagningen.4.6ad5e21514fe44c621c1adc.html",
+      "email": "gymnasieantagningen@orebro.se",
+      "phone": "019-211000",
+      "municipalityCount": 12,
+      "municipalities": [
+        {
+          "code": "1882",
+          "name": "Askersund"
+        },
+        {
+          "code": "1862",
+          "name": "Degerfors"
+        },
+        {
+          "code": "1861",
+          "name": "Hallsberg"
+        },
+        {
+          "code": "1863",
+          "name": "Hällefors"
+        },
+        {
+          "code": "1883",
+          "name": "Karlskoga"
+        },
+        {
+          "code": "1881",
+          "name": "Kumla"
+        },
+        {
+          "code": "1860",
+          "name": "Laxå"
+        },
+        {
+          "code": "1814",
+          "name": "Lekeberg"
+        },
+        {
+          "code": "1885",
+          "name": "Lindesberg"
+        },
+        {
+          "code": "1864",
+          "name": "Ljusnarsberg"
+        },
+        {
+          "code": "1884",
+          "name": "Nora"
+        },
+        {
+          "code": "1880",
+          "name": "Örebro"
+        }
+      ],
+      "schoolUnitCount": 57,
+      "statisticsSourceId": null,
+      "statisticsSourceName": null,
+      "statisticsSourceUrl": null,
+      "statisticsCoverageStatus": "statistics-source-missing"
+    },
+    {
+      "id": "2c19f3ee-accb-4275-954f-85333256aee6",
+      "name": "Gymnasieantagningen i Östra samverkansområdet",
+      "web": "https://www.gymnasiestudera.se/",
+      "email": "gymnasieantagningen@norrkoping.se",
+      "phone": "011-150000",
+      "municipalityCount": 4,
+      "municipalities": [
+        {
+          "code": "0562",
+          "name": "Finspång"
+        },
+        {
+          "code": "0581",
+          "name": "Norrköping"
+        },
+        {
+          "code": "0582",
+          "name": "Söderköping"
+        },
+        {
+          "code": "0563",
+          "name": "Valdemarsvik"
+        }
+      ],
+      "schoolUnitCount": 39,
+      "statisticsSourceId": "ostergotland",
+      "statisticsSourceName": "Gymnasieantagningen i Östergötlands län",
+      "statisticsSourceUrl": "https://www.gymnasiestudera.se/statistik/",
+      "statisticsCoverageStatus": "statistics-source-linked"
+    },
+    {
+      "id": "ac19cbef-c8a5-49ef-8b48-dbd89ba874d6",
+      "name": "Gymnasieantagningen Jämtlands län",
+      "web": "https://ostersund.dexter-ist.com/",
+      "email": "info@antagningjamtland.se",
+      "phone": "010-4902400",
+      "municipalityCount": 8,
+      "municipalities": [
+        {
+          "code": "2326",
+          "name": "Berg"
+        },
+        {
+          "code": "2305",
+          "name": "Bräcke"
+        },
+        {
+          "code": "2361",
+          "name": "Härjedalen"
+        },
+        {
+          "code": "2309",
+          "name": "Krokom"
+        },
+        {
+          "code": "2303",
+          "name": "Ragunda"
+        },
+        {
+          "code": "2313",
+          "name": "Strömsund"
+        },
+        {
+          "code": "2321",
+          "name": "Åre"
+        },
+        {
+          "code": "2380",
+          "name": "Östersund"
+        }
+      ],
+      "schoolUnitCount": 25,
+      "statisticsSourceId": null,
+      "statisticsSourceName": null,
+      "statisticsSourceUrl": null,
+      "statisticsCoverageStatus": "statistics-source-missing"
+    },
+    {
+      "id": "dc44ff65-dba3-478d-a39f-18f324953103",
+      "name": "Gymnasieantagningen Jönköping",
+      "web": "https://gymnasieval.jonkoping.se/",
+      "email": "gymnasieantagningen@jonkoping.se",
+      "phone": "036-105000",
+      "municipalityCount": 5,
+      "municipalities": [
+        {
+          "code": "0604",
+          "name": "Aneby"
+        },
+        {
+          "code": "0643",
+          "name": "Habo"
+        },
+        {
+          "code": "0680",
+          "name": "Jönköping"
+        },
+        {
+          "code": "0642",
+          "name": "Mullsjö"
+        },
+        {
+          "code": "0665",
+          "name": "Vaggeryd"
+        }
+      ],
+      "schoolUnitCount": 32,
+      "statisticsSourceId": null,
+      "statisticsSourceName": null,
+      "statisticsSourceUrl": null,
+      "statisticsCoverageStatus": "statistics-source-missing"
+    },
+    {
+      "id": "88e42c8f-344b-4663-9e74-6033b2ef5b8b",
+      "name": "Gymnasieantagningen Kalmarsunds gymnasieförbund",
+      "web": "https://gyf.se/",
+      "email": "gymnasieantagningen@gyf.se",
+      "phone": "010-3527414",
+      "municipalityCount": 6,
+      "municipalities": [
+        {
+          "code": "0885",
+          "name": "Borgholm"
+        },
+        {
+          "code": "0880",
+          "name": "Kalmar"
+        },
+        {
+          "code": "0861",
+          "name": "Mönsterås"
+        },
+        {
+          "code": "0840",
+          "name": "Mörbylånga"
+        },
+        {
+          "code": "0881",
+          "name": "Nybro"
+        },
+        {
+          "code": "0834",
+          "name": "Torsås"
+        }
+      ],
+      "schoolUnitCount": 10,
+      "statisticsSourceId": "kalmarsund",
+      "statisticsSourceName": "Kalmarsunds gymnasieförbund / Gymnasieantagningen Kalmar",
+      "statisticsSourceUrl": "https://gyf.se/elevinformation/ansok-till-gymnasiet/antagning/antagningsstatistik",
+      "statisticsCoverageStatus": "statistics-source-linked"
+    },
+    {
+      "id": "580c99f0-eee2-47f0-b82f-c550655d1d55",
+      "name": "Gymnasieantagningen Karlskrona",
+      "web": "http://www.karlskrona.se/webbantagning",
+      "email": "gymnasieantagningen@utb.karlskrona.se",
+      "phone": "0455-303618",
+      "municipalityCount": 2,
+      "municipalities": [
+        {
+          "code": "0862",
+          "name": "Emmaboda"
+        },
+        {
+          "code": "1080",
+          "name": "Karlskrona"
+        }
+      ],
+      "schoolUnitCount": 7,
+      "statisticsSourceId": null,
+      "statisticsSourceName": null,
+      "statisticsSourceUrl": null,
+      "statisticsCoverageStatus": "statistics-source-missing"
+    },
+    {
+      "id": "c426e0e1-0e10-463e-8f6f-0feb0874213c",
+      "name": "Gymnasieantagningen Kristianstad",
+      "web": "http://www.skanegy.se/",
+      "email": "antag@kristianstad.se",
+      "phone": "044-136161",
+      "municipalityCount": 6,
+      "municipalities": [
+        {
+          "code": "1272",
+          "name": "Bromölla"
+        },
+        {
+          "code": "1293",
+          "name": "Hässleholm"
+        },
+        {
+          "code": "1290",
+          "name": "Kristianstad"
+        },
+        {
+          "code": "1273",
+          "name": "Osby"
+        },
+        {
+          "code": "1083",
+          "name": "Sölvesborg"
+        },
+        {
+          "code": "1256",
+          "name": "Östra Göinge"
+        }
+      ],
+      "schoolUnitCount": 33,
+      "statisticsSourceId": "skanegy",
+      "statisticsSourceName": "Skånegy",
+      "statisticsSourceUrl": "https://skanegy.se/om-ansokan/forberedelser-infor-gymnasievalet/meritvarde/",
+      "statisticsCoverageStatus": "statistics-source-linked"
+    },
+    {
+      "id": "cfdadb67-d086-461f-91a7-1d0771bf4684",
+      "name": "Gymnasieantagningen Lund",
+      "web": "http://www.skanegy.se/",
+      "email": "antag@lund.se",
+      "phone": "046-3595000",
+      "municipalityCount": 8,
+      "municipalities": [
+        {
+          "code": "1231",
+          "name": "Burlöv"
+        },
+        {
+          "code": "1285",
+          "name": "Eslöv"
+        },
+        {
+          "code": "1266",
+          "name": "Hörby"
+        },
+        {
+          "code": "1267",
+          "name": "Höör"
+        },
+        {
+          "code": "1261",
+          "name": "Kävlinge"
+        },
+        {
+          "code": "1262",
+          "name": "Lomma"
+        },
+        {
+          "code": "1281",
+          "name": "Lund"
+        },
+        {
+          "code": "1230",
+          "name": "Staffanstorp"
+        }
+      ],
+      "schoolUnitCount": 29,
+      "statisticsSourceId": "skanegy",
+      "statisticsSourceName": "Skånegy",
+      "statisticsSourceUrl": "https://skanegy.se/om-ansokan/forberedelser-infor-gymnasievalet/meritvarde/",
+      "statisticsCoverageStatus": "statistics-source-linked"
+    },
+    {
+      "id": "6a9f26bf-9264-4851-9391-6074da7ad551",
+      "name": "Gymnasieantagningen Malmö",
+      "web": "http://www.skanegy.se/",
+      "email": "antag@malmo.se",
+      "phone": "040-343390",
+      "municipalityCount": 1,
+      "municipalities": [
+        {
+          "code": "1280",
+          "name": "Malmö"
+        }
+      ],
+      "schoolUnitCount": 40,
+      "statisticsSourceId": "skanegy",
+      "statisticsSourceName": "Skånegy",
+      "statisticsSourceUrl": "https://skanegy.se/om-ansokan/forberedelser-infor-gymnasievalet/meritvarde/",
+      "statisticsCoverageStatus": "statistics-source-linked"
+    },
+    {
+      "id": "465d2257-764c-4244-9a9c-af7abf425ba5",
+      "name": "Gymnasieantagningen Storsthlm",
+      "web": "https://gymnasieantagningen.storsthlm.se/",
+      "email": "gymnasieantagningen@storsthlm.se",
+      "phone": null,
+      "municipalityCount": 28,
+      "municipalities": [
+        {
+          "code": "0127",
+          "name": "Botkyrka"
+        },
+        {
+          "code": "0162",
+          "name": "Danderyd"
+        },
+        {
+          "code": "0125",
+          "name": "Ekerö"
+        },
+        {
+          "code": "0461",
+          "name": "Gnesta"
+        },
+        {
+          "code": "0136",
+          "name": "Haninge"
+        },
+        {
+          "code": "0126",
+          "name": "Huddinge"
+        },
+        {
+          "code": "0305",
+          "name": "Håbo"
+        },
+        {
+          "code": "0123",
+          "name": "Järfälla"
+        },
+        {
+          "code": "0186",
+          "name": "Lidingö"
+        },
+        {
+          "code": "0182",
+          "name": "Nacka"
+        },
+        {
+          "code": "0188",
+          "name": "Norrtälje"
+        },
+        {
+          "code": "0140",
+          "name": "Nykvarn"
+        },
+        {
+          "code": "0192",
+          "name": "Nynäshamn"
+        },
+        {
+          "code": "0128",
+          "name": "Salem"
+        },
+        {
+          "code": "0191",
+          "name": "Sigtuna"
+        },
+        {
+          "code": "0163",
+          "name": "Sollentuna"
+        },
+        {
+          "code": "0184",
+          "name": "Solna"
+        },
+        {
+          "code": "0180",
+          "name": "Stockholm"
+        },
+        {
+          "code": "0183",
+          "name": "Sundbyberg"
+        },
+        {
+          "code": "0181",
+          "name": "Södertälje"
+        },
+        {
+          "code": "0138",
+          "name": "Tyresö"
+        },
+        {
+          "code": "0160",
+          "name": "Täby"
+        },
+        {
+          "code": "0114",
+          "name": "Upplands Väsby"
+        },
+        {
+          "code": "0139",
+          "name": "Upplands-Bro"
+        },
+        {
+          "code": "0115",
+          "name": "Vallentuna"
+        },
+        {
+          "code": "0187",
+          "name": "Vaxholm"
+        },
+        {
+          "code": "0120",
+          "name": "Värmdö"
+        },
+        {
+          "code": "0117",
+          "name": "Österåker"
+        }
+      ],
+      "schoolUnitCount": 244,
+      "statisticsSourceId": "storsthlm",
+      "statisticsSourceName": "Gymnasieantagningen Storsthlm",
+      "statisticsSourceUrl": "https://gymnasieantagningen.storsthlm.se/antagningsgranser-elevnojdhet/ladda-ned-antagningsstatistik/",
+      "statisticsCoverageStatus": "statistics-source-linked"
+    },
+    {
+      "id": "578f4302-0888-4f3b-82cb-ac8a91af505b",
+      "name": "Gymnasieantagningen Trelleborg",
+      "web": "http://www.skanegy.se/",
+      "email": "antagning@trelleborg.se",
+      "phone": "0410-733605",
+      "municipalityCount": 8,
+      "municipalities": [
+        {
+          "code": "1291",
+          "name": "Simrishamn"
+        },
+        {
+          "code": "1265",
+          "name": "Sjöbo"
+        },
+        {
+          "code": "1264",
+          "name": "Skurup"
+        },
+        {
+          "code": "1263",
+          "name": "Svedala"
+        },
+        {
+          "code": "1270",
+          "name": "Tomelilla"
+        },
+        {
+          "code": "1287",
+          "name": "Trelleborg"
+        },
+        {
+          "code": "1233",
+          "name": "Vellinge"
+        },
+        {
+          "code": "1286",
+          "name": "Ystad"
+        }
+      ],
+      "schoolUnitCount": 19,
+      "statisticsSourceId": "skanegy",
+      "statisticsSourceName": "Skånegy",
+      "statisticsSourceUrl": "https://skanegy.se/om-ansokan/forberedelser-infor-gymnasievalet/meritvarde/",
+      "statisticsCoverageStatus": "statistics-source-linked"
+    },
+    {
+      "id": "50929356-b8c4-454a-a8de-f9900190b05a",
+      "name": "Gymnasieantagningen Västernorrland",
+      "web": "https://www.antagning-vn.se/",
+      "email": "info@antagning-vn.se",
+      "phone": "0620-682000",
+      "municipalityCount": 7,
+      "municipalities": [
+        {
+          "code": "2280",
+          "name": "Härnösand"
+        },
+        {
+          "code": "2282",
+          "name": "Kramfors"
+        },
+        {
+          "code": "2283",
+          "name": "Sollefteå"
+        },
+        {
+          "code": "2281",
+          "name": "Sundsvall"
+        },
+        {
+          "code": "2262",
+          "name": "Timrå"
+        },
+        {
+          "code": "2260",
+          "name": "Ånge"
+        },
+        {
+          "code": "2284",
+          "name": "Örnsköldsvik"
+        }
+      ],
+      "schoolUnitCount": 36,
+      "statisticsSourceId": "vasternorrland",
+      "statisticsSourceName": "Gymnasieantagningen Västernorrland",
+      "statisticsSourceUrl": "https://www.antagning-vn.se/antagningspoang-och-statistik",
+      "statisticsCoverageStatus": "statistics-source-linked"
+    },
+    {
+      "id": "c70ffe28-6441-4435-ae3a-9df3826b49ac",
+      "name": "Höglandets gymnasieantagning (Eksjö och Nässjö)",
+      "web": "https://tranas-intag.dexter-ist.com/Tranas/default.asp?page=auth/common/login&operation=INTAG",
+      "email": "sofia.fransson@hoglandet.se",
+      "phone": "0381-36335",
+      "municipalityCount": 2,
+      "municipalities": [
+        {
+          "code": "0686",
+          "name": "Eksjö"
+        },
+        {
+          "code": "0682",
+          "name": "Nässjö"
+        }
+      ],
+      "schoolUnitCount": 7,
+      "statisticsSourceId": null,
+      "statisticsSourceName": null,
+      "statisticsSourceUrl": null,
+      "statisticsCoverageStatus": "statistics-source-missing"
+    },
+    {
+      "id": "81f13975-108c-47e1-a8cb-f257a9517943",
+      "name": "Höglandets gymnasieantagning (Vetlanda och Sävsjö)",
+      "web": "https://tranas-intag.dexter-ist.com/Tranas/default.asp?page=auth/common/login&operation=INTAG",
+      "email": "ewa.andreasson@hoglandet.se",
+      "phone": "0383-97559",
+      "municipalityCount": 2,
+      "municipalities": [
+        {
+          "code": "0684",
+          "name": "Sävsjö"
+        },
+        {
+          "code": "0685",
+          "name": "Vetlanda"
+        }
+      ],
+      "schoolUnitCount": 8,
+      "statisticsSourceId": null,
+      "statisticsSourceName": null,
+      "statisticsSourceUrl": null,
+      "statisticsCoverageStatus": "statistics-source-missing"
+    },
+    {
+      "id": "5e7cd5f9-7da7-4660-9156-c78e6a8cfd88",
+      "name": "Naturbrukskansliet i Västra Götalandsregionen",
+      "web": "https://www.vgregion.se/naturbruk",
+      "email": "naturbrukskansliet@vgregion.se",
+      "phone": "010-4550830",
+      "municipalityCount": 49,
+      "municipalities": [
+        {
+          "code": "1440",
+          "name": "Ale"
+        },
+        {
+          "code": "1489",
+          "name": "Alingsås"
+        },
+        {
+          "code": "1460",
+          "name": "Bengtsfors"
+        },
+        {
+          "code": "1443",
+          "name": "Bollebygd"
+        },
+        {
+          "code": "1490",
+          "name": "Borås"
+        },
+        {
+          "code": "1438",
+          "name": "Dals-Ed"
+        },
+        {
+          "code": "1445",
+          "name": "Essunga"
+        },
+        {
+          "code": "1499",
+          "name": "Falköping"
+        },
+        {
+          "code": "1439",
+          "name": "Färgelanda"
+        },
+        {
+          "code": "1444",
+          "name": "Grästorp"
+        },
+        {
+          "code": "1447",
+          "name": "Gullspång"
+        },
+        {
+          "code": "1480",
+          "name": "Göteborg"
+        },
+        {
+          "code": "1471",
+          "name": "Götene"
+        },
+        {
+          "code": "1466",
+          "name": "Herrljunga"
+        },
+        {
+          "code": "1497",
+          "name": "Hjo"
+        },
+        {
+          "code": "1401",
+          "name": "Härryda"
+        },
+        {
+          "code": "1446",
+          "name": "Karlsborg"
+        },
+        {
+          "code": "1482",
+          "name": "Kungälv"
+        },
+        {
+          "code": "1441",
+          "name": "Lerum"
+        },
+        {
+          "code": "1494",
+          "name": "Lidköping"
+        },
+        {
+          "code": "1462",
+          "name": "Lilla Edet"
+        },
+        {
+          "code": "1484",
+          "name": "Lysekil"
+        },
+        {
+          "code": "1493",
+          "name": "Mariestad"
+        },
+        {
+          "code": "1463",
+          "name": "Mark"
+        },
+        {
+          "code": "1461",
+          "name": "Mellerud"
+        },
+        {
+          "code": "1430",
+          "name": "Munkedal"
+        },
+        {
+          "code": "1481",
+          "name": "Mölndal"
+        },
+        {
+          "code": "1421",
+          "name": "Orust"
+        },
+        {
+          "code": "1402",
+          "name": "Partille"
+        },
+        {
+          "code": "1495",
+          "name": "Skara"
+        },
+        {
+          "code": "1496",
+          "name": "Skövde"
+        },
+        {
+          "code": "1427",
+          "name": "Sotenäs"
+        },
+        {
+          "code": "1415",
+          "name": "Stenungsund"
+        },
+        {
+          "code": "1486",
+          "name": "Strömstad"
+        },
+        {
+          "code": "1465",
+          "name": "Svenljunga"
+        },
+        {
+          "code": "1435",
+          "name": "Tanum"
+        },
+        {
+          "code": "1472",
+          "name": "Tibro"
+        },
+        {
+          "code": "1498",
+          "name": "Tidaholm"
+        },
+        {
+          "code": "1419",
+          "name": "Tjörn"
+        },
+        {
+          "code": "1452",
+          "name": "Tranemo"
+        },
+        {
+          "code": "1488",
+          "name": "Trollhättan"
+        },
+        {
+          "code": "1473",
+          "name": "Töreboda"
+        },
+        {
+          "code": "1485",
+          "name": "Uddevalla"
+        },
+        {
+          "code": "1491",
+          "name": "Ulricehamn"
+        },
+        {
+          "code": "1470",
+          "name": "Vara"
+        },
+        {
+          "code": "1487",
+          "name": "Vänersborg"
+        },
+        {
+          "code": "1442",
+          "name": "Vårgårda"
+        },
+        {
+          "code": "1492",
+          "name": "Åmål"
+        },
+        {
+          "code": "1407",
+          "name": "Öckerö"
+        }
+      ],
+      "schoolUnitCount": 4,
+      "statisticsSourceId": null,
+      "statisticsSourceName": null,
+      "statisticsSourceUrl": null,
+      "statisticsCoverageStatus": "statistics-source-missing"
+    },
+    {
+      "id": "6f1df3bb-76ee-4740-8257-4b5e02de0cdc",
+      "name": "Riksgymnasiet för döva och hörselskadade",
+      "web": "https://gymnasieskolor.orebro.se/riksgymnasiet.4.74fcda93163d92d7cac1bed.html",
+      "email": "riksgymnasiet.antagning@orebro.se",
+      "phone": "019-211000",
+      "municipalityCount": 290,
+      "municipalities": [
+        {
+          "code": "1440",
+          "name": "Ale"
+        },
+        {
+          "code": "1489",
+          "name": "Alingsås"
+        },
+        {
+          "code": "0764",
+          "name": "Alvesta"
+        },
+        {
+          "code": "0604",
+          "name": "Aneby"
+        },
+        {
+          "code": "1984",
+          "name": "Arboga"
+        },
+        {
+          "code": "2506",
+          "name": "Arjeplog"
+        },
+        {
+          "code": "2505",
+          "name": "Arvidsjaur"
+        },
+        {
+          "code": "1784",
+          "name": "Arvika"
+        },
+        {
+          "code": "1882",
+          "name": "Askersund"
+        },
+        {
+          "code": "2084",
+          "name": "Avesta"
+        },
+        {
+          "code": "1460",
+          "name": "Bengtsfors"
+        },
+        {
+          "code": "2326",
+          "name": "Berg"
+        },
+        {
+          "code": "2403",
+          "name": "Bjurholm"
+        },
+        {
+          "code": "1260",
+          "name": "Bjuv"
+        },
+        {
+          "code": "2582",
+          "name": "Boden"
+        },
+        {
+          "code": "1443",
+          "name": "Bollebygd"
+        },
+        {
+          "code": "2183",
+          "name": "Bollnäs"
+        },
+        {
+          "code": "0885",
+          "name": "Borgholm"
+        },
+        {
+          "code": "2081",
+          "name": "Borlänge"
+        },
+        {
+          "code": "1490",
+          "name": "Borås"
+        },
+        {
+          "code": "0127",
+          "name": "Botkyrka"
+        },
+        {
+          "code": "0560",
+          "name": "Boxholm"
+        },
+        {
+          "code": "1272",
+          "name": "Bromölla"
+        },
+        {
+          "code": "2305",
+          "name": "Bräcke"
+        },
+        {
+          "code": "1231",
+          "name": "Burlöv"
+        },
+        {
+          "code": "1278",
+          "name": "Båstad"
+        },
+        {
+          "code": "1438",
+          "name": "Dals-Ed"
+        },
+        {
+          "code": "0162",
+          "name": "Danderyd"
+        },
+        {
+          "code": "1862",
+          "name": "Degerfors"
+        },
+        {
+          "code": "2425",
+          "name": "Dorotea"
+        },
+        {
+          "code": "1730",
+          "name": "Eda"
+        },
+        {
+          "code": "0125",
+          "name": "Ekerö"
+        },
+        {
+          "code": "0686",
+          "name": "Eksjö"
+        },
+        {
+          "code": "0862",
+          "name": "Emmaboda"
+        },
+        {
+          "code": "0381",
+          "name": "Enköping"
+        },
+        {
+          "code": "0484",
+          "name": "Eskilstuna"
+        },
+        {
+          "code": "1285",
+          "name": "Eslöv"
+        },
+        {
+          "code": "1445",
+          "name": "Essunga"
+        },
+        {
+          "code": "1982",
+          "name": "Fagersta"
+        },
+        {
+          "code": "1382",
+          "name": "Falkenberg"
+        },
+        {
+          "code": "1499",
+          "name": "Falköping"
+        },
+        {
+          "code": "2080",
+          "name": "Falun"
+        },
+        {
+          "code": "1782",
+          "name": "Filipstad"
+        },
+        {
+          "code": "0562",
+          "name": "Finspång"
+        },
+        {
+          "code": "0482",
+          "name": "Flen"
+        },
+        {
+          "code": "1763",
+          "name": "Forshaga"
+        },
+        {
+          "code": "1439",
+          "name": "Färgelanda"
+        },
+        {
+          "code": "2026",
+          "name": "Gagnef"
+        },
+        {
+          "code": "0662",
+          "name": "Gislaved"
+        },
+        {
+          "code": "0461",
+          "name": "Gnesta"
+        },
+        {
+          "code": "0617",
+          "name": "Gnosjö"
+        },
+        {
+          "code": "0980",
+          "name": "Gotland"
+        },
+        {
+          "code": "1764",
+          "name": "Grums"
+        },
+        {
+          "code": "1444",
+          "name": "Grästorp"
+        },
+        {
+          "code": "1447",
+          "name": "Gullspång"
+        },
+        {
+          "code": "2523",
+          "name": "Gällivare"
+        },
+        {
+          "code": "2180",
+          "name": "Gävle"
+        },
+        {
+          "code": "1480",
+          "name": "Göteborg"
+        },
+        {
+          "code": "1471",
+          "name": "Götene"
+        },
+        {
+          "code": "0643",
+          "name": "Habo"
+        },
+        {
+          "code": "1783",
+          "name": "Hagfors"
+        },
+        {
+          "code": "1861",
+          "name": "Hallsberg"
+        },
+        {
+          "code": "1961",
+          "name": "Hallstahammar"
+        },
+        {
+          "code": "1380",
+          "name": "Halmstad"
+        },
+        {
+          "code": "1761",
+          "name": "Hammarö"
+        },
+        {
+          "code": "0136",
+          "name": "Haninge"
+        },
+        {
+          "code": "2583",
+          "name": "Haparanda"
+        },
+        {
+          "code": "0331",
+          "name": "Heby"
+        },
+        {
+          "code": "2083",
+          "name": "Hedemora"
+        },
+        {
+          "code": "1283",
+          "name": "Helsingborg"
+        },
+        {
+          "code": "1466",
+          "name": "Herrljunga"
+        },
+        {
+          "code": "1497",
+          "name": "Hjo"
+        },
+        {
+          "code": "2104",
+          "name": "Hofors"
+        },
+        {
+          "code": "0126",
+          "name": "Huddinge"
+        },
+        {
+          "code": "2184",
+          "name": "Hudiksvall"
+        },
+        {
+          "code": "0860",
+          "name": "Hultsfred"
+        },
+        {
+          "code": "1315",
+          "name": "Hylte"
+        },
+        {
+          "code": "1863",
+          "name": "Hällefors"
+        },
+        {
+          "code": "2361",
+          "name": "Härjedalen"
+        },
+        {
+          "code": "2280",
+          "name": "Härnösand"
+        },
+        {
+          "code": "1401",
+          "name": "Härryda"
+        },
+        {
+          "code": "1293",
+          "name": "Hässleholm"
+        },
+        {
+          "code": "0305",
+          "name": "Håbo"
+        },
+        {
+          "code": "1284",
+          "name": "Höganäs"
+        },
+        {
+          "code": "0821",
+          "name": "Högsby"
+        },
+        {
+          "code": "1266",
+          "name": "Hörby"
+        },
+        {
+          "code": "1267",
+          "name": "Höör"
+        },
+        {
+          "code": "2510",
+          "name": "Jokkmokk"
+        },
+        {
+          "code": "0123",
+          "name": "Järfälla"
+        },
+        {
+          "code": "0680",
+          "name": "Jönköping"
+        },
+        {
+          "code": "2514",
+          "name": "Kalix"
+        },
+        {
+          "code": "0880",
+          "name": "Kalmar"
+        },
+        {
+          "code": "1446",
+          "name": "Karlsborg"
+        },
+        {
+          "code": "1082",
+          "name": "Karlshamn"
+        },
+        {
+          "code": "1883",
+          "name": "Karlskoga"
+        },
+        {
+          "code": "1080",
+          "name": "Karlskrona"
+        },
+        {
+          "code": "1780",
+          "name": "Karlstad"
+        },
+        {
+          "code": "0483",
+          "name": "Katrineholm"
+        },
+        {
+          "code": "1715",
+          "name": "Kil"
+        },
+        {
+          "code": "0513",
+          "name": "Kinda"
+        },
+        {
+          "code": "2584",
+          "name": "Kiruna"
+        },
+        {
+          "code": "1276",
+          "name": "Klippan"
+        },
+        {
+          "code": "0330",
+          "name": "Knivsta"
+        },
+        {
+          "code": "2282",
+          "name": "Kramfors"
+        },
+        {
+          "code": "1290",
+          "name": "Kristianstad"
+        },
+        {
+          "code": "1781",
+          "name": "Kristinehamn"
+        },
+        {
+          "code": "2309",
+          "name": "Krokom"
+        },
+        {
+          "code": "1881",
+          "name": "Kumla"
+        },
+        {
+          "code": "1384",
+          "name": "Kungsbacka"
+        },
+        {
+          "code": "1960",
+          "name": "Kungsör"
+        },
+        {
+          "code": "1482",
+          "name": "Kungälv"
+        },
+        {
+          "code": "1261",
+          "name": "Kävlinge"
+        },
+        {
+          "code": "1983",
+          "name": "Köping"
+        },
+        {
+          "code": "1381",
+          "name": "Laholm"
+        },
+        {
+          "code": "1282",
+          "name": "Landskrona"
+        },
+        {
+          "code": "1860",
+          "name": "Laxå"
+        },
+        {
+          "code": "1814",
+          "name": "Lekeberg"
+        },
+        {
+          "code": "2029",
+          "name": "Leksand"
+        },
+        {
+          "code": "1441",
+          "name": "Lerum"
+        },
+        {
+          "code": "0761",
+          "name": "Lessebo"
+        },
+        {
+          "code": "0186",
+          "name": "Lidingö"
+        },
+        {
+          "code": "1494",
+          "name": "Lidköping"
+        },
+        {
+          "code": "1462",
+          "name": "Lilla Edet"
+        },
+        {
+          "code": "1885",
+          "name": "Lindesberg"
+        },
+        {
+          "code": "0580",
+          "name": "Linköping"
+        },
+        {
+          "code": "0781",
+          "name": "Ljungby"
+        },
+        {
+          "code": "2161",
+          "name": "Ljusdal"
+        },
+        {
+          "code": "1864",
+          "name": "Ljusnarsberg"
+        },
+        {
+          "code": "1262",
+          "name": "Lomma"
+        },
+        {
+          "code": "2085",
+          "name": "Ludvika"
+        },
+        {
+          "code": "2580",
+          "name": "Luleå"
+        },
+        {
+          "code": "1281",
+          "name": "Lund"
+        },
+        {
+          "code": "2481",
+          "name": "Lycksele"
+        },
+        {
+          "code": "1484",
+          "name": "Lysekil"
+        },
+        {
+          "code": "1280",
+          "name": "Malmö"
+        },
+        {
+          "code": "2023",
+          "name": "Malung-Sälen"
+        },
+        {
+          "code": "2418",
+          "name": "Malå"
+        },
+        {
+          "code": "1493",
+          "name": "Mariestad"
+        },
+        {
+          "code": "1463",
+          "name": "Mark"
+        },
+        {
+          "code": "0767",
+          "name": "Markaryd"
+        },
+        {
+          "code": "1461",
+          "name": "Mellerud"
+        },
+        {
+          "code": "0586",
+          "name": "Mjölby"
+        },
+        {
+          "code": "2062",
+          "name": "Mora"
+        },
+        {
+          "code": "0583",
+          "name": "Motala"
+        },
+        {
+          "code": "0642",
+          "name": "Mullsjö"
+        },
+        {
+          "code": "1430",
+          "name": "Munkedal"
+        },
+        {
+          "code": "1762",
+          "name": "Munkfors"
+        },
+        {
+          "code": "1481",
+          "name": "Mölndal"
+        },
+        {
+          "code": "0861",
+          "name": "Mönsterås"
+        },
+        {
+          "code": "0840",
+          "name": "Mörbylånga"
+        },
+        {
+          "code": "0182",
+          "name": "Nacka"
+        },
+        {
+          "code": "1884",
+          "name": "Nora"
+        },
+        {
+          "code": "1962",
+          "name": "Norberg"
+        },
+        {
+          "code": "2132",
+          "name": "Nordanstig"
+        },
+        {
+          "code": "2401",
+          "name": "Nordmaling"
+        },
+        {
+          "code": "0581",
+          "name": "Norrköping"
+        },
+        {
+          "code": "0188",
+          "name": "Norrtälje"
+        },
+        {
+          "code": "2417",
+          "name": "Norsjö"
+        },
+        {
+          "code": "0881",
+          "name": "Nybro"
+        },
+        {
+          "code": "0140",
+          "name": "Nykvarn"
+        },
+        {
+          "code": "0480",
+          "name": "Nyköping"
+        },
+        {
+          "code": "0192",
+          "name": "Nynäshamn"
+        },
+        {
+          "code": "0682",
+          "name": "Nässjö"
+        },
+        {
+          "code": "2101",
+          "name": "Ockelbo"
+        },
+        {
+          "code": "1060",
+          "name": "Olofström"
+        },
+        {
+          "code": "2034",
+          "name": "Orsa"
+        },
+        {
+          "code": "1421",
+          "name": "Orust"
+        },
+        {
+          "code": "1273",
+          "name": "Osby"
+        },
+        {
+          "code": "0882",
+          "name": "Oskarshamn"
+        },
+        {
+          "code": "2121",
+          "name": "Ovanåker"
+        },
+        {
+          "code": "0481",
+          "name": "Oxelösund"
+        },
+        {
+          "code": "2521",
+          "name": "Pajala"
+        },
+        {
+          "code": "1402",
+          "name": "Partille"
+        },
+        {
+          "code": "1275",
+          "name": "Perstorp"
+        },
+        {
+          "code": "2581",
+          "name": "Piteå"
+        },
+        {
+          "code": "2303",
+          "name": "Ragunda"
+        },
+        {
+          "code": "2409",
+          "name": "Robertsfors"
+        },
+        {
+          "code": "1081",
+          "name": "Ronneby"
+        },
+        {
+          "code": "2031",
+          "name": "Rättvik"
+        },
+        {
+          "code": "1981",
+          "name": "Sala"
+        },
+        {
+          "code": "0128",
+          "name": "Salem"
+        },
+        {
+          "code": "2181",
+          "name": "Sandviken"
+        },
+        {
+          "code": "0191",
+          "name": "Sigtuna"
+        },
+        {
+          "code": "1291",
+          "name": "Simrishamn"
+        },
+        {
+          "code": "1265",
+          "name": "Sjöbo"
+        },
+        {
+          "code": "1495",
+          "name": "Skara"
+        },
+        {
+          "code": "2482",
+          "name": "Skellefteå"
+        },
+        {
+          "code": "1904",
+          "name": "Skinnskatteberg"
+        },
+        {
+          "code": "1264",
+          "name": "Skurup"
+        },
+        {
+          "code": "1496",
+          "name": "Skövde"
+        },
+        {
+          "code": "2061",
+          "name": "Smedjebacken"
+        },
+        {
+          "code": "2283",
+          "name": "Sollefteå"
+        },
+        {
+          "code": "0163",
+          "name": "Sollentuna"
+        },
+        {
+          "code": "0184",
+          "name": "Solna"
+        },
+        {
+          "code": "2422",
+          "name": "Sorsele"
+        },
+        {
+          "code": "1427",
+          "name": "Sotenäs"
+        },
+        {
+          "code": "1230",
+          "name": "Staffanstorp"
+        },
+        {
+          "code": "1415",
+          "name": "Stenungsund"
+        },
+        {
+          "code": "0180",
+          "name": "Stockholm"
+        },
+        {
+          "code": "1760",
+          "name": "Storfors"
+        },
+        {
+          "code": "2421",
+          "name": "Storuman"
+        },
+        {
+          "code": "0486",
+          "name": "Strängnäs"
+        },
+        {
+          "code": "1486",
+          "name": "Strömstad"
+        },
+        {
+          "code": "2313",
+          "name": "Strömsund"
+        },
+        {
+          "code": "0183",
+          "name": "Sundbyberg"
+        },
+        {
+          "code": "2281",
+          "name": "Sundsvall"
+        },
+        {
+          "code": "1766",
+          "name": "Sunne"
+        },
+        {
+          "code": "1907",
+          "name": "Surahammar"
+        },
+        {
+          "code": "1214",
+          "name": "Svalöv"
+        },
+        {
+          "code": "1263",
+          "name": "Svedala"
+        },
+        {
+          "code": "1465",
+          "name": "Svenljunga"
+        },
+        {
+          "code": "1785",
+          "name": "Säffle"
+        },
+        {
+          "code": "2082",
+          "name": "Säter"
+        },
+        {
+          "code": "0684",
+          "name": "Sävsjö"
+        },
+        {
+          "code": "2182",
+          "name": "Söderhamn"
+        },
+        {
+          "code": "0582",
+          "name": "Söderköping"
+        },
+        {
+          "code": "0181",
+          "name": "Södertälje"
+        },
+        {
+          "code": "1083",
+          "name": "Sölvesborg"
+        },
+        {
+          "code": "1435",
+          "name": "Tanum"
+        },
+        {
+          "code": "1472",
+          "name": "Tibro"
+        },
+        {
+          "code": "1498",
+          "name": "Tidaholm"
+        },
+        {
+          "code": "0360",
+          "name": "Tierp"
+        },
+        {
+          "code": "2262",
+          "name": "Timrå"
+        },
+        {
+          "code": "0763",
+          "name": "Tingsryd"
+        },
+        {
+          "code": "1419",
+          "name": "Tjörn"
+        },
+        {
+          "code": "1270",
+          "name": "Tomelilla"
+        },
+        {
+          "code": "1737",
+          "name": "Torsby"
+        },
+        {
+          "code": "0834",
+          "name": "Torsås"
+        },
+        {
+          "code": "1452",
+          "name": "Tranemo"
+        },
+        {
+          "code": "0687",
+          "name": "Tranås"
+        },
+        {
+          "code": "1287",
+          "name": "Trelleborg"
+        },
+        {
+          "code": "1488",
+          "name": "Trollhättan"
+        },
+        {
+          "code": "0488",
+          "name": "Trosa"
+        },
+        {
+          "code": "0138",
+          "name": "Tyresö"
+        },
+        {
+          "code": "0160",
+          "name": "Täby"
+        },
+        {
+          "code": "1473",
+          "name": "Töreboda"
+        },
+        {
+          "code": "1485",
+          "name": "Uddevalla"
+        },
+        {
+          "code": "1491",
+          "name": "Ulricehamn"
+        },
+        {
+          "code": "2480",
+          "name": "Umeå"
+        },
+        {
+          "code": "0114",
+          "name": "Upplands Väsby"
+        },
+        {
+          "code": "0139",
+          "name": "Upplands-Bro"
+        },
+        {
+          "code": "0380",
+          "name": "Uppsala"
+        },
+        {
+          "code": "0760",
+          "name": "Uppvidinge"
+        },
+        {
+          "code": "0584",
+          "name": "Vadstena"
+        },
+        {
+          "code": "0665",
+          "name": "Vaggeryd"
+        },
+        {
+          "code": "0563",
+          "name": "Valdemarsvik"
+        },
+        {
+          "code": "0115",
+          "name": "Vallentuna"
+        },
+        {
+          "code": "2021",
+          "name": "Vansbro"
+        },
+        {
+          "code": "1470",
+          "name": "Vara"
+        },
+        {
+          "code": "1383",
+          "name": "Varberg"
+        },
+        {
+          "code": "0187",
+          "name": "Vaxholm"
+        },
+        {
+          "code": "1233",
+          "name": "Vellinge"
+        },
+        {
+          "code": "0685",
+          "name": "Vetlanda"
+        },
+        {
+          "code": "2462",
+          "name": "Vilhelmina"
+        },
+        {
+          "code": "0884",
+          "name": "Vimmerby"
+        },
+        {
+          "code": "2404",
+          "name": "Vindeln"
+        },
+        {
+          "code": "0428",
+          "name": "Vingåker"
+        },
+        {
+          "code": "1487",
+          "name": "Vänersborg"
+        },
+        {
+          "code": "2460",
+          "name": "Vännäs"
+        },
+        {
+          "code": "0120",
+          "name": "Värmdö"
+        },
+        {
+          "code": "0683",
+          "name": "Värnamo"
+        },
+        {
+          "code": "0883",
+          "name": "Västervik"
+        },
+        {
+          "code": "1980",
+          "name": "Västerås"
+        },
+        {
+          "code": "0780",
+          "name": "Växjö"
+        },
+        {
+          "code": "1442",
+          "name": "Vårgårda"
+        },
+        {
+          "code": "0512",
+          "name": "Ydre"
+        },
+        {
+          "code": "1286",
+          "name": "Ystad"
+        },
+        {
+          "code": "0765",
+          "name": "Älmhult"
+        },
+        {
+          "code": "2039",
+          "name": "Älvdalen"
+        },
+        {
+          "code": "0319",
+          "name": "Älvkarleby"
+        },
+        {
+          "code": "2560",
+          "name": "Älvsbyn"
+        },
+        {
+          "code": "1292",
+          "name": "Ängelholm"
+        },
+        {
+          "code": "1492",
+          "name": "Åmål"
+        },
+        {
+          "code": "2260",
+          "name": "Ånge"
+        },
+        {
+          "code": "2321",
+          "name": "Åre"
+        },
+        {
+          "code": "1765",
+          "name": "Årjäng"
+        },
+        {
+          "code": "2463",
+          "name": "Åsele"
+        },
+        {
+          "code": "1277",
+          "name": "Åstorp"
+        },
+        {
+          "code": "0561",
+          "name": "Åtvidaberg"
+        },
+        {
+          "code": "1407",
+          "name": "Öckerö"
+        },
+        {
+          "code": "0509",
+          "name": "Ödeshög"
+        },
+        {
+          "code": "1880",
+          "name": "Örebro"
+        },
+        {
+          "code": "1257",
+          "name": "Örkelljunga"
+        },
+        {
+          "code": "2284",
+          "name": "Örnsköldsvik"
+        },
+        {
+          "code": "2380",
+          "name": "Östersund"
+        },
+        {
+          "code": "0117",
+          "name": "Österåker"
+        },
+        {
+          "code": "0382",
+          "name": "Östhammar"
+        },
+        {
+          "code": "1256",
+          "name": "Östra Göinge"
+        },
+        {
+          "code": "2513",
+          "name": "Överkalix"
+        },
+        {
+          "code": "2518",
+          "name": "Övertorneå"
+        }
+      ],
+      "schoolUnitCount": 2,
+      "statisticsSourceId": null,
+      "statisticsSourceName": null,
+      "statisticsSourceUrl": null,
+      "statisticsCoverageStatus": "statistics-source-missing"
+    },
+    {
+      "id": "3edee067-fe7f-4378-9dfa-d0eb551261bb",
+      "name": "Skaraborgs Kommunalförbund, Utbildning Skaraborg",
+      "web": "http://www.utbildningskaraborg.se/",
+      "email": "utbildning@skaraborg.se",
+      "phone": "0500-497243 +497214",
+      "municipalityCount": 15,
+      "municipalities": [
+        {
+          "code": "1445",
+          "name": "Essunga"
+        },
+        {
+          "code": "1499",
+          "name": "Falköping"
+        },
+        {
+          "code": "1444",
+          "name": "Grästorp"
+        },
+        {
+          "code": "1447",
+          "name": "Gullspång"
+        },
+        {
+          "code": "1471",
+          "name": "Götene"
+        },
+        {
+          "code": "1497",
+          "name": "Hjo"
+        },
+        {
+          "code": "1446",
+          "name": "Karlsborg"
+        },
+        {
+          "code": "1494",
+          "name": "Lidköping"
+        },
+        {
+          "code": "1493",
+          "name": "Mariestad"
+        },
+        {
+          "code": "1495",
+          "name": "Skara"
+        },
+        {
+          "code": "1496",
+          "name": "Skövde"
+        },
+        {
+          "code": "1472",
+          "name": "Tibro"
+        },
+        {
+          "code": "1498",
+          "name": "Tidaholm"
+        },
+        {
+          "code": "1473",
+          "name": "Töreboda"
+        },
+        {
+          "code": "1470",
+          "name": "Vara"
+        }
+      ],
+      "schoolUnitCount": 50,
+      "statisticsSourceId": "skaraborg",
+      "statisticsSourceName": "Utbildning Skaraborg",
+      "statisticsSourceUrl": "https://utbildningskaraborg.se/sv/antagningsstatistik/",
+      "statisticsCoverageStatus": "statistics-source-linked"
+    }
+  ]
+}

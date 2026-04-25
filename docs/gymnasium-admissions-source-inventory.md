@@ -10,6 +10,8 @@ Skolverket's guidance points users to regional admission offices for admission s
 
 For this project, "region" should mean admission-statistics source region/admission office, not necessarily county or administrative region.
 
+Update 2026-04-25: Skolverket's official admission-board register is now treated as the canonical coverage baseline. The synchronized register currently contains 49 gymnasial admission boards; see `data/admission-boards-skolverket.json` and `docs/gymnasium-admissions-board-coverage.md`. The 12-source list below is therefore only the first statistics-source layer, not the complete board universe.
+
 ## Required Normalization
 
 Every source should be normalized into the same shape:
@@ -38,9 +40,9 @@ interface AdmissionRow {
 
 For analysis, `admissionMeritMean` should be the primary measure, weighted by `admittedCount` when aggregating to school-year. `admissionMeritMin` is useful as a selectivity floor but is noisier for small programs.
 
-## Initial 12-Region Coverage Set
+## Initial 12-Source Statistics Layer
 
-This is the first full coverage set I would implement. It covers the large public sources already found and gives us a practical national spine. It is not a claim that Sweden officially has only 12 admission regions.
+This is the first statistics-source layer I implemented. It covers the large public sources already found and gives us a practical national spine. It is not a claim that Sweden officially has only 12 admission regions or boards.
 
 | # | Source region | Source pattern | Format | Data quality for our purpose | Parser priority |
 |---|---|---|---|---|---|
@@ -57,9 +59,9 @@ This is the first full coverage set I would implement. It covers the large publi
 | 11 | Dalarna/Gävleborg | Antag Dalarna statistics for Dalarna and Gävleborg | PDF | High; snippets show places, first choice, admitted, lowest, mean | 3 |
 | 12 | Västernorrland | Antagning Västernorrland final statistics | PDF | Medium; official source found, parser needs inspection | 4 |
 
-## Known Additional Gaps Beyond The First 12
+## Known Additional Gaps Beyond The First 12 Sources
 
-These should be audited before claiming full national coverage:
+These should be audited before claiming full national coverage. The authoritative gap list is now generated in `docs/gymnasium-admissions-board-coverage.md`.
 
 - Västerbotten/Umeå
 - Norrbotten
