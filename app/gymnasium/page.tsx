@@ -1,0 +1,25 @@
+import { loadDataset, loadAcadeMedia, loadStorkommuner } from "@/lib/dataset";
+import { Dashboard } from "../Dashboard";
+
+export default function GymnasiumHome() {
+  const dataset = loadDataset("gymnasium");
+  const am = loadAcadeMedia();
+  const sk = loadStorkommuner();
+
+  return (
+    <div className="space-y-4">
+      <section>
+        <h1 className="text-2xl font-semibold text-slate-900">Gymnasieskolor: betyg vs nationella prov</h1>
+        <p className="mt-1 text-slate-600 text-sm max-w-3xl">
+          Rangordning av gymnasiehuvudmän efter andelen elever med betyg <strong>högre</strong> än provresultatet. AcadeMedia-koncernen och de tre största kommunala huvudmännen (Stockholm, Göteborg, Malmö) är markerade för jämförelse.
+        </p>
+      </section>
+      <Dashboard
+        dataset={dataset}
+        acadeMediaOrgnrs={am.orgnrs}
+        storkommuner={sk.orgnrs.map((orgnr) => ({ orgnr, name: sk.names[orgnr] ?? orgnr }))}
+        detailBasePath="/huvudman"
+      />
+    </div>
+  );
+}

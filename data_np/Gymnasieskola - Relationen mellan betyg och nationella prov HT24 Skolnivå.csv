@@ -1,0 +1,268 @@
+﻿Statistik från Skolverket, https://www.skolverket.se
+
+Gymnasieskola - Relationen mellan betyg och nationella prov
+Vald termin: HT24
+
+
+Skola;Skol-enhetskod;Skolkommun;Kommun-kod;Typ av huvudman;Huvudman;Huvudman orgnr;Prov;Antal elever;Andel lägre;Andel lika;Andel högre;Antal kvinnor;Andel lägre kvinnor;Andel lika kvinnor;Andel högre kvinnor;Antal män;Andel lägre män;Andel lika män;Andel högre män;
+Alströmergymnasiet sektor 2;18345915;Alingsås;1489;Kommunal;Alingsås kommun;2120001553;Matematik 3C;53;.;94,3;5,7;15;.;100,0;.;38;.;92,1;7,9;
+Vasagymnasiet;71262305;Arboga;1984;Kommunal;Arboga kommun;2120002122;Matematik 3C;16;.;56,3;43,8;5;..;..;..;11;..;..;..;
+Sandbackaskolan;84947634;Arvidsjaur;2505;Kommunal;Arvidsjaurs kommun;2120002650;Matematik 4;8;..;..;..;2;..;..;..;6;..;..;..;
+Solbergagymnasiet;48009865;Arvika;1784;Kommunal;Arvika kommun;2120001892;Matematik 4;11;.;90,9;9,1;1;..;..;..;10;..;..;..;
+Karlfeldtgymnasiet;30376472;Avesta;2084;Kommunal;Avesta kommun;2120002262;Matematik 3C;14;.;92,9;7,1;5;..;..;..;9;..;..;..;
+Fjällgymnasiet;60743463;Berg;2326;Kommunal;Bergs kommun;2120002502;Svenska 1;1;..;..;..;1;..;..;..;.;.;.;.;
+Hälsingegymnasiet;91748148;Bollnäs;2183;Enskild;Hälsingegymnasiet AB;5567600886;Matematik 4;22;.;27,3;72,7;16;..;..;..;6;..;..;..;
+Bäckängsgymnasiet A;43634528;Borås;1490;Kommunal;Borås kommun;2120001561;Matematik 4;25;.;92,0;8,0;13;.;92,3;7,7;12;.;91,7;8,3;
+Tullinge gymnasium;26334561;Botkyrka;0127;Kommunal;Botkyrka kommun;2120002882;Matematik 3C;3;..;..;..;2;..;..;..;1;..;..;..;
+Akademi Båstad Gymnasium;59483268;Båstad;1278;Kommunal;Båstads kommun;2120000944;Matematik 4;4;..;..;..;2;..;..;..;2;..;..;..;
+Eksjö Gymnasium 1;34153869;Eksjö;0686;Kommunal;Eksjö kommun;2120000589;Matematik 4;24;4,2;79,2;16,7;14;7,1;78,6;14,3;10;.;80,0;20,0;
+Vilhelm Mobergsgymnasiet;17846181;Emmaboda;0862;Kommunal;Emmaboda kommun;2120000738;Matematik 3C;7;..;..;..;2;..;..;..;5;..;..;..;
+Westerlundska gymnasiet;75082798;Enköping;0381;Kommunal;Enköpings kommun;2120000282;Matematik 3C;12;8,3;75,0;16,7;8;..;..;..;4;..;..;..;
+JENSEN Gymnasium Eskilstuna;88986563;Eskilstuna;0484;Enskild;Jensen Education College AB;5566358759;Matematik 3C;3;..;..;..;.;.;.;.;3;..;..;..;
+Carl Engströmgymnasiet;15077883;Eslöv;1285;Kommunal;Eslövs kommun;2120001173;Matematik 4;8;..;..;..;1;..;..;..;7;..;..;..;
+Falkenbergs Gymnasieskola 2;51138448;Falkenberg;1382;Kommunal;Falkenbergs kommun;2120001231;Matematik 4;29;.;86,2;13,8;10;.;90,0;10,0;19;.;84,2;15,8;
+Lugnetgymnasiet RO1;23164911;Falun;2080;Kommunal;Falu kommun;2120002221;Matematik 3C;21;9,5;81,0;9,5;8;..;..;..;13;..;..;..;
+Spångbergsgymnasiet;19586169;Filipstad;1782;Kommunal;Filipstads kommun;2120001876;Matematik 4;4;..;..;..;3;..;..;..;1;..;..;..;
+Curt Nicolin Gymnasiet;95683850;Finspång;0562;Enskild;Curt Nicolin Gymnasiet AB;5566431044;Matematik 1A;21;.;4,8;95,2;17;..;..;..;4;..;..;..;
+Curt Nicolin Gymnasiet;95683850;Finspång;0562;Enskild;Curt Nicolin Gymnasiet AB;5566431044;Matematik 4;22;.;90,9;9,1;4;..;..;..;18;..;..;..;
+Gislaveds gymnasium Innovationssektor;89888648;Gislaved;0662;Kommunal;Gislaveds kommun;2120000514;Matematik 4;15;.;53,3;46,7;10;..;..;..;5;..;..;..;
+Stora Segerstad Naturbrukscentrum;88163512;Gislaved;0662;Region;Region Jönköpings Län;2321000057;Matematik 1A;27;.;66,7;33,3;10;.;70,0;30,0;17;.;64,7;35,3;
+Stora Segerstad Naturbrukscentrum;88163512;Gislaved;0662;Region;Region Jönköpings Län;2321000057;Svenska 1;27;11,1;77,8;11,1;11;9,1;63,6;27,3;16;12,5;87,5;.;
+Gnosjöandans kunskapsc. gy;35063170;Gnosjö;0617;Kommunal;Gnosjö kommun;2120000506;Matematik 4;13;.;100,0;.;4;..;..;..;9;..;..;..;
+Gutegymnasiet;31279294;Gotland;0980;Enskild;Guteskolan AB;5567044267;Matematik 4;1;..;..;..;.;.;.;.;1;..;..;..;
+Wisbygymnasiet 2;31962829;Gotland;0980;Kommunal;Region Gotland;2120000803;Matematik 3C;5;..;..;..;5;..;..;..;.;.;.;.;
+Wisbygymnasiet 3;24534350;Gotland;0980;Kommunal;Region Gotland;2120000803;Matematik 3C;8;..;..;..;5;..;..;..;3;..;..;..;
+Affärsgymnasiet Gävle;49616977;Gävle;2180;Enskild;Edukatus AB;5566139290;Matematik 3B;40;.;35,0;65,0;24;.;12,5;87,5;16;.;68,8;31,3;
+NTI Vetenskapsgymnasiet Gävle;86547467;Gävle;2180;Enskild;NTI Gymnasiet Macro AB;5561203679;Matematik 4;12;.;83,3;16,7;11;..;..;..;1;..;..;..;
+Polhemsskolan;90551279;Gävle;2180;Kommunal;Gävle kommun;2120002338;Matematik 4;7;..;..;..;3;..;..;..;4;..;..;..;
+Realgymnasiet Gävle;69686851;Gävle;2180;Enskild;Lärande i Sverige AB;5565715892;Matematik 1A;3;..;..;..;3;..;..;..;.;.;.;.;
+Vasaskolan;54965510;Gävle;2180;Kommunal;Gävle kommun;2120002338;Matematik 3C;8;..;..;..;5;..;..;..;3;..;..;..;
+Donnergymnasiet;78397312;Göteborg;1480;Enskild;Donnergymnasiet AB;5565408381;Matematik 4;64;.;75,0;25,0;35;.;74,3;25,7;29;.;75,9;24,1;
+Göteborgs Högre Samskola gy.;88774402;Göteborg;1480;Enskild;Stiftelsen Göteborgs Högre Samskola;8572059197;Matematik 4;56;.;89,3;10,7;29;.;89,7;10,3;27;.;88,9;11,1;
+KLARA Teoretiska Gymnasium Göteborg Postgatan;40690520;Göteborg;1480;Enskild;KLARA Gymnasium Lärande AB;5565583282;Matematik 3C;18;.;94,4;5,6;11;..;..;..;7;..;..;..;
+Kunskapsgymnasiet Göteborg;12052268;Göteborg;1480;Enskild;Kunskapsskolan i Sverige Aktiebolag;5565661815;Matematik 4;5;..;..;..;1;..;..;..;4;..;..;..;
+LM Engströms gymnasium;71597051;Göteborg;1480;Enskild;Peter Isaac Béens Utbildningsstiftelse;8572003666;Matematik 3C;8;..;..;..;8;..;..;..;.;.;.;.;
+NTI Gymnasiet Kronhus;35006050;Göteborg;1480;Enskild;NTI Gymnasiet Macro AB;5561203679;Matematik 4;25;.;68,0;32,0;8;..;..;..;17;..;..;..;
+Schillerska gymnasiet 3;36748805;Göteborg;1480;Kommunal;Göteborgs kommun;2120001355;Matematik 4;22;.;100,0;.;18;..;..;..;4;..;..;..;
+Sigrid Rudebecks gymnasium;19207279;Göteborg;1480;Enskild;Aktiebolaget Sigrid Rudebecks Skola;5563571248;Matematik 4;88;.;90,9;9,1;63;.;92,1;7,9;25;.;88,0;12,0;
+The International High School of the Gothenburg Region;26627862;Göteborg;1480;Kommunal;Göteborgs kommun;2120001355;Matematik 2B;19;.;84,2;15,8;12;..;..;..;7;..;..;..;
+Älvstrandsgymnasiet2;28310176;Hagfors;1783;Kommunal;Hagfors kommun;2120001884;Matematik 3C;12;.;41,7;58,3;5;..;..;..;7;..;..;..;
+Alléskolan 1;70969714;Hallsberg;1861;Kommunal;Sydnärkes Utbildningsförbund;2220001180;Matematik 3C;15;.;100,0;.;1;..;..;..;14;..;..;..;
+Alléskolan 7;74148070;Hallsberg;1861;Kommunal;Sydnärkes Utbildningsförbund;2220001180;Matematik 4;22;.;86,4;13,6;12;.;83,3;16,7;10;.;90,0;10,0;
+Kattegattgymnasiet 2;81993306;Halmstad;1380;Kommunal;Halmstads kommun;2120001215;Matematik 3C;10;10,0;90,0;.;.;.;.;.;10;..;..;..;
+Kattegattgymnasiet 2;81993306;Halmstad;1380;Kommunal;Halmstads kommun;2120001215;Matematik 4;3;..;..;..;.;.;.;.;3;..;..;..;
+Berga naturbruksgymnasium;38448056;Haninge;0136;Enskild;Dille Gård AB;5564173853;Matematik 1A;5;..;..;..;5;..;..;..;.;.;.;.;
+Tornedalsskolan;11294673;Haparanda;2583;Kommunal;Haparanda kommun;2120002775;Matematik 4;5;..;..;..;1;..;..;..;4;..;..;..;
+Tornedalsskolan;11294673;Haparanda;2583;Kommunal;Haparanda kommun;2120002775;Svenska 1;2;..;..;..;.;.;.;.;2;..;..;..;
+Tornedalsskolan;11294673;Haparanda;2583;Kommunal;Haparanda kommun;2120002775;Svenska som andraspråk 1;1;..;..;..;1;..;..;..;.;.;.;.;
+NTI Vetenskapsgymnasiet Helsingborg;48610406;Helsingborg;1283;Enskild;NTI Gymnasiet Macro AB;5561203679;Matematik 4;15;.;100,0;.;6;..;..;..;9;..;..;..;
+Tycho Braheskolan;78875918;Helsingborg;1283;Kommunal;Helsingborgs kommun;2120001157;Matematik 4;15;.;93,3;6,7;3;..;..;..;12;..;..;..;
+Huddingegymnasiet;49862313;Huddinge;0126;Kommunal;Huddinge kommun;2120000068;Matematik 4;26;.;76,9;23,1;12;.;83,3;16,7;14;.;71,4;28,6;
+Sjödalsgymnasiet;42859669;Huddinge;0126;Kommunal;Huddinge kommun;2120000068;Matematik 4;14;.;100,0;.;3;..;..;..;11;..;..;..;
+Fridegårdsgymnasiet;58125096;Håbo;0305;Kommunal;Håbo kommun;2120000241;Matematik 3C;13;.;92,3;7,7;.;.;.;.;13;..;..;..;
+Fridegårdsgymnasiet;58125096;Håbo;0305;Kommunal;Håbo kommun;2120000241;Matematik 4;17;.;76,5;23,5;6;..;..;..;11;..;..;..;
+Hulebäcksgymnasiet 6;72206824;Härryda;1401;Kommunal;Härryda kommun;2120001264;Matematik 1A;14;.;71,4;28,6;.;.;.;.;14;..;..;..;
+Hässleholms Tekniska Skola;92858957;Hässleholm;1293;Kommunal;Hässleholms kommun;2120000985;Matematik 3C;8;..;..;..;3;..;..;..;5;..;..;..;
+Järfälla gymnasium Barkarby;22349317;Järfälla;0123;Kommunal;Järfälla kommun;2120000043;Matematik 4;26;.;80,8;19,2;16;.;68,8;31,3;10;.;100,0;.;
+Drottning Blankas Gymnasieskola Jönköping;12279302;Jönköping;0680;Enskild;DBGY Juvelen AB;5565789129;Matematik 1A;15;.;66,7;33,3;14;..;..;..;1;..;..;..;
+Drottning Blankas Gymnasieskola Jönköping;12279302;Jönköping;0680;Enskild;DBGY Juvelen AB;5565789129;Matematik 2B;10;.;60,0;40,0;9;..;..;..;1;..;..;..;
+Drottning Blankas Gymnasieskola Jönköping;12279302;Jönköping;0680;Enskild;DBGY Juvelen AB;5565789129;Svenska 1;1;..;..;..;.;.;.;.;1;..;..;..;
+Drottning Blankas Gymnasieskola Jönköping;12279302;Jönköping;0680;Enskild;DBGY Juvelen AB;5565789129;Svenska som andraspråk 1;3;..;..;..;1;..;..;..;2;..;..;..;
+Erik Dahlbergsgymnasiet RO 3;51210136;Jönköping;0680;Kommunal;Jönköpings kommun;2120000530;Matematik 4;61;.;93,4;6,6;32;.;90,6;9,4;29;.;96,6;3,4;
+Per Brahegymnasiet RO 2;80686587;Jönköping;0680;Kommunal;Jönköpings kommun;2120000530;Matematik 4;70;.;98,6;1,4;35;.;97,1;2,9;35;.;100,0;.;
+Vägga gymnasieskola 4;29032715;Karlshamn;1082;Kommunal;Karlshamns kommun;2120000845;Matematik 4;8;..;..;..;.;.;.;.;8;..;..;..;
+af Chapmangymnasiet;30530571;Karlskrona;1080;Kommunal;Karlskrona kommun;2120000829;Matematik 1A;18;.;94,4;5,6;14;..;..;..;4;..;..;..;
+Aspero Idrottsgymn. Karlskrona;78839208;Karlskrona;1080;Enskild;Aspero Friskolor AB;5566363973;Matematik 3B;26;3,8;92,3;3,8;5;..;..;..;21;..;..;..;
+Ehrensvärdska gymnasiet;96024712;Karlskrona;1080;Kommunal;Karlskrona kommun;2120000829;Matematik 3C;18;.;94,4;5,6;10;..;..;..;8;..;..;..;
+Fria Läroverken Karlstad;27115998;Karlstad;1780;Enskild;Fria Läroverken i Sverige AB;5569172041;Matematik 4;19;.;78,9;21,1;8;..;..;..;11;..;..;..;
+NTI Gymnasiet Karlstad;41867682;Karlstad;1780;Enskild;NTI Gymnasiet Ellips AB;5565970471;Matematik 3C;18;.;55,6;44,4;1;..;..;..;17;..;..;..;
+Sundsta-Älvkullegymnasiet 1;99147574;Karlstad;1780;Kommunal;Karlstads kommun;2120001850;Matematik 4;104;.;91,3;8,7;49;.;93,9;6,1;55;.;89,1;10,9;
+Sundsta-Älvkullegymnasiet 2;42168219;Karlstad;1780;Kommunal;Karlstads kommun;2120001850;Matematik 4;19;.;89,5;10,5;3;..;..;..;16;..;..;..;
+Rymdgymnasiet;90006712;Kiruna;2584;Enskild;Malmens Friskola AB;5565528022;Matematik 4;25;.;88,0;12,0;9;..;..;..;16;..;..;..;
+Flygteknikcenter, Ljungbyhed;43649848;Klippan;1276;Kommunal;Klippans kommun;2120000928;Matematik 1A;23;.;82,6;17,4;1;..;..;..;22;..;..;..;
+Tegelbruksskolan;84247499;Klippan;1276;Kommunal;Klippans kommun;2120000928;Matematik 1A;94;4,3;81,9;13,8;15;6,7;73,3;20,0;79;3,8;83,5;12,7;
+Kramfors gymnasium;13754017;Kramfors;2282;Kommunal;Kramfors kommun;2120002429;Matematik 4;7;..;..;..;4;..;..;..;3;..;..;..;
+LBS Kreativa Gymnasiet Kristianstad;43251309;Kristianstad;1290;Enskild;Ljud & Bildskolan LBS AB;5564851649;Matematik 1B;15;6,7;73,3;20,0;4;..;..;..;11;..;..;..;
+LBS Kreativa Gymnasiet Kristianstad;43251309;Kristianstad;1290;Enskild;Ljud & Bildskolan LBS AB;5564851649;Matematik 3C;14;.;57,1;42,9;1;..;..;..;13;..;..;..;
+Önnestadsgymnasiet;61547652;Kristianstad;1290;Enskild;Hushållningssällskapets Kompetensutveckling i Syd AB (HUSKAB);5567502777;Matematik 1A;1;..;..;..;1;..;..;..;.;.;.;.;
+Österänggymnasiet 61;21702982;Kristianstad;1290;Kommunal;Kristianstads kommun;2120000951;Matematik 3C;13;.;100,0;.;9;..;..;..;4;..;..;..;
+Österänggymnasiet 63;87034307;Kristianstad;1290;Kommunal;Kristianstads kommun;2120000951;Matematik 3C;4;..;..;..;.;.;.;.;4;..;..;..;
+Brogymnasiet 3;72832832;Kristinehamn;1781;Kommunal;Kristinehamns kommun;2120001868;Matematik 3C;4;..;..;..;3;..;..;..;1;..;..;..;
+Mimers hus Gymnasium, Skolenhet 4;45796620;Kungälv;1482;Kommunal;Kungälvs kommun;2120001371;Matematik 3C;68;.;92,6;7,4;12;.;91,7;8,3;56;.;92,9;7,1;
+Mimers hus Gymnasium, Skolenhet 4;45796620;Kungälv;1482;Kommunal;Kungälvs kommun;2120001371;Matematik 4;24;.;87,5;12,5;14;.;78,6;21,4;10;.;100,0;.;
+Ullvi3;34931041;Köping;1983;Kommunal;Köpings kommun;2120002114;Matematik 3C;5;..;..;..;2;..;..;..;3;..;..;..;
+Öresundsgymnasiet Landskrona;28248021;Landskrona;1282;Kommunal;Landskrona kommun;2120001140;Matematik 4;5;..;..;..;4;..;..;..;1;..;..;..;
+Leksands gymnasium;44417214;Leksand;2029;Kommunal;Leksands kommun;2120002163;Matematik 4;26;.;88,5;11,5;10;.;90,0;10,0;16;.;87,5;12,5;
+Lerums Gymnasium, skolenhet 2;88776535;Lerum;1441;Kommunal;Lerums kommun;2120001447;Matematik 3C;40;.;90,0;10,0;5;..;..;..;35;..;..;..;
+De la Gardiegymnasiet, enhet 1;89807183;Lidköping;1494;Kommunal;Lidköpings kommun;2120001694;Matematik 3C;16;.;93,8;6,3;13;..;..;..;3;..;..;..;
+De la Gardiegymnasiet, enhet 1;89807183;Lidköping;1494;Kommunal;Lidköpings kommun;2120001694;Matematik 4;34;.;100,0;.;17;.;100,0;.;17;.;100,0;.;
+Lindeskolan LS 3;39302565;Lindesberg;1885;Kommunal;Lindesbergs kommun;2120002015;Matematik 3C;25;4,0;80,0;16,0;5;..;..;..;20;..;..;..;
+Lindeskolan LS 4;96818167;Lindesberg;1885;Kommunal;Lindesbergs kommun;2120002015;Matematik 3C;1;..;..;..;1;..;..;..;.;.;.;.;
+RyssbyGymnasiet;32705515;Ljungby;0781;Enskild;Ryssbygymnasiet AB;5566214069;Matematik 1A;8;..;..;..;2;..;..;..;6;..;..;..;
+Sunnerbogymnasiet 3;82002016;Ljungby;0781;Kommunal;Ljungby kommun;2120000670;Matematik 4;19;.;89,5;10,5;13;..;..;..;6;..;..;..;
+Järvsögymnasiet;93674454;Ljusdal;2161;Enskild;Mästaren 22 AB;5591656151;Matematik 1A;38;.;84,2;15,8;23;.;78,3;21,7;15;.;93,3;6,7;
+Slottegymnasiet;23306658;Ljusdal;2161;Kommunal;Ljusdals kommun;2120002320;Matematik 4;7;..;..;..;3;..;..;..;4;..;..;..;
+Luleå gymnasieskola, skolenhet H;80931789;Luleå;2580;Kommunal;Luleå kommun;2120002742;Matematik 4;65;.;83,1;16,9;43;.;81,4;18,6;22;.;86,4;13,6;
+Realgymnasiet i Luleå;27023902;Luleå;2580;Enskild;Lärande i Sverige AB;5565715892;Matematik 1A;1;..;..;..;1;..;..;..;.;.;.;.;
+Gymnasieskolan Spyken;75939593;Lund;1281;Kommunal;Lunds kommun;2120001132;Matematik 3C;10;.;100,0;.;9;..;..;..;1;..;..;..;
+Gymnasieskolan Spyken;75939593;Lund;1281;Kommunal;Lunds kommun;2120001132;Matematik 4;93;.;94,6;5,4;61;.;95,1;4,9;32;.;93,8;6,3;
+Hedda Anderssongymnasiet;20763964;Lund;1281;Kommunal;Lunds kommun;2120001132;Matematik 3C;7;..;..;..;5;..;..;..;2;..;..;..;
+Katedralskolan;56639389;Lund;1281;Kommunal;Lunds kommun;2120001132;Matematik 4;161;.;96,9;3,1;72;.;98,6;1,4;89;.;95,5;4,5;
+Lars-Erik Larssongymnasiet;95700485;Lund;1281;Enskild;Lars-Erik Larsson Gymnasiet;8465021015;Matematik 4;35;.;85,7;14,3;22;.;81,8;18,2;13;.;92,3;7,7;
+LBS Kreativa Gymnasiet Lund;51449748;Lund;1281;Enskild;Ljud & Bildskolan LBS AB;5564851649;Matematik 3C;33;.;69,7;30,3;1;..;..;..;32;..;..;..;
+Polhemskolan;53896162;Lund;1281;Kommunal;Lunds kommun;2120001132;Matematik 3C;114;0,9;96,5;2,6;40;.;92,5;7,5;74;1,4;98,6;.;
+Polhemskolan;53896162;Lund;1281;Kommunal;Lunds kommun;2120001132;Matematik 4;35;.;100,0;.;6;..;..;..;29;..;..;..;
+Tekniska Gymnasiet Lund;66824652;Lund;1281;Enskild;Tekniska Gymnasiet i Sverige AB;5568902653;Matematik 4;9;..;..;..;2;..;..;..;7;..;..;..;
+Tannbergsskolan 1;49168016;Lycksele;2481;Kommunal;Lycksele kommun;2120002635;Matematik 3C;6;..;..;..;4;..;..;..;2;..;..;..;
+Drottning Blankas Gymnasieskola Malmö Söderport;35894996;Malmö;1280;Enskild;DBGY Kronan AB;5565668794;Matematik 2B;38;.;76,3;23,7;31;..;..;..;7;..;..;..;
+Fria Läroverken Malmö;68748767;Malmö;1280;Enskild;Fria Läroverken i Sverige AB;5569172041;Matematik 4;18;16,7;83,3;.;9;..;..;..;9;..;..;..;
+KLARA Teoretiska Gymnasium Malmö;23548714;Malmö;1280;Enskild;KLARA Gymnasium Bildning AB;5565286696;Matematik 4;22;.;100,0;.;16;..;..;..;6;..;..;..;
+Malmö Borgarskola Ro 1;30361243;Malmö;1280;Kommunal;Malmö kommun;2120001124;Matematik 3C;12;.;75,0;25,0;5;..;..;..;7;..;..;..;
+Malmö Borgarskola Ro 1;30361243;Malmö;1280;Kommunal;Malmö kommun;2120001124;Matematik 4;70;.;68,6;31,4;28;.;75,0;25,0;42;.;64,3;35,7;
+Malmö Idrottsgymnasium Ro1;25596917;Malmö;1280;Kommunal;Malmö kommun;2120001124;Matematik 4;30;.;73,3;26,7;12;.;58,3;41,7;18;.;83,3;16,7;
+Pauliskolan;65381163;Malmö;1280;Kommunal;Malmö kommun;2120001124;Matematik 4;11;.;100,0;.;1;..;..;..;10;..;..;..;
+ProCivitas Privata Gymnasium Malmö;84424083;Malmö;1280;Enskild;ProCivitas Privata Gymnasium AB;5566157102;Matematik 3C;12;.;91,7;8,3;10;..;..;..;2;..;..;..;
+ProCivitas Privata Gymnasium Malmö;84424083;Malmö;1280;Enskild;ProCivitas Privata Gymnasium AB;5566157102;Matematik 4;29;.;100,0;.;19;.;100,0;.;10;.;100,0;.;
+Gymnasieskolan;58187973;Markaryd;0767;Kommunal;Markaryds kommun;2120000654;Matematik 4;10;.;100,0;.;6;..;..;..;4;..;..;..;
+Platengymnasiet 2;83161201;Motala;0583;Kommunal;Motala kommun;2120002817;Matematik 4;22;.;100,0;.;13;..;..;..;9;..;..;..;
+Franklins gymnasium;76562396;Mölndal;1481;Kommunal;Mölndals kommun;2120001363;Matematik 3C;9;..;..;..;5;..;..;..;4;..;..;..;
+Ebersteinska gymnasiet  4;53832505;Norrköping;0581;Kommunal;Norrköpings kommun;2120000456;Matematik 3C;6;..;..;..;5;..;..;..;1;..;..;..;
+Ebersteinska gymnasiet  4;53832505;Norrköping;0581;Kommunal;Norrköpings kommun;2120000456;Matematik 4;25;.;88,0;12,0;6;..;..;..;19;..;..;..;
+Hagagymnasiet skolenhet Blå;49750031;Norrköping;0581;Kommunal;Norrköpings kommun;2120000456;Matematik 4;11;.;100,0;.;5;..;..;..;6;..;..;..;
+Hagagymnasiet skolenhet grön;76485705;Norrköping;0581;Kommunal;Norrköpings kommun;2120000456;Matematik 4;31;.;83,9;16,1;19;.;84,2;15,8;12;.;83,3;16,7;
+Kunskapsgymnasiet Norrköping;75575321;Norrköping;0581;Enskild;Kunskapsskolan i Sverige Aktiebolag;5565661815;Matematik 4;29;3,4;89,7;6,9;13;.;100,0;.;16;6,3;81,3;12,5;
+Rodengymnasiet;42258644;Norrtälje;0188;Kommunal;Norrtälje kommun;2120000217;Matematik 4;23;.;95,7;4,3;15;..;..;..;8;..;..;..;
+Åkrahällskolan Akra02;12130801;Nybro;0881;Kommunal;Nybro kommun;2120000753;Matematik 1A;15;6,7;53,3;40,0;.;.;.;.;15;..;..;..;
+Praktiska Gymnasiet Nykvarn;53180719;Nykvarn;0140;Enskild;Praktiska Sverige AB;5562575786;Matematik 1A;2;..;..;..;2;..;..;..;.;.;.;.;
+Praktiska Gymnasiet Nykvarn;53180719;Nykvarn;0140;Enskild;Praktiska Sverige AB;5562575786;Svenska 1;2;..;..;..;1;..;..;..;1;..;..;..;
+Praktiska Gymnasiet Nykvarn;53180719;Nykvarn;0140;Enskild;Praktiska Sverige AB;5562575786;Svenska som andraspråk 1;1;..;..;..;1;..;..;..;.;.;.;.;
+Nyköpings Enskilda Gymnasium;95785055;Nyköping;0480;Enskild;Erastos AB;5564418449;Matematik 3C;2;..;..;..;2;..;..;..;.;.;.;.;
+Nordenbergsskolan 1;59655752;Olofström;1060;Kommunal;Olofströms kommun;2120000811;Matematik 4;15;.;80,0;20,0;6;..;..;..;9;..;..;..;
+Ekbackeskolan;41555549;Osby;1273;Kommunal;Osby kommun;2120000902;Matematik 4;12;.;50,0;50,0;7;..;..;..;5;..;..;..;
+Oscarsgymnasiet;24709894;Oskarshamn;0882;Kommunal;Oskarshamns kommun;2120000761;Matematik 3C;30;3,3;80,0;16,7;17;.;88,2;11,8;13;7,7;69,2;23,1;
+Perstorp Tekniska Gymnasium;58929357;Perstorp;1275;Enskild;Perstorp Aktiebolag;5560246513;Matematik 1A;13;.;84,6;15,4;2;..;..;..;11;..;..;..;
+Strömbacka Hugin;59575030;Piteå;2581;Kommunal;Piteå kommun;2120002759;Matematik 4;28;3,6;92,9;3,6;21;..;..;..;7;..;..;..;
+Gymnasieskolan Knut Hahn 2;77440824;Ronneby;1081;Kommunal;Ronneby kommun;2120000837;Matematik 3C;34;.;91,2;8,8;10;.;100,0;.;24;.;87,5;12,5;
+Stiernhööksgymnasiet;14292382;Rättvik;2031;Kommunal;Rättviks kommun;2120002171;Matematik 4;7;..;..;..;4;..;..;..;3;..;..;..;
+Kungsängsgymnasiet;87859089;Sala;1981;Kommunal;Sala kommun;2120002098;Matematik 4;9;..;..;..;6;..;..;..;3;..;..;..;
+Göranssonska skolan;41119610;Sandviken;2181;Enskild;Sandvik Utbildningsaktiebolag;5563048791;Matematik 1A;64;.;73,4;26,6;17;.;82,4;17,6;47;.;70,2;29,8;
+Arlandagymnasiet 1;83272868;Sigtuna;0191;Kommunal;Sigtuna kommun;2120000225;Matematik 4;19;.;94,7;5,3;10;..;..;..;9;..;..;..;
+Axevalla Hästcentrum;86825268;Skara;1495;Region;Västra Götalandsregionen;2321000131;Matematik 1A;2;..;..;..;2;..;..;..;.;.;.;.;
+Baldergymnasiet;56831840;Skellefteå;2482;Kommunal;Skellefteå kommun;2120002643;Matematik 4;52;.;92,3;7,7;20;.;90,0;10,0;32;.;93,8;6,3;
+NTI Gymnasiet Skövde;26671095;Skövde;1496;Enskild;NTI Gymnasiet Ellips AB;5565970471;Matematik 1A;23;.;87,0;13,0;.;.;.;.;23;..;..;..;
+Västerhöjd 1;77544055;Skövde;1496;Kommunal;Skövde kommun;2120001710;Matematik 2B;45;.;88,9;11,1;25;.;84,0;16,0;20;.;95,0;5,0;
+Västerhöjd 1;77544055;Skövde;1496;Kommunal;Skövde kommun;2120001710;Matematik 3B;50;.;74,0;26,0;18;.;55,6;44,4;32;.;84,4;15,6;
+ProCivitas Privata Gymnasium Karlberg;29733255;Solna;0184;Enskild;ProCivitas Privata Gymnasium AB;5566157102;Matematik 4;18;.;100,0;.;14;..;..;..;4;..;..;..;
+Nösnäsgymnasiet 4;12546590;Stenungsund;1415;Kommunal;Stenungsunds kommun;2120001298;Matematik 4;32;.;84,4;15,6;8;..;..;..;24;..;..;..;
+Anna Whitlocks gymnasium 54040574;54040574;Stockholm;0180;Kommunal;Stockholms kommun;2120000142;Matematik 3C;92;.;81,5;18,5;33;.;72,7;27,3;59;.;86,4;13,6;
+Cybergymnasiet Stockholm;94167577;Stockholm;0180;Enskild;Cybergymnasiet Stockholm AB;5565547964;Matematik 4;13;.;92,3;7,7;10;..;..;..;3;..;..;..;
+Enskilda gymnasiet, gy;69650864;Stockholm;0180;Enskild;Enskilda Gymnasiet;8020126531;Matematik 4;57;.;82,5;17,5;32;.;81,3;18,8;25;.;84,0;16,0;
+Kungsh gy/Sthlms Musikgy 74812809;74812809;Stockholm;0180;Kommunal;Stockholms kommun;2120000142;Matematik 3B;1;..;..;..;.;.;.;.;1;..;..;..;
+Kungsh gy/Sthlms Musikgy 74812809;74812809;Stockholm;0180;Kommunal;Stockholms kommun;2120000142;Matematik 4;63;.;93,7;6,3;38;.;92,1;7,9;25;.;96,0;4,0;
+Kunskapsgymnasiet Globen;26326048;Stockholm;0180;Enskild;Kunskapsskolan i Sverige Aktiebolag;5565661815;Matematik 4;23;.;82,6;17,4;19;..;..;..;4;..;..;..;
+Kärrtorps gymnasium 37839488;37839488;Stockholm;0180;Kommunal;Stockholms kommun;2120000142;Matematik 4;5;..;..;..;3;..;..;..;2;..;..;..;
+NTI Vetenskapsgymnasiet Stockholm;50644850;Stockholm;0180;Enskild;NTI Gymnasiet Macro AB;5561203679;Matematik 4;19;5,3;84,2;10,5;3;..;..;..;16;..;..;..;
+ProCivitas Privata Gymnasium Stockholm;59359012;Stockholm;0180;Enskild;ProCivitas Privata Gymnasium AB;5566157102;Matematik 3B;7;..;..;..;4;..;..;..;3;..;..;..;
+Viktor Rydberg gy. Odenplan;52153758;Stockholm;0180;Enskild;Stiftelsen Viktor Rydbergs Skolor;8120005650;Matematik 4;49;.;100,0;.;20;.;100,0;.;29;.;100,0;.;
+Yrkesgymnasiet Skarpnäck;16501673;Stockholm;0180;Enskild;Edukatus AB;5566139290;Matematik 1A;25;.;48,0;52,0;11;.;45,5;54,5;14;.;50,0;50,0;
+Östra Reals gymnasium 99755443;99755443;Stockholm;0180;Kommunal;Stockholms kommun;2120000142;Matematik 3B;31;.;96,8;3,2;11;.;100,0;.;20;.;95,0;5,0;
+Luspengymnasiet;50104466;Storuman;2421;Kommunal;Södra Lapplands Gymnasieförbund;2220003293;Matematik 4;1;..;..;..;1;..;..;..;.;.;.;.;
+Thomasgymnasiet;79845033;Strängnäs;0486;Kommunal;Strängnäs kommun;2120000365;Matematik 4;7;..;..;..;4;..;..;..;3;..;..;..;
+Strömstad Gymnasium, SGY2;36936260;Strömstad;1486;Kommunal;Strömstads kommun;2120001405;Matematik 3C;7;..;..;..;2;..;..;..;5;..;..;..;
+KLARA Teoretiska Gymnasium Sundsvall;21382451;Sundsvall;2281;Enskild;KLARA Gymnasium Lärande AB;5565583282;Matematik 3C;4;..;..;..;3;..;..;..;1;..;..;..;
+Skvaderns gymnasieskola;43873969;Sundsvall;2281;Enskild;Norrlidens Kunskapscentrum AB;5566178215;Matematik 3B;16;.;18,8;81,3;9;..;..;..;7;..;..;..;
+Skvaderns gymnasieskola;43873969;Sundsvall;2281;Enskild;Norrlidens Kunskapscentrum AB;5566178215;Matematik 3C;8;..;..;..;7;..;..;..;1;..;..;..;
+Sunne Gymnasieskola / Broby;66273269;Sunne;1766;Kommunal;Sunne kommun;2120001843;Matematik 4;4;..;..;..;1;..;..;..;3;..;..;..;
+Viljan;23384476;Surahammar;1907;Enskild;Viljan Friskola AB;5567777775;Matematik 2B;2;..;..;..;2;..;..;..;.;.;.;.;
+Nils Fredriksson Gymnasium;58518163;Svedala;1263;Kommunal;Svedala kommun;2120001074;Matematik 3C;8;..;..;..;.;.;.;.;8;..;..;..;
+Naturbruksskolan Svenljunga;19035583;Svenljunga;1465;Region;Västra Götalandsregionen;2321000131;Matematik 1A;29;.;79,3;20,7;7;..;..;..;22;..;..;..;
+Staffangymnasiet RO6;45593337;Söderhamn;2182;Kommunal;Hälsinglands Utbildningsförbund;2220003111;Matematik 4;12;.;75,0;25,0;4;..;..;..;8;..;..;..;
+Timrå gymnasium 1;27079521;Timrå;2262;Kommunal;Timrå kommun;2120002395;Matematik 4;4;..;..;..;1;..;..;..;3;..;..;..;
+Bollerups Lantbruksinstitut;65234368;Tomelilla;1270;Enskild;Bollerups Lantbruksinstitut;8388001177;Matematik 1A;15;.;73,3;26,7;9;..;..;..;6;..;..;..;
+Stjerneskolan;34381901;Torsby;1737;Kommunal;Torsby kommun;2120001777;Svenska 1;3;..;..;..;2;..;..;..;1;..;..;..;
+Holavedsgymnasiet RO2;95368476;Tranås;0687;Kommunal;Tranås kommun;2120000597;Matematik 4;1;..;..;..;.;.;.;.;1;..;..;..;
+Holavedsgymnasiet RO3;76342612;Tranås;0687;Kommunal;Tranås kommun;2120000597;Matematik 4;19;.;100,0;.;11;..;..;..;8;..;..;..;
+Söderslättsgymnasiet;26072400;Trelleborg;1287;Kommunal;Trelleborgs kommun;2120001199;Matematik 3C;13;.;100,0;.;1;..;..;..;12;..;..;..;
+Tibble Gymnasium Campus Täby;31486865;Täby;0160;Enskild;Tibble Campus Täby AB;5566978556;Matematik 3B;119;.;93,3;6,7;59;.;88,1;11,9;60;.;98,3;1,7;
+Tibble Gymnasium Campus Täby;31486865;Täby;0160;Enskild;Tibble Campus Täby AB;5566978556;Matematik 4;79;.;93,7;6,3;37;.;94,6;5,4;42;.;92,9;7,1;
+Täby Enskilda gymnasium;97265732;Täby;0160;Enskild;Täby Enskilda Gymnasium AB;5565680112;Matematik 4;90;.;96,7;3,3;53;.;96,2;3,8;37;.;97,3;2,7;
+Åva gymnasium;61720981;Täby;0160;Kommunal;Täby kommun;2120000118;Matematik 3C;129;.;90,7;9,3;34;.;85,3;14,7;95;.;92,6;7,4;
+Tekniska Gymnasiet Uddevalla;82931004;Uddevalla;1485;Enskild;Tekniska Gymnasiet i Sverige AB;5568902653;Matematik 4;19;.;.;100,0;10;..;..;..;9;..;..;..;
+Uddevalla gymnasieskola, Östrabo 1 TE;28829503;Uddevalla;1485;Kommunal;Uddevalla kommun;2120001397;Matematik 4;28;.;96,4;3,6;7;..;..;..;21;..;..;..;
+Uddevalla gymnasieskola,Östrabo 1 NA;98651664;Uddevalla;1485;Kommunal;Uddevalla kommun;2120001397;Matematik 4;33;.;87,9;12,1;15;.;86,7;13,3;18;.;88,9;11,1;
+Minervagymnasium;23544320;Umeå;2480;Enskild;Minervaskolan i Umeå AB;5565735049;Matematik 4;24;.;95,8;4,2;9;..;..;..;15;..;..;..;
+Upplands-Brogymnasiet;53923398;Upplands-Bro;0139;Kommunal;Upplands-Bro kommun;2120000100;Matematik 3C;17;.;76,5;23,5;2;..;..;..;15;..;..;..;
+Celsiusskolan;47844862;Uppsala;0380;Kommunal;Uppsala kommun;2120003005;Matematik 4;60;.;96,7;3,3;23;.;95,7;4,3;37;.;97,3;2,7;
+Katedralskolan;32550660;Uppsala;0380;Kommunal;Uppsala kommun;2120003005;Matematik 4;40;.;95,0;5,0;17;.;88,2;11,8;23;.;100,0;.;
+Kunskapsgymnasiet Uppsala;93488613;Uppsala;0380;Enskild;Kunskapsskolan i Sverige Aktiebolag;5565661815;Matematik 3C;11;.;72,7;27,3;5;..;..;..;6;..;..;..;
+ProCivitas Privata Gymnasium Uppsala;69618988;Uppsala;0380;Enskild;ProCivitas Privata Gymnasium AB;5566157102;Matematik 4;15;.;80,0;20,0;4;..;..;..;11;..;..;..;
+Rosendalsgymnasiet;26957025;Uppsala;0380;Kommunal;Uppsala kommun;2120003005;Matematik 3C;35;.;88,6;11,4;16;.;93,8;6,3;19;.;84,2;15,8;
+Rosendalsgymnasiet;26957025;Uppsala;0380;Kommunal;Uppsala kommun;2120003005;Matematik 4;16;.;81,3;18,8;7;..;..;..;9;..;..;..;
+Fenix Gymnasium 1;32492188;Vaggeryd;0665;Kommunal;Vaggeryds kommun;2120000522;Matematik 4;8;..;..;..;4;..;..;..;4;..;..;..;
+Munkagårdsgymnasiet;38544187;Varberg;1383;Region;Region Halland;2321000115;Matematik 1A;76;1,3;40,8;57,9;47;.;55,3;44,7;29;3,4;17,2;79,3;
+Sundsgymnasiet;31975673;Vellinge;1233;Kommunal;Vellinge kommun;2120001033;Matematik 3C;42;.;97,6;2,4;6;..;..;..;36;..;..;..;
+Njudungsgymnasiet 1;61119556;Vetlanda;0685;Kommunal;Vetlanda kommun;2120000571;Matematik 3C;3;..;..;..;2;..;..;..;1;..;..;..;
+Birger Sjöberggymnasiet 1;50133877;Vänersborg;1487;Kommunal;Kunskapsförbundet Väst;2220002998;Matematik 3C;20;.;80,0;20,0;6;..;..;..;14;..;..;..;
+Värmdö gymnasium;44412461;Värmdö;0120;Kommunal;Värmdö kommun;2120000035;Matematik 3C;32;.;96,9;3,1;1;..;..;..;31;..;..;..;
+Gamlebygymnasiet;14677676;Västervik;0883;Enskild;Hushållningssällskapet Kalmar-Kronoberg-Blekinge;2620000071;Matematik 1A;6;..;..;..;5;..;..;..;1;..;..;..;
+Hitachigymnasiet Västerås;66028861;Västerås;1980;Enskild;Industritekniska Gymnasiet Bergslagen AB;5566081740;Matematik 3C;92;1,1;91,3;7,6;29;.;89,7;10,3;63;1,6;92,1;6,3;
+Kunskapsgymnasiet Västerås;25379974;Västerås;1980;Enskild;Kunskapsskolan i Sverige Aktiebolag;5565661815;Matematik 4;18;.;83,3;16,7;12;..;..;..;6;..;..;..;
+Rudbeckianska gymnasiet;88025221;Västerås;1980;Kommunal;Västerås kommun;2120002080;Matematik 3C;80;.;87,5;12,5;25;.;80,0;20,0;55;.;90,9;9,1;
+Widénska gymnasiet;70955448;Västerås;1980;Kommunal;Västerås kommun;2120002080;Matematik 3B;34;.;61,8;38,2;14;.;57,1;42,9;20;.;65,0;35,0;
+Widénska gymnasiet;70955448;Västerås;1980;Kommunal;Västerås kommun;2120002080;Matematik 4;35;.;57,1;42,9;16;.;50,0;50,0;19;.;63,2;36,8;
+ProCivitas Privata Gymnasium Växjö;61176909;Växjö;0780;Enskild;ProCivitas Privata Gymnasium AB;5566157102;Matematik 4;23;.;87,0;13,0;14;..;..;..;9;..;..;..;
+Växjö Fria Gymnasium;21778322;Växjö;0780;Enskild;Växjö Fria Gymnasium AB;5565847836;Matematik 4;20;.;100,0;.;9;..;..;..;11;..;..;..;
+Karlbergsgymnasiet 4;65044452;Åmål;1492;Kommunal;Åmåls kommun;2120001587;Matematik 3C;15;.;100,0;.;2;..;..;..;13;..;..;..;
+Bobergsgymnasiet;56802300;Ånge;2260;Kommunal;Ånge kommun;2120002387;Matematik 3B;8;..;..;..;4;..;..;..;4;..;..;..;
+Bobergsgymnasiet;56802300;Ånge;2260;Kommunal;Ånge kommun;2120002387;Matematik 3C;9;..;..;..;.;.;.;.;9;..;..;..;
+Haganässkolan 1;67422309;Älmhult;0765;Kommunal;Älmhults kommun;2120000647;Matematik 4;6;..;..;..;5;..;..;..;1;..;..;..;
+Älvsbyns gymnasium;15791044;Älvsbyn;2560;Kommunal;Älvsbyns kommun;2120002734;Matematik 4;3;..;..;..;1;..;..;..;2;..;..;..;
+Affärsgymnasiet Örebro;72071234;Örebro;1880;Enskild;Edukatus AB;5566139290;Matematik 3B;70;1,4;55,7;42,9;24;4,2;62,5;33,3;46;.;52,2;47,8;
+Affärsgymnasiet Örebro;72071234;Örebro;1880;Enskild;Edukatus AB;5566139290;Matematik 4;17;.;76,5;23,5;11;..;..;..;6;..;..;..;
+Karolinska gymnasiet;56886667;Örebro;1880;Kommunal;Örebro kommun;2120001967;Matematik 4;76;2,6;93,4;3,9;46;2,2;93,5;4,3;30;3,3;93,3;3,3;
+Rudbecksgymnasiet;65421426;Örebro;1880;Kommunal;Örebro kommun;2120001967;Matematik 2B;10;.;80,0;20,0;6;..;..;..;4;..;..;..;
+Svenska Skolan på Costa del Sol;72203001;Örebro;1880;Skolverket;Statens Skolverk;2021004185;Matematik 3C;3;..;..;..;3;..;..;..;.;.;.;.;
+Yrkesgymnasiet Örebro;47692481;Örebro;1880;Enskild;Edukatus AB;5566139290;Matematik 1A;45;.;53,3;46,7;33;.;60,6;39,4;12;.;33,3;66,7;
+Örnsköldsviks Gymnasium Delta;34988313;Örnsköldsvik;2284;Kommunal;Örnsköldsviks kommun;2120002445;Matematik 4;29;.;79,3;20,7;17;.;76,5;23,5;12;.;83,3;16,7;
+Österåkers gymnasium;20752831;Österåker;0117;Kommunal;Österåkers kommun;2120002890;Matematik 4;25;.;100,0;.;10;.;100,0;.;15;.;100,0;.;
+Vattenfallgymnasiet;34739511;Östhammar;0382;Enskild;Forsmarks Gymnasium AB;5566597885;Matematik 3C;14;.;71,4;28,6;2;..;..;..;12;..;..;..;
+Wilhelm Haglunds Gymnasium;95069937;Östhammar;0382;Enskild;Gimo UtbildningsAktiebolag;5560614041;Matematik 1A;9;..;..;..;2;..;..;..;7;..;..;..;
+Gränsälvsgymnasiet;52690153;Övertorneå;2518;Kommunal;Övertorneå kommun;2120002700;Matematik 4;1;..;..;..;.;.;.;.;1;..;..;..;
+
+Rapportbeskrivning och definitioner etc. 
+
+I statistiken ingår elever med både betyg (preliminärt) och provbetyg i respektive kurs eller nivå.
+Det krävs att man utfört alla delprov i det ordinarie provet för att kunna få ett provbetyg.
+En större andel elever saknar betyg på hösten jämfört med våren.
+
+För att avvikelsen mellan betyg och provbetyg ska kunna jämföras på ett rättvisande sätt mellan exempelvis skolor eller huvudmän
+krävs att de har samma, eller nästan samma, provresultat. Om så inte är fallet riskerar jämförelsen att påverkas av den s.k. takeffekten.
+Takeffekten innebär att en hög andel elever med provbetyg A i regel leder till lägre betygsavvikelse eftersom dessa elever inte kan få
+ett högre betyg än provbetyg. Samtidigt tenderar en hög andel elever med provbetyg F att ge en högre betygsavvikelse,
+eftersom det är relativt vanligt att elever får provbetyg F men betyg E.
+
+Om antalet eller andelen är noll visas enkelprick (.) istället för 0 i tabellerna. Om antalet elever med betyg och
+provbetyg på ett enskilt prov är färre än 10 elever, dubbelprickas (..) samtliga andelsuppgifter. Om det ena könet prickas
+enligt regeln om färre än 10 elever, prickas även det andra könet.
+ 
+
+Antal elever;Antal elever som har både provbetyg och betyg;
+Andel lägre;Lägre betyder att betyget är ett eller flera betygssteg under provbetyget;
+Andel lika;Lika, ingen avvikelse, betyder att eleven har fått samma betyg som provbetyg;
+Andel högre;Högre betyder att betyget är ett eller flera betygssteg över provbetyget;
+Antal kvinnor;Antal kvinnliga elever som har både provbetyg och betyg;
+Antal män;Antal manliga elever som har både provbetyg och betyg;
+
+Provobligatoriet regleras i 8 kap. 3 § Gymnasieförordningen (2010:2039)
+Resultaten fram till och med publiceringen HT17 avser elever som har genomfört ett ordinarie nationellt prov samt har ett sammanvägt provbetyg.
+Resultaten från och med publiceringen VT18 avser endast elever som har deltagit i ett för dem obligatoriskt nationellt prov och genomfört den ordinarie provversionen samt har ett sammanvägt provbetyg.
+
+Publiceringen HT24: Under HT24 genomfördes proven i engelska 5, engelska 6, svenska och svenska som andraspråk 3 digitalt. Dessa prov saknar insamling av preliminära kursbetyg.
+Publiceringen VT25: Resultaten för VT25 och kurserna engelska 5, engelska 6, svenska 3 samt svenska som andra språk 3 avser redovisningen elever som genomfört det prov på papper som ersatte ordinarie digitalt prov.
+
+Publicering från och med HT25: Elever som påbörjat sin utbildning efter 1 juli 2025 läser enligt läroplan Gy25 vilket innebär att de läser ämnen och varje ämne är uppdelat i flera nivåer. De elever som fortfarande läser i 
+gymnasieskolan enligt läroplan Gy11 läser kurser. Provobligatoriet överförs från kurs till korresponderande ämnesnivå. Prov från korresponderande kurs och ämnesnivå redovisas
+i samma tabell.
+ 
+
+
