@@ -20,7 +20,7 @@ export interface DiscoveredAdmissionFile {
   sourceUrl: string;
   year: number | null;
   round: "final" | "reserve" | "preliminary" | "unknown";
-  format: "pdf" | "xlsx" | "xls" | "csv" | "html" | "unknown";
+  format: "pdf" | "xlsx" | "xls" | "csv" | "html" | "json" | "unknown";
   label: string;
   url: string;
   score: number;
@@ -72,6 +72,7 @@ export function inferFormat(url: string, label = ""): DiscoveredAdmissionFile["f
   if (haystack.includes(".xls")) return "xls";
   if (haystack.includes(".csv")) return "csv";
   if (haystack.includes(".pdf")) return "pdf";
+  if (haystack.includes(".json") || haystack.includes("/wp-json/")) return "json";
   if (/statistik|antagning|merit/.test(haystack)) return "html";
   return "unknown";
 }
@@ -92,6 +93,11 @@ export function inferYear(url: string, label = ""): number | null {
       .map((m) => 2000 + parseInt(m[1], 10));
     const shortYear = shortDates.find((v) => v >= 2020 && v <= 2030);
     if (shortYear) return shortYear;
+
+    const msTimestamps = Array.from(haystack.matchAll(/\b(1[6-9][0-9]{11})\b/g))
+      .map((m) => new Date(parseInt(m[1], 10)).getUTCFullYear());
+    const tsYear = msTimestamps.find((v) => v >= 2020 && v <= 2030);
+    if (tsYear) return tsYear;
   }
   return null;
 }
@@ -121,7 +127,7 @@ export function candidateScore(file: Omit<DiscoveredAdmissionFile, "score">): nu
 }
 
 export function localRawPath(file: DiscoveredAdmissionFile): string {
-  const ext = file.format === "unknown" || file.format === "html" ? "html" : file.format;
+  const ext = file.format === "unknown" ? "html" : file.format;
   const urlPath = new URL(file.url).pathname;
   const urlName = decodeURIComponent(urlPath.split("/").pop() || "");
   const safeUrlName = urlName

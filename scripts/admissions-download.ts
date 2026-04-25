@@ -19,7 +19,7 @@ function selectDownloads(candidates: DiscoveredAdmissionFile[]): DiscoveredAdmis
   for (const c of candidates) {
     if (c.year !== 2025) continue;
     if (c.round !== "final" && !(c.round === "unknown" && c.score >= 35)) continue;
-    if (!["pdf", "xlsx", "xls", "csv", "html"].includes(c.format)) continue;
+    if (!["pdf", "xlsx", "xls", "csv", "html", "json"].includes(c.format)) continue;
     if (/information|press|tidplan|guide|överklaga|beslut/i.test(c.label)) continue;
     const arr = bySource.get(c.sourceId) ?? [];
     arr.push(c);
@@ -40,6 +40,7 @@ function selectDownloads(candidates: DiscoveredAdmissionFile[]): DiscoveredAdmis
 }
 
 function formatPriority(format: DiscoveredAdmissionFile["format"]): number {
+  if (format === "json") return 5;
   if (format === "xlsx" || format === "xls") return 4;
   if (format === "pdf") return 3;
   if (format === "csv") return 2;

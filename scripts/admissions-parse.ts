@@ -586,6 +586,124 @@ function parsePdf(file: DownloadedFile, absPath: string): AdmissionRow[] {
   return [goteborg, gotland, programCodeParentheses, istSummary, dexter, schoolHeader, orebro].sort((a, b) => b.length - a.length)[0];
 }
 
+interface SkanegyMeritRow {
+  year: string;
+  municipality: string;
+  school: string;
+  program: string;
+  program_code: string;
+  preliminary_lowest_merit: string | number;
+  preliminary_average_merit: string | number;
+  final_lowest_merit: string | number;
+  final_average_merit: string | number;
+  reserved_lowest_merit: string | number;
+  reserved_average_merit: string | number;
+}
+
+function parseSkanegyJson(file: DownloadedFile, absPath: string): AdmissionRow[] {
+  const raw = JSON.parse(readFileSync(absPath, "utf8")) as SkanegyMeritRow[];
+  const rows: AdmissionRow[] = [];
+  for (const r of raw) {
+    const year = parseIntValue(r.year);
+    if (year !== 2025) continue;
+    const finalMin = parseNumber(r.final_lowest_merit);
+    const finalMean = parseNumber(r.final_average_merit);
+    const reservedMin = parseNumber(r.reserved_lowest_merit);
+    const reservedMean = parseNumber(r.reserved_average_merit);
+    const min = finalMin ?? reservedMin;
+    const mean = finalMean ?? reservedMean;
+    if (min === null && mean === null) continue;
+    const round: AdmissionRow["admissionRound"] =
+      finalMin !== null || finalMean !== null ? "final" : "reserve";
+    rows.push({
+      year,
+      sourceRegion: file.sourceId,
+      sourceFile: file.localPath,
+      sourceUrl: file.url,
+      admissionRound: round,
+      school: (r.school ?? "").trim(),
+      skolenhetskod: null,
+      municipality: (r.municipality ?? "").trim() || null,
+      programName: (r.program ?? "").trim(),
+      programCode: parseProgramCode(r.program_code ?? null),
+      orientationName: null,
+      places: null,
+      admittedCount: null,
+      firstChoiceAdmittedCount: null,
+      reserveCount: null,
+      admissionMeritMin: min,
+      admissionMeritMean: mean,
+      admissionMeritMedian: null,
+      parser: "skanegy-json",
+      parserConfidence: "high",
+    });
+  }
+  return rows.filter((r) => r.school && r.programName);
+}
+
+function parseGymnasiestuderaHtml(file: DownloadedFile, absPath: string): AdmissionRow[] {
+  const text = readFileSync(absPath, "utf8");
+  const rows: AdmissionRow[] = [];
+  const stripHtml = (s: string) =>
+    s.replace(/<[^>]+>/g, " ").replace(/&nbsp;/gi, " ").replace(/\s+/g, " ").trim();
+  const decodeEnt = (s: string) =>
+    s
+      .replace(/&#(\d+);/g, (_, c) => String.fromCodePoint(parseInt(c, 10)))
+      .replace(/&#x([0-9a-f]+);/gi, (_, c) => String.fromCodePoint(parseInt(c, 16)))
+      .replace(/&amp;/g, "&")
+      .replace(/&aring;/g, "å")
+      .replace(/&auml;/g, "ä")
+      .replace(/&ouml;/g, "ö")
+      .replace(/&Aring;/g, "Å")
+      .replace(/&Auml;/g, "Ä")
+      .replace(/&Ouml;/g, "Ö");
+  const sectionSplit = text.split(/<h3[^>]*>/);
+  for (let i = 1; i < sectionSplit.length; i++) {
+    const section = sectionSplit[i];
+    const closeIdx = section.indexOf("</h3>");
+    if (closeIdx < 0) continue;
+    const school = decodeEnt(stripHtml(section.slice(0, closeIdx)));
+    if (!school || school.length > 100) continue;
+    const body = section.slice(closeIdx + 5);
+    const programRe = /<button[^>]*class="accordion-header"[^>]*>([\s\S]*?)<\/button>([\s\S]*?)(?=<button[^>]*class="accordion-header"|<h3|<h2|$)/g;
+    for (const pm of body.matchAll(programRe)) {
+      const programName = decodeEnt(stripHtml(pm[1]));
+      if (!programName) continue;
+      const block = pm[2];
+      const pair = block.match(
+        /Meritvärde\s*\(lägst\)[\s\S]*?<p[^>]*class="lead"[^>]*>([\s\S]*?)<\/p>[\s\S]*?Meritvärde\s*\(medel\)[\s\S]*?<p[^>]*class="lead"[^>]*>([\s\S]*?)<\/p>/
+      );
+      if (!pair) continue;
+      const min = parseNumber(stripHtml(pair[1]));
+      const mean = parseNumber(stripHtml(pair[2]));
+      if ((min === null || min < 50) && (mean === null || mean < 50)) continue;
+      rows.push({
+        year: file.year ?? 2025,
+        sourceRegion: file.sourceId,
+        sourceFile: file.localPath,
+        sourceUrl: file.url,
+        admissionRound: file.round,
+        school,
+        skolenhetskod: null,
+        municipality: null,
+        programName,
+        programCode: null,
+        orientationName: null,
+        places: null,
+        admittedCount: null,
+        firstChoiceAdmittedCount: null,
+        reserveCount: null,
+        admissionMeritMin: min,
+        admissionMeritMean: mean,
+        admissionMeritMedian: null,
+        parser: "gymnasiestudera-html",
+        parserConfidence: "high",
+      });
+    }
+  }
+  return rows;
+}
+
 function parseHtml(file: DownloadedFile, absPath: string): AdmissionRow[] {
   const text = readFileSync(absPath, "utf8");
   const rows: AdmissionRow[] = [];
@@ -623,6 +741,23 @@ function parseHtml(file: DownloadedFile, absPath: string): AdmissionRow[] {
   return rows.filter((r) => r.school && r.programName);
 }
 
+function vasternorrlandSchoolFromPath(localPath: string): { school: string; municipality: string | null } | null {
+  const name = basename(localPath).replace(/^\d{4}-(?:final|reserve|preliminary|unknown)-/, "").replace(/-[0-9a-f]{8}\.pdf$/, "");
+  if (!name || /personuppgift/i.test(name)) return null;
+  const decoded = name
+    .replace(/-/g, " ")
+    .replace(/\bH rn sand\b/i, "Härnösand")
+    .replace(/\bSollefte\b/i, "Sollefteå")
+    .replace(/\bTimr\b/i, "Timrå")
+    .replace(/\bnge\b/i, "Ånge")
+    .replace(/\brnsk ldsvik\b/gi, "Örnsköldsvik")
+    .replace(/\bH ga Kusten\b/i, "Höga Kusten")
+    .trim();
+  const municipalities = ["Härnösand", "Kramfors", "Sollefteå", "Sundsvall", "Timrå", "Ånge", "Örnsköldsvik"];
+  const muni = municipalities.find((m) => decoded.toLowerCase().startsWith(m.toLowerCase())) ?? null;
+  return { school: decoded, municipality: muni };
+}
+
 function parseFile(file: DownloadedFile): AdmissionRow[] {
   const absPath = resolve(__dirname, "..", file.localPath);
   if (!file.ok || !existsSync(absPath)) return [];
@@ -638,6 +773,10 @@ function parseFile(file: DownloadedFile): AdmissionRow[] {
       throw new Error(`Skipping large PDF (${Math.round(file.bytes / 1024 / 1024)} MB) until source-specific parser is available`);
     }
     rows = parsePdf(file, absPath);
+  } else if (effectiveExt === ".json" && file.sourceId === "skanegy") {
+    rows = parseSkanegyJson(file, absPath);
+  } else if (effectiveExt === ".html" && file.sourceId === "ostergotland") {
+    rows = parseGymnasiestuderaHtml(file, absPath);
   } else if (effectiveExt === ".html") {
     rows = parseHtml(file, absPath);
   } else {
@@ -649,6 +788,16 @@ function parseFile(file: DownloadedFile): AdmissionRow[] {
       rows = rows.map((r) => ({ ...r, school, municipality: r.municipality ?? r.school }));
     }
   }
+  if (file.sourceId === "vasternorrland") {
+    const meta = vasternorrlandSchoolFromPath(file.localPath);
+    if (meta) {
+      rows = rows.map((r) => ({
+        ...r,
+        school: meta.school,
+        municipality: meta.municipality ?? r.municipality,
+      }));
+    }
+  }
   return rows;
 }
 
@@ -657,7 +806,7 @@ function uniqueRows(rows: AdmissionRow[]): AdmissionRow[] {
   return rows.filter((row) => {
     const key = [
       row.sourceRegion,
-      row.sourceFile,
+      row.admissionRound,
       row.school,
       row.programName,
       row.places,
