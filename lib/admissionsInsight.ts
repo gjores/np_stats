@@ -64,9 +64,29 @@ export interface MeritBandSummary {
   avgNetDeviation: number | null;
 }
 
+export interface AdmissionMeritBandSummary {
+  label: string;
+  min: number;
+  max: number;
+  count: number;
+  avgMerit: number | null;
+  admittedCount: number;
+}
+
+export interface AdmissionSourceSummary {
+  source: string;
+  parsedRows: number;
+  schoolAggregates: number;
+  admittedCount: number;
+  avgMerit: number | null;
+}
+
 export interface AdmissionsInsight {
   points: AdmissionsScatterPoint[];
   bands: MeritBandSummary[];
+  admissionBands: AdmissionMeritBandSummary[];
+  sourceSummaries: AdmissionSourceSummary[];
+  parsedRows: number;
   matchedSchools: number;
   parsedSchoolAggregates: number;
   pearsonHogre: number | null;
@@ -218,12 +238,32 @@ function band(points: AdmissionsScatterPoint[], label: string, min: number, max:
   };
 }
 
+function admissionMerit(admission: SchoolAdmissionAggregate): number | null {
+  return admission.weightedMean ?? admission.unweightedMean ?? admission.weightedMedian;
+}
+
+function admissionBand(admissions: SchoolAdmissionAggregate[], label: string, min: number, max: number): AdmissionMeritBandSummary {
+  const rows = admissions.filter((admission) => {
+    const merit = admissionMerit(admission);
+    return merit !== null && merit >= min && merit < max;
+  });
+  return {
+    label,
+    min,
+    max,
+    count: rows.length,
+    avgMerit: average(rows.map((row) => admissionMerit(row)).filter((value): value is number => value !== null)),
+    admittedCount: rows.reduce((sum, row) => sum + row.admittedCount, 0),
+  };
+}
+
 export function loadAdmissionsInsight(): AdmissionsInsight {
   if (cache) return cache;
   const admissions = JSON.parse(readFileSync(join(process.cwd(), "data", "generated", "admissions-gymnasium.json"), "utf8")) as AdmissionsPayload;
   const dataset = JSON.parse(readFileSync(join(process.cwd(), "data", "generated", "dataset.json"), "utf8")) as DatasetPayload;
 
   const admissionBySchool = aggregateAdmissions(admissions.rows);
+  const admissionAggregates = Array.from(admissionBySchool.values());
   const npBySchool = aggregateNp(dataset.rows);
   const uniqueByName = uniqueNpByName(npBySchool);
   const points: AdmissionsScatterPoint[] = [];
@@ -253,6 +293,22 @@ export function loadAdmissionsInsight(): AdmissionsInsight {
   const sorted = [...points].sort((a, b) => a.merit - b.merit);
   const low = sorted.slice(0, Math.ceil(sorted.length / 4));
   const high = sorted.slice(Math.floor(sorted.length * 0.75));
+  const parsedRowsBySource = new Map<string, number>();
+  for (const row of admissions.rows) {
+    parsedRowsBySource.set(row.sourceRegion, (parsedRowsBySource.get(row.sourceRegion) ?? 0) + 1);
+  }
+  const sourceSummaries = Array.from(parsedRowsBySource.entries())
+    .map(([source, parsedRows]) => {
+      const schoolRows = admissionAggregates.filter((row) => row.sourceRegions.has(source));
+      return {
+        source,
+        parsedRows,
+        schoolAggregates: schoolRows.length,
+        admittedCount: schoolRows.reduce((sum, row) => sum + row.admittedCount, 0),
+        avgMerit: average(schoolRows.map((row) => admissionMerit(row)).filter((value): value is number => value !== null)),
+      };
+    })
+    .sort((a, b) => b.parsedRows - a.parsedRows || a.source.localeCompare(b.source, "sv"));
 
   cache = {
     points,
@@ -262,6 +318,14 @@ export function loadAdmissionsInsight(): AdmissionsInsight {
       band(points, "200-239", 200, 240),
       band(points, "240+", 240, 500),
     ],
+    admissionBands: [
+      admissionBand(admissionAggregates, "<160", 0, 160),
+      admissionBand(admissionAggregates, "160-199", 160, 200),
+      admissionBand(admissionAggregates, "200-239", 200, 240),
+      admissionBand(admissionAggregates, "240+", 240, 500),
+    ],
+    sourceSummaries,
+    parsedRows: admissions.rows.length,
     matchedSchools: points.length,
     parsedSchoolAggregates: admissionBySchool.size,
     pearsonHogre: pearson(points.map((point) => ({ x: point.merit, y: point.andelHogre }))),

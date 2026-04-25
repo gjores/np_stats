@@ -18,12 +18,20 @@ export default function GymnasiumHome() {
         </p>
       </section>
       <AdmissionsMeritInsight insight={admissionsInsight} />
-      <Dashboard
-        dataset={dataset}
-        acadeMediaOrgnrs={am.orgnrs}
-        storkommuner={sk.orgnrs.map((orgnr) => ({ orgnr, name: sk.names[orgnr] ?? orgnr }))}
-        detailBasePath="/huvudman"
-      />
+      <section className="space-y-4">
+        <div>
+          <h2 className="text-lg font-semibold text-slate-900">NP-resultat och driftsform</h2>
+          <p className="mt-1 max-w-4xl text-sm text-slate-600">
+            Den här delen är den ursprungliga dashboarden: huvudmän, driftsform, AcadeMedia och storkommuner baserat på NP/betygsdata.
+          </p>
+        </div>
+        <Dashboard
+          dataset={dataset}
+          acadeMediaOrgnrs={am.orgnrs}
+          storkommuner={sk.orgnrs.map((orgnr) => ({ orgnr, name: sk.names[orgnr] ?? orgnr }))}
+          detailBasePath="/huvudman"
+        />
+      </section>
     </div>
   );
 }
