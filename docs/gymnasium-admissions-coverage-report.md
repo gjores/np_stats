@@ -1,17 +1,18 @@
 # Gymnasium Admissions Coverage Report
 
-Generated: 2026-04-25T09:58:24.538Z
+Generated: 2026-04-25T10:12:19.333Z
 
 | Source | Downloaded files | Parsed rows | Rows with mean | Rows with admitted count | Parser confidence |
 |---|---:|---:|---:|---:|---|
-| dalarna-gavleborg | 8 | 0 | 0 | 0 | - |
-| fyrbodal | 8 | 0 | 0 | 0 | - |
+| dalarna-gavleborg | 8 | 1601 | 1601 | 1601 | medium |
+| fyrbodal | 8 | 200 | 200 | 200 | medium |
 | goteborgsregionen | 4 | 426 | 426 | 0 | medium |
-| kalmarsund | 8 | 0 | 0 | 0 | - |
+| halland | 1 | 155 | 155 | 155 | medium |
+| kalmarsund | 8 | 4 | 4 | 4 | medium |
 | ostergotland | 1 | 0 | 0 | 0 | - |
-| sjuharad | 1 | 125 | 125 | 125 | medium |
+| sjuharad | 1 | 182 | 182 | 182 | medium |
 | skanegy | 2 | 0 | 0 | 0 | - |
-| skaraborg | 4 | 0 | 0 | 0 | - |
+| skaraborg | 4 | 14 | 14 | 14 | medium |
 | storsthlm | 1 | 1412 | 0 | 1412 | high |
 | uppsala | 8 | 0 | 0 | 0 | - |
 | vasternorrland | 1 | 0 | 0 | 0 | - |
@@ -20,4 +21,5 @@ Generated: 2026-04-25T09:58:24.538Z
 
 - Storsthlm's 2025 Excel file contains admission cutoff and median, but no mean merit value in the parsed columns.
 - Göteborgsregionen's antagningspoäng/medelvärde PDF contains mean merit but not admitted count in the same table.
+- Very small parsed row counts indicate partial extraction only; those sources still need source-specific parser work before statistical use.
 - PDF parsing is layout-based and should be audited source by source before final statistical claims.

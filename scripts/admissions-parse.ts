@@ -190,11 +190,88 @@ function parseGoteborgPdf(file: DownloadedFile, text: string): AdmissionRow[] {
   return rows;
 }
 
+function parseSchoolHeaderPdf(file: DownloadedFile, text: string): AdmissionRow[] {
+  const rows: AdmissionRow[] = [];
+  let currentSchool: string | null = null;
+  let currentMunicipality: string | null = null;
+  const fiveNumberRowRe = /^(.+?)\s+(\d+)\s+(\d+)\s+(\d+)\s+([0-9]+(?:[.,]\d+)?)\s+([0-9]+(?:[.,]\d+)?)\s*$/;
+  const fourNumberRowRe = /^(.+?)\s+(\d+)\s+(\d+)\s+([0-9]+(?:[.,]\d+)?)\s+([0-9]+(?:[.,]\d+)?)\s*$/;
+
+  for (const line of text.split(/\r?\n/)) {
+    const trimmed = line.trim();
+    if (!trimmed) continue;
+
+    const dexterHeader = trimmed.match(/Antagningsstatistik för gymnasieprogram,\s+(.+?)\s+\(/i);
+    if (dexterHeader) {
+      currentSchool = dexterHeader[1].trim();
+      currentMunicipality = null;
+      continue;
+    }
+
+    const hallandSchool = trimmed.match(/^([A-ZÅÄÖ][A-Za-zÅÄÖåäö -]+),\s+(.+)$/);
+    if (hallandSchool && !/\d/.test(trimmed) && !/Program|Antagningsstatistik/.test(trimmed)) {
+      currentMunicipality = hallandSchool[1].trim();
+      currentSchool = hallandSchool[2].trim();
+      continue;
+    }
+
+    const fiveNumberMatch = trimmed.match(fiveNumberRowRe);
+    const fourNumberMatch = trimmed.match(fourNumberRowRe);
+    if ((!fiveNumberMatch && !fourNumberMatch) || !currentSchool) continue;
+    const row = fiveNumberMatch
+      ? {
+          programName: fiveNumberMatch[1],
+          places: fiveNumberMatch[2],
+          firstChoiceAdmitted: fiveNumberMatch[3],
+          admitted: fiveNumberMatch[4],
+          min: fiveNumberMatch[5],
+          mean: fiveNumberMatch[6],
+        }
+      : {
+          programName: fourNumberMatch![1],
+          places: fourNumberMatch![2],
+          firstChoiceAdmitted: null,
+          admitted: fourNumberMatch![3],
+          min: fourNumberMatch![4],
+          mean: fourNumberMatch![5],
+        };
+    const { programName, places, firstChoiceAdmitted, admitted, min, mean } = row;
+    if (!/[A-Za-zÅÄÖåäö]/.test(programName)) continue;
+    const minMerit = parseNumber(min);
+    const meanMerit = parseNumber(mean);
+    if ((minMerit === null || minMerit < 50) && (meanMerit === null || meanMerit < 50)) continue;
+    rows.push({
+      year: file.year ?? 2025,
+      sourceRegion: file.sourceId,
+      sourceFile: file.localPath,
+      sourceUrl: file.url,
+      admissionRound: file.round,
+      school: currentSchool,
+      skolenhetskod: null,
+      municipality: currentMunicipality,
+      programName: programName.trim(),
+      programCode: null,
+      orientationName: null,
+      places: parseIntValue(places),
+      admittedCount: parseIntValue(admitted),
+      firstChoiceAdmittedCount: firstChoiceAdmitted === null ? null : parseIntValue(firstChoiceAdmitted),
+      reserveCount: null,
+      admissionMeritMin: minMerit,
+      admissionMeritMean: meanMerit,
+      admissionMeritMedian: null,
+      parser: "school-header-pdf",
+      parserConfidence: "medium",
+    });
+  }
+  return rows;
+}
+
 function parsePdf(file: DownloadedFile, absPath: string): AdmissionRow[] {
   const text = pdfText(absPath);
   const dexter = parseDexterPdf(file, text);
   const goteborg = file.sourceId === "goteborgsregionen" ? parseGoteborgPdf(file, text) : [];
-  return goteborg.length > dexter.length ? goteborg : dexter;
+  const schoolHeader = parseSchoolHeaderPdf(file, text);
+  return [goteborg, dexter, schoolHeader].sort((a, b) => b.length - a.length)[0];
 }
 
 function parseHtml(file: DownloadedFile, absPath: string): AdmissionRow[] {
@@ -299,6 +376,7 @@ function writeReport(rows: AdmissionRow[], files: DownloadedFile[]): void {
   lines.push("");
   lines.push("- Storsthlm's 2025 Excel file contains admission cutoff and median, but no mean merit value in the parsed columns.");
   lines.push("- Göteborgsregionen's antagningspoäng/medelvärde PDF contains mean merit but not admitted count in the same table.");
+  lines.push("- Very small parsed row counts indicate partial extraction only; those sources still need source-specific parser work before statistical use.");
   lines.push("- PDF parsing is layout-based and should be audited source by source before final statistical claims.");
   writeFileSync(REPORT_FILE, `${lines.join("\n")}\n`);
 }

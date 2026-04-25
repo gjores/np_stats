@@ -71,7 +71,7 @@ export function inferYear(url: string, label = ""): number | null {
   const urlName = decodeURIComponent(new URL(url).pathname.split("/").pop() || "");
   const orderedHaystacks = [label, urlName, url];
   for (const haystack of orderedHaystacks) {
-    const years = Array.from(haystack.matchAll(/\b(20\d{2})\b/g)).map((m) => parseInt(m[1], 10));
+    const years = Array.from(haystack.matchAll(/(?<!\d)(20\d{2})(?!\d)/g)).map((m) => parseInt(m[1], 10));
     const year = years.find((v) => v >= 2020 && v <= 2030);
     if (year) return year;
 

@@ -4,6 +4,7 @@ import type { Row } from "../lib/types";
 
 const ADMISSIONS_FILE = resolve(__dirname, "../data/generated/admissions-gymnasium.json");
 const DATASET_FILE = resolve(__dirname, "../data/generated/dataset.json");
+const SOURCES_FILE = resolve(__dirname, "../data/admissions-sources.json");
 const REPORT_FILE = resolve(__dirname, "../docs/gymnasium-admissions-analysis-report.md");
 
 interface AdmissionRow {
@@ -24,6 +25,8 @@ interface DatasetPayload {
   rows: Row[];
 }
 
+type SourceManifest = { id: string; name: string }[];
+
 interface SchoolAdmissionAggregate {
   sourceRegions: Set<string>;
   school: string;
@@ -42,6 +45,13 @@ interface SchoolNpAggregate {
   andelHogre: number | null;
   andelLagre: number | null;
   netDeviation: number | null;
+}
+
+interface JoinedSchool {
+  admission: SchoolAdmissionAggregate;
+  np: SchoolNpAggregate;
+  merit: number | null;
+  matchMethod: "exact" | "unique-school-name";
 }
 
 function normalize(value: string | null | undefined): string {
@@ -136,6 +146,20 @@ function aggregateNp(rows: Row[]): Map<string, SchoolNpAggregate> {
   return out;
 }
 
+function buildUniqueNpSchoolNameIndex(npBySchool: Map<string, SchoolNpAggregate>): Map<string, SchoolNpAggregate> {
+  const byName = new Map<string, SchoolNpAggregate[]>();
+  for (const np of npBySchool.values()) {
+    const name = normalize(np.school);
+    byName.set(name, [...(byName.get(name) ?? []), np]);
+  }
+
+  const unique = new Map<string, SchoolNpAggregate>();
+  for (const [name, rows] of byName) {
+    if (rows.length === 1) unique.set(name, rows[0]);
+  }
+  return unique;
+}
+
 function pearson(points: { x: number | null; y: number | null }[]): number | null {
   const clean = points.filter((p): p is { x: number; y: number } => p.x !== null && p.y !== null);
   if (clean.length < 3) return null;
@@ -161,15 +185,19 @@ function fmt(n: number | null, digits = 3): string {
 function main() {
   const admissions = JSON.parse(readFileSync(ADMISSIONS_FILE, "utf8")) as AdmissionPayload;
   const dataset = JSON.parse(readFileSync(DATASET_FILE, "utf8")) as DatasetPayload;
+  const sourceManifest = JSON.parse(readFileSync(SOURCES_FILE, "utf8")) as SourceManifest;
 
   const admissionBySchool = aggregateAdmissions(admissions.rows);
   const npBySchool = aggregateNp(dataset.rows);
-  const joined = [];
+  const uniqueNpBySchoolName = buildUniqueNpSchoolNameIndex(npBySchool);
+  const joined: JoinedSchool[] = [];
   for (const [k, admission] of admissionBySchool) {
-    const np = npBySchool.get(k);
+    const exactNp = npBySchool.get(k);
+    const fallbackNp = exactNp ? null : uniqueNpBySchoolName.get(normalize(admission.school));
+    const np = exactNp ?? fallbackNp;
     if (!np) continue;
     const merit = admission.weightedMean ?? admission.unweightedMean ?? admission.weightedMedian;
-    joined.push({ admission, np, merit });
+    joined.push({ admission, np, merit, matchMethod: exactNp ? "exact" : "unique-school-name" });
   }
 
   const pointsHogre = joined.map((j) => ({ x: j.merit, y: j.np.andelHogre }));
@@ -180,6 +208,10 @@ function main() {
       bySource.set(source, [...(bySource.get(source) ?? []), item]);
     }
   }
+  const parsedRowsBySource = new Map<string, number>();
+  for (const row of admissions.rows) {
+    parsedRowsBySource.set(row.sourceRegion, (parsedRowsBySource.get(row.sourceRegion) ?? 0) + 1);
+  }
 
   const lines = [
     "# Gymnasium Admissions Analysis Report",
@@ -187,20 +219,38 @@ function main() {
     `Generated: ${new Date().toISOString()}`,
     "",
     "This report joins parsed 2025 final-admission merit data to the existing 2025 gymnasium national-test/grade deviation dataset by exact normalized school name and municipality.",
+    "When the admission source lacks municipality, the report also allows a conservative fallback match if the normalized school name is unique in the 2025 NP dataset.",
     "",
     "## Overall",
     "",
     `- Parsed admission school aggregates: ${admissionBySchool.size}`,
     `- NP school aggregates for 2025 terms: ${npBySchool.size}`,
-    `- Exact school+municipality matches: ${joined.length}`,
+    `- Exact school+municipality matches: ${joined.filter((j) => j.matchMethod === "exact").length}`,
+    `- Unique school-name fallback matches: ${joined.filter((j) => j.matchMethod === "unique-school-name").length}`,
+    `- Total matched schools: ${joined.length}`,
     `- Pearson r, admission merit vs andel högre: ${fmt(pearson(pointsHogre))}`,
     `- Pearson r, admission merit vs nettoavvikelse (högre-lägre): ${fmt(pearson(pointsNet))}`,
+    "",
+    "## Source Match Coverage",
+    "",
+    "| Source | Parsed rows | School aggregates | Matched schools | Status |",
+    "|---|---:|---:|---:|---|",
+  ];
+  for (const source of sourceManifest) {
+    const schoolAggregates = Array.from(admissionBySchool.values()).filter((row) => row.sourceRegions.has(source.id)).length;
+    const matchedSchools = bySource.get(source.id)?.length ?? 0;
+    const parsedRows = parsedRowsBySource.get(source.id) ?? 0;
+    const status = matchedSchools > 0 ? "matched" : parsedRows > 0 ? "parsed, unmatched" : "parser/source gap";
+    lines.push(`| ${source.id} | ${parsedRows} | ${schoolAggregates} | ${matchedSchools} | ${status} |`);
+  }
+
+  lines.push(
     "",
     "## By Source",
     "",
     "| Source | Matched schools | r merit vs högre | r merit vs netto | Merit metric used |",
     "|---|---:|---:|---:|---|",
-  ];
+  );
   for (const [source, rows] of Array.from(bySource.entries()).sort()) {
     const metricKinds = new Set(rows.map((r) => r.admission.weightedMean !== null ? "weighted mean" : r.admission.unweightedMean !== null ? "unweighted mean" : "weighted median"));
     lines.push(`| ${source} | ${rows.length} | ${fmt(pearson(rows.map((r) => ({ x: r.merit, y: r.np.andelHogre }))))} | ${fmt(pearson(rows.map((r) => ({ x: r.merit, y: r.np.netDeviation }))))} | ${Array.from(metricKinds).join(", ")} |`);
@@ -218,7 +268,7 @@ function main() {
   lines.push("");
   lines.push("## Caveats");
   lines.push("");
-  lines.push("- This is exact normalized school+municipality matching only. It does not yet use skolenhetskod matching or fuzzy matching.");
+  lines.push("- Matching is exact normalized school+municipality first, then unique normalized school-name fallback only when no exact match exists. It does not yet use skolenhetskod matching or fuzzy matching.");
   lines.push("- Storsthlm currently contributes median admission merit, because the downloaded 2025 file exposes median rather than mean.");
   lines.push("- Göteborgsregionen contributes unweighted mean across programs because the mean-merit PDF does not include admitted count.");
   lines.push("- Several regional sources are discovered/downloaded but still need source-specific parsers before they should influence conclusions.");
