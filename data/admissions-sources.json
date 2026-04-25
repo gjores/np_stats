@@ -1,0 +1,134 @@
+[
+  {
+    "id": "storsthlm",
+    "name": "Gymnasieantagningen Storsthlm",
+    "coverageNote": "Stockholms län plus Håbo and Gnesta according to source page.",
+    "sourceUrl": "https://gymnasieantagningen.storsthlm.se/antagningsgranser-elevnojdhet/ladda-ned-antagningsstatistik/",
+    "preferredRound": "final",
+    "format": "excel",
+    "parser": "storsthlm-excel",
+    "priority": 1,
+    "status": "source_identified"
+  },
+  {
+    "id": "goteborgsregionen",
+    "name": "Gymnasieantagningen i Göteborgsregionen",
+    "coverageNote": "Kommunala and independent gymnasium schools in Göteborgsregionen.",
+    "sourceUrl": "https://goteborgsregionen.se/antagningsstatistik",
+    "preferredRound": "final",
+    "format": "pdf",
+    "parser": "gr-antagningspoang-medelvarde-pdf",
+    "priority": 1,
+    "status": "source_identified"
+  },
+  {
+    "id": "skanegy",
+    "name": "Skånegy",
+    "coverageNote": "Skåne and western Blekinge; likely split into admission areas.",
+    "sourceUrl": "https://skanegy.se/om-ansokan/forberedelser-infor-gymnasievalet/meritvarde/",
+    "preferredRound": "final",
+    "format": "pdf_or_web",
+    "parser": "skanegy-source-specific",
+    "priority": 2,
+    "status": "source_identified"
+  },
+  {
+    "id": "fyrbodal",
+    "name": "Antagning Fyrbodal",
+    "coverageNote": "Fyrbodal admission area.",
+    "sourceUrl": "https://antagning.fyrbodal.se/statistik-rapporter/",
+    "preferredRound": "final",
+    "format": "pdf",
+    "parser": "standard-antagning-pdf",
+    "priority": 2,
+    "status": "source_identified"
+  },
+  {
+    "id": "sjuharad",
+    "name": "Gymnasieval Sjuhärad",
+    "coverageNote": "Sjuhärad cooperation area.",
+    "sourceUrl": "https://gymnasievalsjuharad.se/antagning/antagningsstatistik",
+    "preferredRound": "final",
+    "format": "pdf",
+    "parser": "standard-antagning-pdf",
+    "priority": 2,
+    "status": "source_identified"
+  },
+  {
+    "id": "skaraborg",
+    "name": "Utbildning Skaraborg",
+    "coverageNote": "Skaraborg admission statistics.",
+    "sourceUrl": "https://utbildningskaraborg.se/sv/antagningsstatistik/",
+    "preferredRound": "final",
+    "format": "pdf",
+    "parser": "standard-antagning-pdf",
+    "priority": 2,
+    "status": "source_identified"
+  },
+  {
+    "id": "halland",
+    "name": "Gymnasieantagning Halland",
+    "coverageNote": "Halland admission statistics.",
+    "sourceUrl": "https://www.gymnasiehalland.se/antagning/statistik",
+    "preferredRound": "final",
+    "format": "pdf",
+    "parser": "standard-antagning-pdf",
+    "priority": 2,
+    "status": "source_identified"
+  },
+  {
+    "id": "ostergotland",
+    "name": "Gymnasieantagningen i Östergötlands län",
+    "coverageNote": "Östergötlands county via Gymnasiestudera.",
+    "sourceUrl": "https://www.gymnasiestudera.se/statistik/",
+    "preferredRound": "final",
+    "format": "web",
+    "parser": "gymnasiestudera-web",
+    "priority": 3,
+    "status": "source_identified"
+  },
+  {
+    "id": "uppsala",
+    "name": "Uppsala region",
+    "coverageNote": "Uppsala page publishes final admission PDFs split by municipality and independent schools.",
+    "sourceUrl": "https://www.uppsala.se/skola-forskola-och-komvux/gymnasieskola/hitta-och-ansok/antagning-till-gymnasiet/#antagningsstatistik",
+    "preferredRound": "final",
+    "format": "pdf",
+    "parser": "uppsala-split-pdf",
+    "priority": 3,
+    "status": "source_identified"
+  },
+  {
+    "id": "kalmarsund",
+    "name": "Kalmarsunds gymnasieförbund / Gymnasieantagningen Kalmar",
+    "coverageNote": "Kalmar admission statistics and yearly reports.",
+    "sourceUrl": "https://gyf.se/elevinformation/ansok-till-gymnasiet/antagning/antagningsstatistik",
+    "preferredRound": "final",
+    "format": "pdf",
+    "parser": "standard-antagning-pdf",
+    "priority": 3,
+    "status": "source_identified"
+  },
+  {
+    "id": "dalarna-gavleborg",
+    "name": "Gymnasieantagningen Dalarna",
+    "coverageNote": "Dalarna and Gävleborgs län according to source page.",
+    "sourceUrl": "https://antagdalarna.se/statistik/",
+    "preferredRound": "final",
+    "format": "pdf",
+    "parser": "standard-antagning-pdf",
+    "priority": 3,
+    "status": "source_identified"
+  },
+  {
+    "id": "vasternorrland",
+    "name": "Gymnasieantagningen Västernorrland",
+    "coverageNote": "Västernorrlands län.",
+    "sourceUrl": "https://www.antagning-vn.se/antagningspoang-och-statistik",
+    "preferredRound": "final",
+    "format": "pdf",
+    "parser": "standard-antagning-pdf",
+    "priority": 4,
+    "status": "source_identified"
+  }
+]
