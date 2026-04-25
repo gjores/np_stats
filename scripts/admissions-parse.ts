@@ -1,8 +1,45 @@
 import { execFileSync } from "node:child_process";
-import { existsSync, readFileSync, writeFileSync } from "node:fs";
-import { extname, resolve } from "node:path";
+import { existsSync, openSync, readFileSync, readSync, closeSync, writeFileSync } from "node:fs";
+import { basename, extname, resolve } from "node:path";
 import * as XLSX from "xlsx";
 import { writeJson, type DiscoveredAdmissionFile } from "./admissions-utils";
+
+const JAMTLAND_SCHOOL_BY_CODE: Record<string, string> = {
+  AGY: "Jämtlands Gymnasium Anpassad gymnasieskola",
+  ARE: "Jämtlands Gymnasium Åre",
+  "BG-1": "Jämtlands Gymnasium Berg",
+  BGY: "Jämtlands Gymnasium Bräcke",
+  DILLE: "Dille Gård naturbruksgymnasium",
+  HA: "Härjedalens Gymnasium",
+  HJS: "Hjalmar Strömerskolan",
+  JGO: "Jämtlands Gymnasium Östersund",
+  OG: "Östersunds Gymnasium",
+  RAG: "Jämtlands Gymnasium Bispgården",
+  STG: "Storsjögymnasiet",
+  Torsta: "Jämtlands Gymnasium Torsta",
+  Wangen: "Jämtlands Gymnasium Wången",
+};
+
+function jamtlandSchoolFromPath(localPath: string): string | null {
+  const m = basename(localPath).match(/-(BG-1|AGY|ARE|BGY|DILLE|HA|HJS|JGO|OG|RAG|STG|Torsta|Wangen)-/);
+  return m ? JAMTLAND_SCHOOL_BY_CODE[m[1]] ?? null : null;
+}
+
+function sniffMagic(absPath: string): "pdf" | "zip" | "other" {
+  let fd: number | null = null;
+  try {
+    fd = openSync(absPath, "r");
+    const buf = Buffer.alloc(8);
+    readSync(fd, buf, 0, 8, 0);
+    if (buf.slice(0, 4).toString("ascii") === "%PDF") return "pdf";
+    if (buf[0] === 0x50 && buf[1] === 0x4b) return "zip";
+    return "other";
+  } catch {
+    return "other";
+  } finally {
+    if (fd !== null) closeSync(fd);
+  }
+}
 
 const DOWNLOADS_FILE = resolve(__dirname, "../data/generated/admissions-downloaded-files.json");
 const OUT_FILE = resolve(__dirname, "../data/generated/admissions-gymnasium.json");
@@ -490,6 +527,53 @@ function parseIstSummaryPdf(file: DownloadedFile, text: string): AdmissionRow[] 
   return rows;
 }
 
+function parseGotlandPdf(file: DownloadedFile, text: string): AdmissionRow[] {
+  const rows: AdmissionRow[] = [];
+  let currentSchool: string | null = null;
+  const headerRe = /Slutlig antagning\s+\d{4}\s*-\s*(.+?)\s*$/;
+  const meritTrailRe = /^([A-ZÅÄÖ0-9-]{2,8})\s+(.+?,\s+Gotland)\s+([KFL])\s+(.+?)([0-9]+(?:[.,][0-9]+)?)\s+([0-9]+(?:[.,][0-9]+)?)(?:\s+\d+)?\s*$/;
+  for (const rawLine of text.split(/\r?\n/)) {
+    const trimmed = rawLine.trim();
+    if (!trimmed) continue;
+    if (/^Summa\b/i.test(trimmed)) continue;
+    const header = trimmed.match(headerRe);
+    if (header) {
+      currentSchool = header[1].trim();
+      continue;
+    }
+    const m = trimmed.match(meritTrailRe);
+    if (!m || !currentSchool) continue;
+    const [, programCode, , huvudman, middle, minStr, meanStr] = m;
+    const minMerit = parseNumber(minStr);
+    const meanMerit = parseNumber(meanStr);
+    if ((minMerit === null || minMerit < 50) && (meanMerit === null || meanMerit < 50)) continue;
+    const numbers = Array.from(middle.matchAll(/\d+/g)).map((x) => parseIntValue(x[0]));
+    rows.push({
+      year: file.year ?? 2025,
+      sourceRegion: file.sourceId,
+      sourceFile: file.localPath,
+      sourceUrl: file.url,
+      admissionRound: file.round,
+      school: currentSchool,
+      skolenhetskod: null,
+      municipality: "Gotland",
+      programName: programCode,
+      programCode: parseProgramCode(programCode),
+      orientationName: huvudman === "F" ? "Fristående" : huvudman === "K" ? "Kommunal" : null,
+      places: numbers[0] ?? null,
+      admittedCount: numbers[7] ?? null,
+      firstChoiceAdmittedCount: null,
+      reserveCount: null,
+      admissionMeritMin: minMerit,
+      admissionMeritMean: meanMerit,
+      admissionMeritMedian: null,
+      parser: "gotland-layout-pdf",
+      parserConfidence: "medium",
+    });
+  }
+  return rows;
+}
+
 function parsePdf(file: DownloadedFile, absPath: string): AdmissionRow[] {
   const text = pdfText(absPath);
   const programCodeParentheses = parseProgramCodeParenthesesPdf(file, text);
@@ -498,7 +582,8 @@ function parsePdf(file: DownloadedFile, absPath: string): AdmissionRow[] {
   const goteborg = file.sourceId === "goteborgsregionen" ? parseGoteborgPdf(file, text) : [];
   const schoolHeader = parseSchoolHeaderPdf(file, text);
   const orebro = parseOrebroMedianPdf(file, text);
-  return [goteborg, programCodeParentheses, istSummary, dexter, schoolHeader, orebro].sort((a, b) => b.length - a.length)[0];
+  const gotland = file.sourceId === "gotland" ? parseGotlandPdf(file, text) : [];
+  return [goteborg, gotland, programCodeParentheses, istSummary, dexter, schoolHeader, orebro].sort((a, b) => b.length - a.length)[0];
 }
 
 function parseHtml(file: DownloadedFile, absPath: string): AdmissionRow[] {
@@ -543,15 +628,28 @@ function parseFile(file: DownloadedFile): AdmissionRow[] {
   if (!file.ok || !existsSync(absPath)) return [];
   if (/prel/i.test(file.localPath) || file.round === "preliminary") return [];
   const ext = extname(absPath).toLowerCase();
-  if (ext === ".xlsx" || ext === ".xls") return parseStorsthlmWorkbook(file, absPath);
-  if (ext === ".pdf") {
+  const magic = sniffMagic(absPath);
+  const effectiveExt = magic === "pdf" ? ".pdf" : ext;
+  let rows: AdmissionRow[];
+  if (effectiveExt === ".xlsx" || effectiveExt === ".xls") {
+    rows = parseStorsthlmWorkbook(file, absPath);
+  } else if (effectiveExt === ".pdf") {
     if (file.bytes > 5 * 1024 * 1024) {
       throw new Error(`Skipping large PDF (${Math.round(file.bytes / 1024 / 1024)} MB) until source-specific parser is available`);
     }
-    return parsePdf(file, absPath);
+    rows = parsePdf(file, absPath);
+  } else if (effectiveExt === ".html") {
+    rows = parseHtml(file, absPath);
+  } else {
+    rows = [];
   }
-  if (ext === ".html") return parseHtml(file, absPath);
-  return [];
+  if (file.sourceId === "jamtland") {
+    const school = jamtlandSchoolFromPath(file.localPath);
+    if (school) {
+      rows = rows.map((r) => ({ ...r, school, municipality: r.municipality ?? r.school }));
+    }
+  }
+  return rows;
 }
 
 function uniqueRows(rows: AdmissionRow[]): AdmissionRow[] {

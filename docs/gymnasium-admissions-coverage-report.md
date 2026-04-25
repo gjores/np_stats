@@ -1,13 +1,13 @@
 # Gymnasium Admissions Coverage Report
 
-Generated: 2026-04-25T16:44:23.785Z
+Generated: 2026-04-25T20:23:48.925Z
 
 | Source | Downloaded files | Parsed rows | Rows with mean | Rows with admitted count | Parser confidence |
 |---|---:|---:|---:|---:|---|
 | dalarna-gavleborg | 10 | 1803 | 1803 | 1803 | medium |
 | fyrbodal | 8 | 200 | 200 | 200 | medium |
 | goteborgsregionen | 4 | 426 | 426 | 0 | medium |
-| gotland | 2 | 0 | 0 | 0 | - |
+| gotland | 2 | 34 | 34 | 34 | medium |
 | gymnasieantagning-nord | 2 | 242 | 242 | 242 | low |
 | halland | 1 | 155 | 155 | 155 | medium |
 | jamtland | 16 | 95 | 95 | 95 | medium |
