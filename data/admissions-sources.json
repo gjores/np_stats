@@ -130,5 +130,104 @@
     "parser": "standard-antagning-pdf",
     "priority": 4,
     "status": "source_identified"
+  },
+  {
+    "id": "nykoping",
+    "name": "Antagningskansliet i Nyköping",
+    "coverageNote": "Nyköping/Oxelösund/Trosa admission area; candidate page exposes merit/statistics navigation.",
+    "sourceUrl": "https://www.nykoping.se/mitt-gymnasieval/sa-har-gar-antagningen-till/statistik-och-tidigare-ars-meritvarden/",
+    "preferredRound": "final",
+    "format": "web",
+    "parser": "nykoping-source-specific",
+    "priority": 4,
+    "status": "source_candidate"
+  },
+  {
+    "id": "torsas-korr",
+    "name": "Antagningskansliet Torsås / Korrespondensgymnasiet",
+    "coverageNote": "Torsås board candidate statistics page from Korr.",
+    "sourceUrl": "https://korr.se/antagningsstatistik/",
+    "preferredRound": "final",
+    "format": "web",
+    "parser": "korr-source-specific",
+    "priority": 5,
+    "status": "source_candidate"
+  },
+  {
+    "id": "varmland",
+    "name": "Antagningskansliet Värmland",
+    "coverageNote": "Värmland Google Sites page with final comparison-score statistics.",
+    "sourceUrl": "https://sites.google.com/arvika.com/elevantagningen-varmland/j%C3%A4mf%C3%B6relsetal/slutliga-jft",
+    "preferredRound": "final",
+    "format": "web",
+    "parser": "google-sites-jft",
+    "priority": 4,
+    "status": "source_candidate"
+  },
+  {
+    "id": "kronoberg",
+    "name": "Antagningskansliet Växjö / Gymnasium Kronoberg",
+    "coverageNote": "Kronoberg/Växjö candidate page for final admission statistics.",
+    "sourceUrl": "https://gymnasium.kronoberg.se/Pages/ShowEventSpecific.aspx?pageId=10&versionId=1&eventId=241&currPageId=2&currStat=1listWithPreambleAndImage_22026-04-25_3_40",
+    "preferredRound": "final",
+    "format": "web",
+    "parser": "kronoberg-source-specific",
+    "priority": 4,
+    "status": "source_candidate"
+  },
+  {
+    "id": "vasterbotten",
+    "name": "Gymnasieantagningen för Västerbottens län",
+    "coverageNote": "Västerbotten admission statistics page.",
+    "sourceUrl": "https://www.gymnasieantagningen.nu/barn-och-utbildning/gymnasieskola/gymnasieantagningen-for-vasterbottens-lan/antagningsstatistik",
+    "preferredRound": "final",
+    "format": "web",
+    "parser": "vasterbotten-source-specific",
+    "priority": 4,
+    "status": "source_candidate"
+  },
+  {
+    "id": "gotland",
+    "name": "Gymnasieantagningen Gotland",
+    "coverageNote": "Gotland public admission statistics endpoint/page.",
+    "sourceUrl": "https://www.gotland.se/antagningsstatistik",
+    "preferredRound": "final",
+    "format": "web",
+    "parser": "gotland-source-specific",
+    "priority": 5,
+    "status": "source_candidate"
+  },
+  {
+    "id": "orebro",
+    "name": "Gymnasieantagningen i Örebro län",
+    "coverageNote": "Örebro county admission statistics page.",
+    "sourceUrl": "https://extra.orebro.se/gymnasieantagningen/antagningsstatistik.4.59c8b3bd15157ae4207fba8.html",
+    "preferredRound": "final",
+    "format": "web",
+    "parser": "orebro-source-specific",
+    "priority": 4,
+    "status": "source_candidate"
+  },
+  {
+    "id": "jonkoping",
+    "name": "Gymnasieantagningen Jönköping",
+    "coverageNote": "Jönköping admission statistics page.",
+    "sourceUrl": "https://gymnasieval.jonkoping.se/antagning/antagningsstatistik.html",
+    "preferredRound": "final",
+    "format": "web",
+    "parser": "jonkoping-source-specific",
+    "priority": 4,
+    "status": "source_candidate"
+  },
+  {
+    "id": "karlskrona",
+    "name": "Gymnasieantagningen Karlskrona",
+    "coverageNote": "Karlskrona direct final-admission PDF for 2025.",
+    "sourceUrl": "http://www.karlskrona.se/globalassets/skola-och-forskola/gymnasieskola/dokument/slutlig-antagning-250701.pdf",
+    "preferredRound": "final",
+    "format": "pdf",
+    "parser": "standard-antagning-pdf",
+    "priority": 4,
+    "status": "source_candidate"
   }
 ]

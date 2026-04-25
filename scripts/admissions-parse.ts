@@ -266,12 +266,75 @@ function parseSchoolHeaderPdf(file: DownloadedFile, text: string): AdmissionRow[
   return rows;
 }
 
+function parseOrebroMedianPdf(file: DownloadedFile, text: string): AdmissionRow[] {
+  const rows: AdmissionRow[] = [];
+  let currentSchool: string | null = null;
+  let currentMunicipality: string | null = null;
+  let awaitingMunicipality = false;
+  const schoolHeaderRe = /^Slutlig antagningsstatistik för\s+(.+)$/i;
+  const municipalityRe = /^(.+?)\s+\((\d{4})\)\s+period\s+\d+/i;
+  const rowRe = /^(.+?)\s+([A-ZÅÄÖ]{1,5})\s+(\d+)\s+(\d+)\s+(\d+)(?:\s+([0-9]+(?:[.,]\d+)?)\s+([0-9]+(?:[.,]\d+)?))?\s+(\d+)\s*$/;
+
+  for (const line of text.split(/\r?\n/)) {
+    const trimmed = line.trim();
+    if (!trimmed) continue;
+
+    const schoolHeader = trimmed.match(schoolHeaderRe);
+    if (schoolHeader) {
+      currentSchool = schoolHeader[1].trim();
+      currentMunicipality = null;
+      awaitingMunicipality = true;
+      continue;
+    }
+
+    if (awaitingMunicipality) {
+      const municipality = trimmed.match(municipalityRe);
+      if (municipality) {
+        currentMunicipality = municipality[1].trim();
+        awaitingMunicipality = false;
+        continue;
+      }
+    }
+
+    const match = trimmed.match(rowRe);
+    if (!match || !currentSchool) continue;
+    const [, programName, programCode, places, firstChoice, admitted, min, median, reserve] = match;
+    const minMerit = parseNumber(min ?? "");
+    const medianMerit = parseNumber(median ?? "");
+    if (minMerit === null || medianMerit === null) continue;
+    rows.push({
+      year: file.year ?? 2025,
+      sourceRegion: file.sourceId,
+      sourceFile: file.localPath,
+      sourceUrl: file.url,
+      admissionRound: file.round,
+      school: currentSchool,
+      skolenhetskod: null,
+      municipality: currentMunicipality,
+      programName: programName.trim(),
+      programCode,
+      orientationName: null,
+      places: parseIntValue(places),
+      admittedCount: parseIntValue(admitted),
+      firstChoiceAdmittedCount: parseIntValue(firstChoice),
+      reserveCount: parseIntValue(reserve),
+      admissionMeritMin: minMerit,
+      admissionMeritMean: null,
+      admissionMeritMedian: medianMerit,
+      parser: "orebro-median-pdf",
+      parserConfidence: "medium",
+    });
+  }
+  return rows;
+}
+
 function parsePdf(file: DownloadedFile, absPath: string): AdmissionRow[] {
   const text = pdfText(absPath);
   const dexter = parseDexterPdf(file, text);
   const goteborg = file.sourceId === "goteborgsregionen" ? parseGoteborgPdf(file, text) : [];
   const schoolHeader = parseSchoolHeaderPdf(file, text);
-  return [goteborg, dexter, schoolHeader].sort((a, b) => b.length - a.length)[0];
+  const orebro = parseOrebroMedianPdf(file, text);
+  return [goteborg, dexter, schoolHeader, orebro].sort((a, b) => b.length - a.length)[0];
 }
 
 function parseHtml(file: DownloadedFile, absPath: string): AdmissionRow[] {

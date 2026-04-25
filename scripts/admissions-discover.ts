@@ -74,9 +74,13 @@ async function main() {
   for (const source of sources) {
     try {
       const html = await fetchSource(source);
-      const candidates = extractLinks(html, source.sourceUrl)
+      const directCandidate = toCandidate(source, { label: source.name, url: source.sourceUrl });
+      const candidates = [
+        ...(directCandidate ? [directCandidate] : []),
+        ...extractLinks(html, source.sourceUrl)
         .map((link) => toCandidate(source, link))
-        .filter((v): v is DiscoveredAdmissionFile => v !== null)
+        .filter((v): v is DiscoveredAdmissionFile => v !== null),
+      ]
         .sort((a, b) => b.score - a.score || a.label.localeCompare(b.label, "sv"));
       console.log(`${source.id}: ${candidates.length} candidate links`);
       allCandidates.push(...candidates.slice(0, 20));
@@ -101,4 +105,3 @@ main().catch((err) => {
   console.error(err);
   process.exit(1);
 });
-

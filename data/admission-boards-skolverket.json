@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-25T10:19:42.185Z",
+  "generatedAt": "2026-04-25T16:12:03.829Z",
   "canonicalSource": "https://www.skolverket.se/styrning-och-ansvar/regler-och-ansvar/stod-for-gymnasieantagning/antagningskanslier",
   "apiBase": "https://antagningskanslier.skolverket.se/api",
   "boardCount": 49,
@@ -194,10 +194,10 @@
         }
       ],
       "schoolUnitCount": 14,
-      "statisticsSourceId": null,
-      "statisticsSourceName": null,
-      "statisticsSourceUrl": null,
-      "statisticsCoverageStatus": "statistics-source-missing"
+      "statisticsSourceId": "skanegy",
+      "statisticsSourceName": "Skånegy",
+      "statisticsSourceUrl": "https://skanegy.se/om-ansokan/forberedelser-infor-gymnasievalet/meritvarde/",
+      "statisticsCoverageStatus": "statistics-source-linked"
     },
     {
       "id": "25f824c3-1bfb-4bc8-9325-4d25a77f6c16",
@@ -362,10 +362,10 @@
         }
       ],
       "schoolUnitCount": 11,
-      "statisticsSourceId": null,
-      "statisticsSourceName": null,
-      "statisticsSourceUrl": null,
-      "statisticsCoverageStatus": "statistics-source-missing"
+      "statisticsSourceId": "nykoping",
+      "statisticsSourceName": "Antagningskansliet i Nyköping",
+      "statisticsSourceUrl": "https://www.nykoping.se/mitt-gymnasieval/sa-har-gar-antagningen-till/statistik-och-tidigare-ars-meritvarden/",
+      "statisticsCoverageStatus": "statistics-source-linked"
     },
     {
       "id": "75c7fc5c-f5fe-4840-9227-8826aa7e6d0e",
@@ -1636,10 +1636,10 @@
         }
       ],
       "schoolUnitCount": 2,
-      "statisticsSourceId": null,
-      "statisticsSourceName": null,
-      "statisticsSourceUrl": null,
-      "statisticsCoverageStatus": "statistics-source-missing"
+      "statisticsSourceId": "torsas-korr",
+      "statisticsSourceName": "Antagningskansliet Torsås / Korrespondensgymnasiet",
+      "statisticsSourceUrl": "https://korr.se/antagningsstatistik/",
+      "statisticsCoverageStatus": "statistics-source-linked"
     },
     {
       "id": "7f1268ac-0eaf-4f37-9c0e-b3ae4c041cae",
@@ -1719,10 +1719,10 @@
         }
       ],
       "schoolUnitCount": 50,
-      "statisticsSourceId": null,
-      "statisticsSourceName": null,
-      "statisticsSourceUrl": null,
-      "statisticsCoverageStatus": "statistics-source-missing"
+      "statisticsSourceId": "varmland",
+      "statisticsSourceName": "Antagningskansliet Värmland",
+      "statisticsSourceUrl": "https://sites.google.com/arvika.com/elevantagningen-varmland/j%C3%A4mf%C3%B6relsetal/slutliga-jft",
+      "statisticsCoverageStatus": "statistics-source-linked"
     },
     {
       "id": "52e09939-25c1-435f-b8b4-e65a4ae1679b",
@@ -1758,10 +1758,10 @@
         }
       ],
       "schoolUnitCount": 31,
-      "statisticsSourceId": null,
-      "statisticsSourceName": null,
-      "statisticsSourceUrl": null,
-      "statisticsCoverageStatus": "statistics-source-missing"
+      "statisticsSourceId": "kronoberg",
+      "statisticsSourceName": "Antagningskansliet Växjö / Gymnasium Kronoberg",
+      "statisticsSourceUrl": "https://gymnasium.kronoberg.se/Pages/ShowEventSpecific.aspx?pageId=10&versionId=1&eventId=241&currPageId=2&currStat=1listWithPreambleAndImage_22026-04-25_3_40",
+      "statisticsCoverageStatus": "statistics-source-linked"
     },
     {
       "id": "7d80eada-f53f-4ee2-8120-600035f449db",
@@ -2085,10 +2085,10 @@
         }
       ],
       "schoolUnitCount": 44,
-      "statisticsSourceId": null,
-      "statisticsSourceName": null,
-      "statisticsSourceUrl": null,
-      "statisticsCoverageStatus": "statistics-source-missing"
+      "statisticsSourceId": "vasterbotten",
+      "statisticsSourceName": "Gymnasieantagningen för Västerbottens län",
+      "statisticsSourceUrl": "https://www.gymnasieantagningen.nu/barn-och-utbildning/gymnasieskola/gymnasieantagningen-for-vasterbottens-lan/antagningsstatistik",
+      "statisticsCoverageStatus": "statistics-source-linked"
     },
     {
       "id": "006773f9-baac-408a-85cb-47cc5cfa0b3a",
@@ -2104,10 +2104,10 @@
         }
       ],
       "schoolUnitCount": 7,
-      "statisticsSourceId": null,
-      "statisticsSourceName": null,
-      "statisticsSourceUrl": null,
-      "statisticsCoverageStatus": "statistics-source-missing"
+      "statisticsSourceId": "gotland",
+      "statisticsSourceName": "Gymnasieantagningen Gotland",
+      "statisticsSourceUrl": "https://www.gotland.se/antagningsstatistik",
+      "statisticsCoverageStatus": "statistics-source-linked"
     },
     {
       "id": "e765fa7b-2fa9-48ea-99c7-ee2de646e58a",
@@ -2422,10 +2422,10 @@
         }
       ],
       "schoolUnitCount": 57,
-      "statisticsSourceId": null,
-      "statisticsSourceName": null,
-      "statisticsSourceUrl": null,
-      "statisticsCoverageStatus": "statistics-source-missing"
+      "statisticsSourceId": "orebro",
+      "statisticsSourceName": "Gymnasieantagningen i Örebro län",
+      "statisticsSourceUrl": "https://extra.orebro.se/gymnasieantagningen/antagningsstatistik.4.59c8b3bd15157ae4207fba8.html",
+      "statisticsCoverageStatus": "statistics-source-linked"
     },
     {
       "id": "2c19f3ee-accb-4275-954f-85333256aee6",
@@ -2535,10 +2535,10 @@
         }
       ],
       "schoolUnitCount": 32,
-      "statisticsSourceId": null,
-      "statisticsSourceName": null,
-      "statisticsSourceUrl": null,
-      "statisticsCoverageStatus": "statistics-source-missing"
+      "statisticsSourceId": "jonkoping",
+      "statisticsSourceName": "Gymnasieantagningen Jönköping",
+      "statisticsSourceUrl": "https://gymnasieval.jonkoping.se/antagning/antagningsstatistik.html",
+      "statisticsCoverageStatus": "statistics-source-linked"
     },
     {
       "id": "88e42c8f-344b-4663-9e74-6033b2ef5b8b",
@@ -2597,10 +2597,10 @@
         }
       ],
       "schoolUnitCount": 7,
-      "statisticsSourceId": null,
-      "statisticsSourceName": null,
-      "statisticsSourceUrl": null,
-      "statisticsCoverageStatus": "statistics-source-missing"
+      "statisticsSourceId": "karlskrona",
+      "statisticsSourceName": "Gymnasieantagningen Karlskrona",
+      "statisticsSourceUrl": "http://www.karlskrona.se/globalassets/skola-och-forskola/gymnasieskola/dokument/slutlig-antagning-250701.pdf",
+      "statisticsCoverageStatus": "statistics-source-linked"
     },
     {
       "id": "c426e0e1-0e10-463e-8f6f-0feb0874213c",

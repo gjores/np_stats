@@ -1,19 +1,19 @@
 # Gymnasium Admissions Analysis Report
 
-Generated: 2026-04-25T10:12:19.638Z
+Generated: 2026-04-25T16:14:34.130Z
 
 This report joins parsed 2025 final-admission merit data to the existing 2025 gymnasium national-test/grade deviation dataset by exact normalized school name and municipality.
 When the admission source lacks municipality, the report also allows a conservative fallback match if the normalized school name is unique in the 2025 NP dataset.
 
 ## Overall
 
-- Parsed admission school aggregates: 341
+- Parsed admission school aggregates: 363
 - NP school aggregates for 2025 terms: 1100
-- Exact school+municipality matches: 151
+- Exact school+municipality matches: 158
 - Unique school-name fallback matches: 17
-- Total matched schools: 168
-- Pearson r, admission merit vs andel högre: -0.249
-- Pearson r, admission merit vs nettoavvikelse (högre-lägre): -0.174
+- Total matched schools: 175
+- Pearson r, admission merit vs andel högre: -0.237
+- Pearson r, admission merit vs nettoavvikelse (högre-lägre): -0.147
 
 ## Source Match Coverage
 
@@ -31,6 +31,15 @@ When the admission source lacks municipality, the report also allows a conservat
 | kalmarsund | 4 | 1 | 0 | parsed, unmatched |
 | dalarna-gavleborg | 1601 | 45 | 17 | matched |
 | vasternorrland | 0 | 0 | 0 | parser/source gap |
+| nykoping | 0 | 0 | 0 | parser/source gap |
+| torsas-korr | 0 | 0 | 0 | parser/source gap |
+| varmland | 0 | 0 | 0 | parser/source gap |
+| kronoberg | 0 | 0 | 0 | parser/source gap |
+| vasterbotten | 0 | 0 | 0 | parser/source gap |
+| gotland | 0 | 0 | 0 | parser/source gap |
+| orebro | 172 | 21 | 7 | matched |
+| jonkoping | 0 | 0 | 0 | parser/source gap |
+| karlskrona | 2 | 1 | 0 | parsed, unmatched |
 
 ## By Source
 
@@ -40,6 +49,7 @@ When the admission source lacks municipality, the report also allows a conservat
 | fyrbodal | 9 | 0.129 | 0.381 | weighted mean |
 | goteborgsregionen | 29 | -0.551 | -0.461 | unweighted mean |
 | halland | 1 | - | - | weighted mean |
+| orebro | 7 | 0.446 | 0.776 | weighted median |
 | storsthlm | 112 | -0.313 | -0.190 | weighted median |
 
 ## Highest Matched Net Deviations

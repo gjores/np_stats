@@ -1,20 +1,25 @@
 # Gymnasium Admissions Coverage Report
 
-Generated: 2026-04-25T10:12:19.333Z
+Generated: 2026-04-25T16:14:33.149Z
 
 | Source | Downloaded files | Parsed rows | Rows with mean | Rows with admitted count | Parser confidence |
 |---|---:|---:|---:|---:|---|
 | dalarna-gavleborg | 8 | 1601 | 1601 | 1601 | medium |
 | fyrbodal | 8 | 200 | 200 | 200 | medium |
 | goteborgsregionen | 4 | 426 | 426 | 0 | medium |
+| gotland | 2 | 0 | 0 | 0 | - |
 | halland | 1 | 155 | 155 | 155 | medium |
 | kalmarsund | 8 | 4 | 4 | 4 | medium |
+| karlskrona | 1 | 2 | 2 | 2 | medium |
+| nykoping | 1 | 0 | 0 | 0 | - |
+| orebro | 1 | 172 | 0 | 172 | medium |
 | ostergotland | 1 | 0 | 0 | 0 | - |
 | sjuharad | 1 | 182 | 182 | 182 | medium |
 | skanegy | 2 | 0 | 0 | 0 | - |
 | skaraborg | 4 | 14 | 14 | 14 | medium |
 | storsthlm | 1 | 1412 | 0 | 1412 | high |
 | uppsala | 8 | 0 | 0 | 0 | - |
+| vasterbotten | 1 | 0 | 0 | 0 | - |
 | vasternorrland | 1 | 0 | 0 | 0 | - |
 
 ## Notes

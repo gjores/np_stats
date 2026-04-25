@@ -10,7 +10,7 @@ Skolverket's guidance points users to regional admission offices for admission s
 
 For this project, "region" should mean admission-statistics source region/admission office, not necessarily county or administrative region.
 
-Update 2026-04-25: Skolverket's official admission-board register is now treated as the canonical coverage baseline. The synchronized register currently contains 49 gymnasial admission boards; see `data/admission-boards-skolverket.json` and `docs/gymnasium-admissions-board-coverage.md`. The 12-source list below is therefore only the first statistics-source layer, not the complete board universe.
+Update 2026-04-25: Skolverket's official admission-board register is now treated as the canonical coverage baseline. The synchronized register currently contains 49 gymnasial admission boards; see `data/admission-boards-skolverket.json` and `docs/gymnasium-admissions-board-coverage.md`. The 12-source list below was the first statistics-source layer, not the complete board universe. The current manifest has since been expanded with candidate statistics sources for Nyköping, Torsås/Korr, Värmland, Kronoberg/Växjö, Västerbotten, Gotland, Örebro, Jönköping, and Karlskrona.
 
 ## Required Normalization
 
