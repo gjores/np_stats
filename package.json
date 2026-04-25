@@ -6,6 +6,7 @@
     "build:data": "tsx scripts/build-dataset.ts && tsx scripts/build-dataset-grund.ts",
     "admissions:discover": "tsx scripts/admissions-discover.ts",
     "admissions:sync-boards": "tsx scripts/admissions-sync-boards.ts",
+    "admissions:discover-boards": "tsx scripts/admissions-discover-board-statistics.ts",
     "admissions:download": "tsx scripts/admissions-download.ts",
     "admissions:parse": "tsx scripts/admissions-parse.ts",
     "admissions:analyze": "tsx scripts/admissions-analyze.ts",

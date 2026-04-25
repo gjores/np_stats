@@ -46,9 +46,18 @@ export function absoluteUrl(href: string, base: string): string | null {
 
 export function decodeHtmlEntities(text: string): string {
   return text
+    .replace(/&#(\d+);/g, (_, code) => String.fromCodePoint(parseInt(code, 10)))
+    .replace(/&#x([0-9a-f]+);/gi, (_, code) => String.fromCodePoint(parseInt(code, 16)))
     .replace(/&amp;/g, "&")
     .replace(/&quot;/g, "\"")
     .replace(/&#39;/g, "'")
+    .replace(/&ndash;/g, "–")
+    .replace(/&ouml;/g, "ö")
+    .replace(/&auml;/g, "ä")
+    .replace(/&aring;/g, "å")
+    .replace(/&Ouml;/g, "Ö")
+    .replace(/&Auml;/g, "Ä")
+    .replace(/&Aring;/g, "Å")
     .replace(/&lt;/g, "<")
     .replace(/&gt;/g, ">");
 }
@@ -91,7 +100,7 @@ export function inferRound(url: string, label = ""): DiscoveredAdmissionFile["ro
   const haystack = `${label} ${url}`.toLowerCase();
   if (/reserv|avslutad/.test(haystack)) return "reserve";
   if (/prelim|april/.test(haystack)) return "preliminary";
-  if (/slut|slutlig|slutantag|final/.test(haystack)) return "final";
+  if (/slutlig|slutliga|slutgiltig|slutantag|slut-antag|final/.test(haystack)) return "final";
   if (/\b2[0-9](06|07)[0-3][0-9]\b/.test(haystack) && /antag|statistik|merit/.test(haystack)) return "final";
   return "unknown";
 }

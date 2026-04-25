@@ -71,3 +71,4 @@ Skolverket's register is the canonical list of gymnasial admission boards. The p
 - A linked statistics source means the board is represented in the current scraping/parsing pipeline, not that parsing is complete or analytically usable.
 - Skolverket notes that some schools have their own admission rather than a board connection; those school-unit-level cases need a separate pass through the school-units endpoint.
 - The previous 12-source set is now treated as a partial statistics-source layer over this 49-board canonical registry.
+- Candidate statistics links for missing boards are generated in `docs/gymnasium-admissions-board-statistics-candidates.md`.
