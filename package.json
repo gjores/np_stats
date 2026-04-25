@@ -6,6 +6,8 @@
     "build:data": "tsx scripts/build-dataset.ts && tsx scripts/build-dataset-grund.ts",
     "admissions:discover": "tsx scripts/admissions-discover.ts",
     "admissions:download": "tsx scripts/admissions-download.ts",
+    "admissions:parse": "tsx scripts/admissions-parse.ts",
+    "admissions:analyze": "tsx scripts/admissions-analyze.ts",
     "copy:csv": "mkdir -p public/data_np/grund && cp data_np/*.csv public/data_np/ && cp data_np/grund/*.csv public/data_np/grund/",
     "predev": "npm run build:data && npm run copy:csv",
     "prebuild": "npm run build:data && npm run copy:csv",
@@ -17,7 +19,8 @@
     "next": "15.5.15",
     "react": "19.0.0",
     "react-dom": "19.0.0",
-    "recharts": "^2.15.0"
+    "recharts": "^2.15.0",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "@types/node": "^22.10.5",

@@ -75,6 +75,10 @@ export function inferYear(url: string, label = ""): number | null {
     const year = years.find((v) => v >= 2020 && v <= 2030);
     if (year) return year;
 
+    const spacedYears = Array.from(haystack.matchAll(/\b(20)\s+(\d{2})\b/g)).map((m) => parseInt(`${m[1]}${m[2]}`, 10));
+    const spacedYear = spacedYears.find((v) => v >= 2020 && v <= 2030);
+    if (spacedYear) return spacedYear;
+
     const shortDates = Array.from(haystack.matchAll(/\b(2[0-9])(?:0[1-9]|1[0-2])(?:0[1-9]|[12][0-9]|3[01])\b/g))
       .map((m) => 2000 + parseInt(m[1], 10));
     const shortYear = shortDates.find((v) => v >= 2020 && v <= 2030);
