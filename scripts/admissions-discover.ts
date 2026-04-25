@@ -41,13 +41,16 @@ function toCandidate(source: AdmissionSource, link: { label: string; url: string
   const format = inferFormat(link.url, link.label);
   const haystack = `${link.label} ${link.url}`.toLowerCase();
   if (format === "unknown" && !/statistik|antagning|merit|slut|reserv|prelim/.test(haystack)) return null;
+  const isDirectSource = link.url === source.sourceUrl;
+  const inferredYear = inferYear(link.url, link.label);
+  const inferredRound = inferRound(link.url, link.label);
 
   const base = {
     sourceId: source.id,
     sourceName: source.name,
     sourceUrl: source.sourceUrl,
-    year: inferYear(link.url, link.label),
-    round: inferRound(link.url, link.label),
+    year: inferredYear ?? (isDirectSource && /2025/.test(source.coverageNote ?? "") ? 2025 : null),
+    round: inferredRound === "unknown" && isDirectSource ? source.preferredRound : inferredRound,
     format,
     label: link.label,
     url: link.url,

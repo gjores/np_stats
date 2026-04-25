@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-25T16:12:03.829Z",
+  "generatedAt": "2026-04-25T16:42:11.438Z",
   "canonicalSource": "https://www.skolverket.se/styrning-och-ansvar/regler-och-ansvar/stod-for-gymnasieantagning/antagningskanslier",
   "apiBase": "https://antagningskanslier.skolverket.se/api",
   "boardCount": 49,
@@ -167,10 +167,10 @@
         }
       ],
       "schoolUnitCount": 1,
-      "statisticsSourceId": null,
-      "statisticsSourceName": null,
-      "statisticsSourceUrl": null,
-      "statisticsCoverageStatus": "statistics-source-missing"
+      "statisticsSourceId": "europaskolan-strangnas",
+      "statisticsSourceName": "Europaskolan Strängnäs",
+      "statisticsSourceUrl": "https://www.europaskolan.se/strangnas/ansokan/",
+      "statisticsCoverageStatus": "statistics-source-linked"
     },
     {
       "id": "1d4acf50-c322-4d76-8684-35fb0cf1b32d",
@@ -316,10 +316,10 @@
         }
       ],
       "schoolUnitCount": 5,
-      "statisticsSourceId": null,
-      "statisticsSourceName": null,
-      "statisticsSourceUrl": null,
-      "statisticsCoverageStatus": "statistics-source-missing"
+      "statisticsSourceId": "kronoberg",
+      "statisticsSourceName": "Antagningskansliet Växjö / Gymnasium Kronoberg",
+      "statisticsSourceUrl": "https://gymnasium.kronoberg.se/Pages/ShowEventSpecific.aspx?pageId=10&versionId=1&eventId=241&currPageId=2&currStat=1listWithPreambleAndImage_22026-04-25_3_40",
+      "statisticsCoverageStatus": "statistics-source-linked"
     },
     {
       "id": "1da91fd8-0f06-4349-a1d3-30f1b4828a69",
@@ -335,10 +335,10 @@
         }
       ],
       "schoolUnitCount": 1,
-      "statisticsSourceId": null,
-      "statisticsSourceName": null,
-      "statisticsSourceUrl": null,
-      "statisticsCoverageStatus": "statistics-source-missing"
+      "statisticsSourceId": "kronoberg",
+      "statisticsSourceName": "Antagningskansliet Växjö / Gymnasium Kronoberg",
+      "statisticsSourceUrl": "https://gymnasium.kronoberg.se/Pages/ShowEventSpecific.aspx?pageId=10&versionId=1&eventId=241&currPageId=2&currStat=1listWithPreambleAndImage_22026-04-25_3_40",
+      "statisticsCoverageStatus": "statistics-source-linked"
     },
     {
       "id": "ed4c4e05-d547-445c-81d2-f17bfb9a94fc",
@@ -381,10 +381,10 @@
         }
       ],
       "schoolUnitCount": 3,
-      "statisticsSourceId": null,
-      "statisticsSourceName": null,
-      "statisticsSourceUrl": null,
-      "statisticsCoverageStatus": "statistics-source-missing"
+      "statisticsSourceId": "oskarshamn",
+      "statisticsSourceName": "Antagningskansliet i Oskarshamn",
+      "statisticsSourceUrl": "https://www.oskarshamn.se/forskola-och-utbildning/oscarsgymnasiet/antagning-till-gymnasiet/",
+      "statisticsCoverageStatus": "statistics-source-linked"
     },
     {
       "id": "bf197942-9096-463d-83a4-921ce23e6608",
@@ -461,10 +461,10 @@
         }
       ],
       "schoolUnitCount": 4,
-      "statisticsSourceId": null,
-      "statisticsSourceName": null,
-      "statisticsSourceUrl": null,
-      "statisticsCoverageStatus": "statistics-source-missing"
+      "statisticsSourceId": "vastervik",
+      "statisticsSourceName": "Antagningskansliet i Västervik",
+      "statisticsSourceUrl": "https://www.vastervik.se/contentassets/46edcfeb71074983893eff55b0e38c3d/statistik-vastervik.pdf",
+      "statisticsCoverageStatus": "statistics-source-linked"
     },
     {
       "id": "a042e0f0-87e9-4798-a19b-95dbfede2f56",
@@ -1891,10 +1891,10 @@
         }
       ],
       "schoolUnitCount": 45,
-      "statisticsSourceId": null,
-      "statisticsSourceName": null,
-      "statisticsSourceUrl": null,
-      "statisticsCoverageStatus": "statistics-source-missing"
+      "statisticsSourceId": "gymnasieantagning-nord",
+      "statisticsSourceName": "Gymnasieantagning Nord",
+      "statisticsSourceUrl": "https://gymnasieantagningnord.se/statistik/",
+      "statisticsCoverageStatus": "statistics-source-linked"
     },
     {
       "id": "4275bc1f-eb1a-48e8-b795-6594851286de",
@@ -2257,10 +2257,10 @@
         }
       ],
       "schoolUnitCount": 9,
-      "statisticsSourceId": null,
-      "statisticsSourceName": null,
-      "statisticsSourceUrl": null,
-      "statisticsCoverageStatus": "statistics-source-missing"
+      "statisticsSourceId": "katrineholm",
+      "statisticsSourceName": "Gymnasieantagningen i Katrineholm",
+      "statisticsSourceUrl": "https://www.katrineholm.se/gymnasiet/start/gymnasievalet/ansokan-och-antagning.html",
+      "statisticsCoverageStatus": "statistics-source-linked"
     },
     {
       "id": "f119228d-12c1-4a7f-b863-81cd42925147",
@@ -2500,10 +2500,10 @@
         }
       ],
       "schoolUnitCount": 25,
-      "statisticsSourceId": null,
-      "statisticsSourceName": null,
-      "statisticsSourceUrl": null,
-      "statisticsCoverageStatus": "statistics-source-missing"
+      "statisticsSourceId": "jamtland",
+      "statisticsSourceName": "Gymnasieantagningen Jämtlands län",
+      "statisticsSourceUrl": "https://gyantagningjamtland.se/antagning/slutlig-antagning-2025/",
+      "statisticsCoverageStatus": "statistics-source-linked"
     },
     {
       "id": "dc44ff65-dba3-478d-a39f-18f324953103",

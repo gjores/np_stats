@@ -328,13 +328,177 @@ function parseOrebroMedianPdf(file: DownloadedFile, text: string): AdmissionRow[
   return rows;
 }
 
+function findMeritWindow(values: number[]): { min: number | null; mean: number | null; median: number | null } {
+  const isMerit = (value: number) => value >= 50 && value <= 500;
+  for (let i = values.length - 3; i >= 0; i--) {
+    if (isMerit(values[i]) && isMerit(values[i + 1]) && isMerit(values[i + 2])) {
+      return { min: values[i], mean: values[i + 1], median: values[i + 2] };
+    }
+  }
+  for (let i = values.length - 2; i >= 0; i--) {
+    if (isMerit(values[i]) && isMerit(values[i + 1])) {
+      return { min: values[i], mean: values[i + 1], median: null };
+    }
+  }
+  return { min: null, mean: null, median: null };
+}
+
+function parseProgramCodeParenthesesPdf(file: DownloadedFile, text: string): AdmissionRow[] {
+  const rows: AdmissionRow[] = [];
+  const rowRe = /^(.+?)\s+\(([A-ZÅÄÖ0-9-]+)\)\s+(\d+)\s+(\d+)(?:\s+([0-9]+(?:[.,]\d+)?)\s+([0-9]+(?:[.,]\d+)?)\s+([0-9]+(?:[.,]\d+)?))?\s*$/;
+
+  for (const line of text.split(/\r?\n/)) {
+    const trimmed = line.trim();
+    const match = trimmed.match(rowRe);
+    if (!match) continue;
+    const [, programName, studyPathCode, places, admitted, min, mean, median] = match;
+    rows.push({
+      year: file.year ?? 2025,
+      sourceRegion: file.sourceId,
+      sourceFile: file.localPath,
+      sourceUrl: file.url,
+      admissionRound: file.round,
+      school: file.sourceName,
+      skolenhetskod: null,
+      municipality: null,
+      programName: programName.trim(),
+      programCode: parseProgramCode(studyPathCode),
+      orientationName: null,
+      places: parseIntValue(places),
+      admittedCount: parseIntValue(admitted),
+      firstChoiceAdmittedCount: null,
+      reserveCount: null,
+      admissionMeritMin: parseNumber(min),
+      admissionMeritMean: parseNumber(mean),
+      admissionMeritMedian: parseNumber(median),
+      parser: "program-code-parentheses-pdf",
+      parserConfidence: "high",
+    });
+  }
+
+  return rows.filter((row) => row.programName && (row.admittedCount ?? 0) > 0);
+}
+
+function parseIstSummaryPdf(file: DownloadedFile, text: string): AdmissionRow[] {
+  const rows: AdmissionRow[] = [];
+  let currentMunicipality: string | null = null;
+  let expectMunicipalityCode = false;
+  let pendingValuesBeforeCode: number[] | null = null;
+  let pending:
+    | {
+        studyPathCode: string;
+        values: number[];
+        meritOverride?: { min: number | null; mean: number | null; median: number | null };
+      }
+    | null = null;
+
+  function flushPending(programName?: string): void {
+    if (!pending || !currentMunicipality) return;
+    const merits = pending.meritOverride ?? findMeritWindow(pending.values);
+    if (merits.min === null && merits.mean === null && merits.median === null) {
+      pending = null;
+      return;
+    }
+    rows.push({
+      year: file.year ?? 2025,
+      sourceRegion: file.sourceId,
+      sourceFile: file.localPath,
+      sourceUrl: file.url,
+      admissionRound: file.round,
+      school: currentMunicipality,
+      skolenhetskod: null,
+      municipality: currentMunicipality,
+      programName: programName?.trim() || pending.studyPathCode,
+      programCode: parseProgramCode(pending.studyPathCode),
+      orientationName: null,
+      places: parseIntValue(pending.values[0]),
+      admittedCount: parseIntValue(pending.values[1]),
+      firstChoiceAdmittedCount: null,
+      reserveCount: parseIntValue(pending.values[2]),
+      admissionMeritMin: merits.min,
+      admissionMeritMean: merits.mean,
+      admissionMeritMedian: merits.median,
+      parser: "ist-summary-pdf",
+      parserConfidence: programName ? "medium" : "low",
+    });
+    pending = null;
+  }
+
+  for (const line of text.split(/\r?\n/)) {
+    const trimmed = line.trim();
+    if (!trimmed) continue;
+
+    const header = trimmed.match(/Antagningsstatistik för gymnasieprogram,\s*([^,(]+)\s*\(/i);
+    if (header) {
+      flushPending();
+      currentMunicipality = header[1].trim();
+      continue;
+    }
+
+    if (/^Sökt kommun$/i.test(trimmed)) {
+      expectMunicipalityCode = true;
+      continue;
+    }
+
+    if (expectMunicipalityCode) {
+      const municipality = trimmed.match(/^\d{4}\s+(.+)$/);
+      if (municipality) currentMunicipality = municipality[1].trim();
+      expectMunicipalityCode = false;
+      continue;
+    }
+
+    const numericValues = Array.from(trimmed.matchAll(/[0-9]+(?:[.,][0-9]+)?/g))
+      .map((m) => parseNumber(m[0]))
+      .filter((value): value is number => value !== null);
+    if (/^\d/.test(trimmed) && numericValues.length >= 5) {
+      pendingValuesBeforeCode = numericValues;
+      continue;
+    }
+
+    const codeLine = trimmed.match(/^([A-ZÅÄÖ][A-ZÅÄÖ0-9-]{1,12})\s+(.+)$/);
+    if (codeLine && /\d/.test(codeLine[2])) {
+      flushPending();
+      const codeLineValues = Array.from(codeLine[2].matchAll(/[0-9]+(?:[.,][0-9]+)?/g))
+        .map((m) => parseNumber(m[0]))
+        .filter((value): value is number => value !== null);
+      const valuesBeforeCode = pendingValuesBeforeCode;
+      const values = [...(valuesBeforeCode ?? []), ...codeLineValues];
+      const meritOverride = valuesBeforeCode
+        ? {
+            min: [...valuesBeforeCode].reverse().find((value) => value >= 50 && value <= 500) ?? null,
+            mean: codeLineValues.find((value) => value >= 50 && value <= 500) ?? null,
+            median: null,
+          }
+        : undefined;
+      pendingValuesBeforeCode = null;
+      if (values.length >= 5) {
+        pending = {
+          studyPathCode: codeLine[1],
+          values,
+          meritOverride,
+        };
+      }
+      continue;
+    }
+
+    if (pending && /[A-Za-zÅÄÖåäö]/.test(trimmed) && !/\d/.test(trimmed)) {
+      flushPending(trimmed);
+    }
+  }
+  flushPending();
+
+  return rows;
+}
+
 function parsePdf(file: DownloadedFile, absPath: string): AdmissionRow[] {
   const text = pdfText(absPath);
+  const programCodeParentheses = parseProgramCodeParenthesesPdf(file, text);
+  const istSummary = parseIstSummaryPdf(file, text);
   const dexter = parseDexterPdf(file, text);
   const goteborg = file.sourceId === "goteborgsregionen" ? parseGoteborgPdf(file, text) : [];
   const schoolHeader = parseSchoolHeaderPdf(file, text);
   const orebro = parseOrebroMedianPdf(file, text);
-  return [goteborg, dexter, schoolHeader, orebro].sort((a, b) => b.length - a.length)[0];
+  return [goteborg, programCodeParentheses, istSummary, dexter, schoolHeader, orebro].sort((a, b) => b.length - a.length)[0];
 }
 
 function parseHtml(file: DownloadedFile, absPath: string): AdmissionRow[] {

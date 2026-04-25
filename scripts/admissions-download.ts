@@ -28,10 +28,23 @@ function selectDownloads(candidates: DiscoveredAdmissionFile[]): DiscoveredAdmis
 
   const selected: DiscoveredAdmissionFile[] = [];
   for (const [, files] of bySource) {
-    files.sort((a, b) => b.score - a.score || a.label.localeCompare(b.label, "sv"));
-    selected.push(...files.slice(0, 8));
+    files.sort(
+      (a, b) =>
+        formatPriority(b.format) - formatPriority(a.format) ||
+        b.score - a.score ||
+        a.label.localeCompare(b.label, "sv")
+    );
+    selected.push(...files.slice(0, 16));
   }
   return selected;
+}
+
+function formatPriority(format: DiscoveredAdmissionFile["format"]): number {
+  if (format === "xlsx" || format === "xls") return 4;
+  if (format === "pdf") return 3;
+  if (format === "csv") return 2;
+  if (format === "html") return 1;
+  return 0;
 }
 
 async function download(file: DiscoveredAdmissionFile): Promise<DiscoveredAdmissionFile & { bytes: number; ok: boolean; error?: string }> {

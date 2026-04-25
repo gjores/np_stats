@@ -229,5 +229,71 @@
     "parser": "standard-antagning-pdf",
     "priority": 4,
     "status": "source_candidate"
+  },
+  {
+    "id": "gymnasieantagning-nord",
+    "name": "Gymnasieantagning Nord",
+    "coverageNote": "Norrbotten/Nord publishes final-admission statistics with mean comparison scores.",
+    "sourceUrl": "https://gymnasieantagningnord.se/statistik/",
+    "preferredRound": "final",
+    "format": "pdf",
+    "parser": "ist-statgt-pdf",
+    "priority": 4,
+    "status": "source_identified"
+  },
+  {
+    "id": "katrineholm",
+    "name": "Gymnasieantagningen i Katrineholm",
+    "coverageNote": "Katrineholm/Flen/Vingåker admission area; Katrineholm page publishes 2025 statistics PDFs.",
+    "sourceUrl": "https://www.katrineholm.se/gymnasiet/start/gymnasievalet/ansokan-och-antagning.html",
+    "preferredRound": "final",
+    "format": "pdf",
+    "parser": "ist-kj0sta-pdf",
+    "priority": 4,
+    "status": "source_identified"
+  },
+  {
+    "id": "europaskolan-strangnas",
+    "name": "Europaskolan Strängnäs",
+    "coverageNote": "School-administered admission page with 2025/2026 final mean and lowest merit values.",
+    "sourceUrl": "https://www.europaskolan.se/strangnas/ansokan/",
+    "preferredRound": "final",
+    "format": "web",
+    "parser": "europaskolan-html",
+    "priority": 5,
+    "status": "source_identified"
+  },
+  {
+    "id": "oskarshamn",
+    "name": "Antagningskansliet i Oskarshamn",
+    "coverageNote": "Oscarsgymnasiet page publishes 2025 final admission statistics with mean and median comparison scores.",
+    "sourceUrl": "https://www.oskarshamn.se/forskola-och-utbildning/oscarsgymnasiet/antagning-till-gymnasiet/",
+    "preferredRound": "final",
+    "format": "pdf",
+    "parser": "program-code-parentheses-pdf",
+    "priority": 5,
+    "status": "source_identified"
+  },
+  {
+    "id": "vastervik",
+    "name": "Antagningskansliet i Västervik",
+    "coverageNote": "Västervik final 2025 admission statistics PDF found on Västerviks gymnasium site.",
+    "sourceUrl": "https://www.vastervik.se/contentassets/46edcfeb71074983893eff55b0e38c3d/statistik-vastervik.pdf",
+    "preferredRound": "final",
+    "format": "pdf",
+    "parser": "ist-statgt-pdf",
+    "priority": 5,
+    "status": "source_identified"
+  },
+  {
+    "id": "jamtland",
+    "name": "Gymnasieantagningen Jämtlands län",
+    "coverageNote": "Jämtland publishes final 2025 admission statistics per school on gyantagningjamtland.se.",
+    "sourceUrl": "https://gyantagningjamtland.se/antagning/slutlig-antagning-2025/",
+    "preferredRound": "final",
+    "format": "pdf",
+    "parser": "school-header-pdf",
+    "priority": 4,
+    "status": "source_identified"
   }
 ]
