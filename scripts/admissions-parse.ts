@@ -1,8 +1,10 @@
 import { execFileSync } from "node:child_process";
-import { existsSync, openSync, readFileSync, readSync, closeSync, writeFileSync } from "node:fs";
-import { basename, extname, resolve } from "node:path";
+import { existsSync, mkdirSync, openSync, readFileSync, readdirSync, readSync, closeSync, rmSync, writeFileSync } from "node:fs";
+import { basename, extname, join, resolve } from "node:path";
 import * as XLSX from "xlsx";
 import { writeJson, type DiscoveredAdmissionFile } from "./admissions-utils";
+
+const OCR_CACHE = resolve(__dirname, "../.ocr-cache");
 
 const JAMTLAND_SCHOOL_BY_CODE: Record<string, string> = {
   AGY: "Jämtlands Gymnasium Anpassad gymnasieskola",
@@ -142,6 +144,40 @@ function pdfText(absPath: string): string {
     maxBuffer: 50 * 1024 * 1024,
     timeout: 20_000,
   });
+}
+
+function pdfTextOcr(absPath: string, opts: { psm?: number } = {}): string {
+  const psm = opts.psm ?? 6;
+  const cacheKey = `${basename(absPath, ".pdf")}-psm${psm}`;
+  const cacheDir = join(OCR_CACHE, cacheKey);
+  const cachedText = join(cacheDir, "text.txt");
+  if (existsSync(cachedText)) return readFileSync(cachedText, "utf8");
+  mkdirSync(cacheDir, { recursive: true });
+  try {
+    execFileSync("pdftoppm", ["-r", "200", "-gray", "-png", absPath, join(cacheDir, "page")], {
+      timeout: 120_000,
+    });
+    const pages = readdirSync(cacheDir)
+      .filter((f) => f.endsWith(".png"))
+      .sort();
+    const parts: string[] = [];
+    for (const page of pages) {
+      const pngPath = join(cacheDir, page);
+      const txtBase = pngPath.replace(/\.png$/, "");
+      execFileSync(
+        "tesseract",
+        [pngPath, txtBase, "-l", "swe", "--psm", String(psm), "-c", "preserve_interword_spaces=1"],
+        { timeout: 60_000, stdio: ["ignore", "ignore", "ignore"] }
+      );
+      parts.push(readFileSync(`${txtBase}.txt`, "utf8"));
+    }
+    const combined = parts.join("\n\n--PAGE--\n\n");
+    writeFileSync(cachedText, combined);
+    return combined;
+  } catch (err) {
+    rmSync(cacheDir, { recursive: true, force: true });
+    throw err;
+  }
 }
 
 function parseDexterPdf(file: DownloadedFile, text: string): AdmissionRow[] {
@@ -574,8 +610,71 @@ function parseGotlandPdf(file: DownloadedFile, text: string): AdmissionRow[] {
   return rows;
 }
 
+function uppsalaContextFromFilename(localPath: string): { context: "kommunala" | "fristående"; municipality: string | null } {
+  const name = basename(localPath).toLowerCase();
+  if (/frist/.test(name)) return { context: "fristående", municipality: null };
+  if (/knivsta/.test(name)) return { context: "kommunala", municipality: "Knivsta" };
+  if (/tierp/.test(name)) return { context: "kommunala", municipality: "Tierp" };
+  if (/sthammar/.test(name)) return { context: "kommunala", municipality: "Östhammar" };
+  if (/uppsala/.test(name)) return { context: "kommunala", municipality: "Uppsala" };
+  return { context: "kommunala", municipality: null };
+}
+
+function parseUppsalaOcr(file: DownloadedFile, text: string): AdmissionRow[] {
+  const rows: AdmissionRow[] = [];
+  const { context, municipality } = uppsalaContextFromFilename(file.localPath);
+  const trailingRe = /^(.+?)\s{2,}(.+?)\s{2,}(\d{1,3})\s+(\d{1,3})\s+(\d{2,3}(?:[.,]\d+)?)\s+(\d{2,3}(?:[.,]\d+)?)\s+(\d{2,3}(?:[.,]\d+)?)\s+(\d{1,3})\s*$/;
+  for (const rawLine of text.split(/\r?\n/)) {
+    const line = rawLine.replace(/^\s*[a-zåäöA-ZÅÄÖ0-9]\s+/, (m) => (/^\s+\D\s+/.test(m) ? "" : m));
+    const trimmed = line.replace(/\s+$/, "");
+    if (!trimmed.trim()) continue;
+    if (/Antagningsstatistik|Studieväg|Antal\s+antagna|Sida\s+\d|Uppsala\s+kommun|antagna\s+reserver|Lägst\s+Medel|Antagningspoäng/i.test(trimmed)) continue;
+    const m = trimmed.match(trailingRe);
+    if (!m) continue;
+    const [, programName, school, , , min, mean, median] = m;
+    const minMerit = parseNumber(min);
+    const meanMerit = parseNumber(mean);
+    const medianMerit = parseNumber(median);
+    if ((minMerit === null || minMerit < 50) && (meanMerit === null || meanMerit < 50)) continue;
+    if (!school || school.length > 80 || !programName || programName.length > 100) continue;
+    if (/^\d+\s*$/.test(school) || /^\d+\s*$/.test(programName)) continue;
+    rows.push({
+      year: file.year ?? 2025,
+      sourceRegion: file.sourceId,
+      sourceFile: file.localPath,
+      sourceUrl: file.url,
+      admissionRound: file.round,
+      school: school.trim(),
+      skolenhetskod: null,
+      municipality: municipality,
+      programName: programName.trim(),
+      programCode: null,
+      orientationName: context === "fristående" ? "Fristående" : "Kommunal",
+      places: null,
+      admittedCount: parseIntValue(m[3]),
+      firstChoiceAdmittedCount: null,
+      reserveCount: parseIntValue(m[4]),
+      admissionMeritMin: minMerit,
+      admissionMeritMean: meanMerit,
+      admissionMeritMedian: medianMerit,
+      parser: "uppsala-ocr",
+      parserConfidence: "medium",
+    });
+  }
+  return rows;
+}
+
 function parsePdf(file: DownloadedFile, absPath: string): AdmissionRow[] {
-  const text = pdfText(absPath);
+  let text = pdfText(absPath);
+  if (text.replace(/\s/g, "").length < 200 && (file.sourceId === "uppsala" || file.sourceId === "nykoping")) {
+    try {
+      const psm = file.sourceId === "nykoping" ? 1 : 6;
+      text = pdfTextOcr(absPath, { psm });
+    } catch (err) {
+      console.warn(`OCR failed for ${file.localPath}: ${err instanceof Error ? err.message : err}`);
+      return [];
+    }
+  }
   const programCodeParentheses = parseProgramCodeParenthesesPdf(file, text);
   const istSummary = parseIstSummaryPdf(file, text);
   const dexter = parseDexterPdf(file, text);
@@ -583,7 +682,8 @@ function parsePdf(file: DownloadedFile, absPath: string): AdmissionRow[] {
   const schoolHeader = parseSchoolHeaderPdf(file, text);
   const orebro = parseOrebroMedianPdf(file, text);
   const gotland = file.sourceId === "gotland" ? parseGotlandPdf(file, text) : [];
-  return [goteborg, gotland, programCodeParentheses, istSummary, dexter, schoolHeader, orebro].sort((a, b) => b.length - a.length)[0];
+  const uppsala = file.sourceId === "uppsala" ? parseUppsalaOcr(file, text) : [];
+  return [goteborg, gotland, uppsala, programCodeParentheses, istSummary, dexter, schoolHeader, orebro].sort((a, b) => b.length - a.length)[0];
 }
 
 interface SkanegyMeritRow {
