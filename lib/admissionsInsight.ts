@@ -1,6 +1,6 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
-import type { Row } from "./types";
+import type { HuvudmanType, Row } from "./types";
 
 interface AdmissionRow {
   sourceRegion: string;
@@ -39,6 +39,7 @@ interface SchoolNpAggregate {
   municipality: string;
   orgnr: string;
   huvudman: string;
+  huvudmanType: HuvudmanType;
   antal: number;
   andelHogre: number | null;
   andelLagre: number | null;
@@ -60,7 +61,9 @@ export interface AdmissionsScatterPoint {
   meritMetric: "mean" | "median";
   orgnr: string;
   huvudman: string;
+  huvudmanType: HuvudmanType;
   isAcadeMedia: boolean;
+  schoolCategory: "academedia" | "other-independent" | "public";
 }
 
 export interface MeritBandSummary {
@@ -192,6 +195,7 @@ function aggregateNp(rows: Row[]): Map<string, SchoolNpAggregate> {
       municipality: group[0].kommun,
       orgnr: group[0].orgnr,
       huvudman: group[0].huvudman,
+      huvudmanType: group[0].typ,
       antal,
       andelHogre,
       andelLagre,
@@ -302,7 +306,13 @@ export function loadAdmissionsInsight(): AdmissionsInsight {
       meritMetric: admission.weightedMean !== null || admission.unweightedMean !== null ? "mean" : "median",
       orgnr: np.orgnr,
       huvudman: np.huvudman,
+      huvudmanType: np.huvudmanType,
       isAcadeMedia: acadeMediaOrgnrs.has(np.orgnr),
+      schoolCategory: acadeMediaOrgnrs.has(np.orgnr)
+        ? "academedia"
+        : np.huvudmanType === "Enskild"
+          ? "other-independent"
+          : "public",
     });
   }
 

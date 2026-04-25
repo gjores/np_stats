@@ -35,12 +35,19 @@ function pp(n: number | null): string {
 function ScatterTooltip({ active, payload }: { active?: boolean; payload?: { payload: AdmissionsScatterPoint }[] }) {
   if (!active || !payload?.length) return null;
   const point = payload[0].payload;
+  const groupLabel =
+    point.schoolCategory === "academedia"
+      ? "AcadeMedia"
+      : point.schoolCategory === "other-independent"
+        ? "Annan fristående"
+        : point.huvudmanType;
   return (
     <div className="max-w-xs rounded-md border border-slate-200 bg-white px-3 py-2 text-xs shadow-sm">
       <div className="font-medium text-slate-900">{point.school}</div>
       <div className="text-slate-500">{point.municipality} · {point.source}</div>
       <div className="mt-2 grid grid-cols-2 gap-x-4 gap-y-1 tabular-nums">
-        <span className="text-slate-500">Huvudman</span><span className="text-right text-slate-900">{point.isAcadeMedia ? "AcadeMedia" : point.huvudman}</span>
+        <span className="text-slate-500">Grupp</span><span className="text-right text-slate-900">{groupLabel}</span>
+        <span className="text-slate-500">Huvudman</span><span className="text-right text-slate-900">{point.huvudman}</span>
         <span className="text-slate-500">Merit</span><span className="text-right text-slate-900">{fmt(point.merit)}</span>
         <span className="text-slate-500">Högre</span><span className="text-right text-slate-900">{pct(point.andelHogre)}</span>
         <span className="text-slate-500">Netto</span><span className="text-right text-slate-900">{pp(point.netDeviation)}</span>
@@ -56,8 +63,9 @@ export function AdmissionsMeritInsight({ insight }: Props) {
       ? insight.lowMeritAvgHogre - insight.highMeritAvgHogre
       : null;
   const topSources = insight.sourceSummaries.slice(0, 10);
-  const acadeMediaPoints = insight.points.filter((point) => point.isAcadeMedia);
-  const otherPoints = insight.points.filter((point) => !point.isAcadeMedia);
+  const acadeMediaPoints = insight.points.filter((point) => point.schoolCategory === "academedia");
+  const otherIndependentPoints = insight.points.filter((point) => point.schoolCategory === "other-independent");
+  const publicPoints = insight.points.filter((point) => point.schoolCategory === "public");
 
   return (
     <div className="space-y-8">
@@ -151,12 +159,16 @@ export function AdmissionsMeritInsight({ insight }: Props) {
           <h2 className="text-lg font-semibold text-slate-900">Matchning mot NP-avvikelse</h2>
           <p className="mt-1 max-w-4xl text-sm text-slate-600">
             Detta är en separat analysvy där meritunderlaget ovan matchas mot 2025 års NP/betygsavvikelse per skola.
-            Driftsform används inte i grafen.
+            Färgerna visar skolgrupp för orientering; sambandet beräknas på skolpunkterna utan driftsformsjustering.
           </p>
         </div>
 
         <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
-          <Kpi label="Matchade skolor" value={insight.matchedSchools.toLocaleString("sv-SE")} sub="Skolor med både merit och NP-data" />
+          <Kpi
+            label="Analysbara skolor"
+            value={insight.matchedSchools.toLocaleString("sv-SE")}
+            sub={`Av ${insight.parsedSchoolAggregates.toLocaleString("sv-SE")} skolaggregat med antagningsdata`}
+          />
           <Kpi label="Merit vs högre betyg" value={fmt(insight.pearsonHogre, 3)} sub="Pearson r, negativt stödjer hypotesen" />
           <Kpi label="Merit vs netto" value={fmt(insight.pearsonNet, 3)} sub="Högre minus lägre betyg än NP" />
           <Kpi label="Lägsta kvartilen" value={pp(lowerLift)} sub="Mer andel högre än högsta meritkvartilen" />
@@ -169,11 +181,15 @@ export function AdmissionsMeritInsight({ insight }: Props) {
               <div className="text-sm font-medium text-slate-800">Lägre merit tenderar att ligga högre på avvikelseaxeln</div>
               <div className="text-xs text-slate-500">X: antagningsmerit. Y: andel elever med högre kursbetyg än NP-resultat.</div>
               <div className="mt-2 flex flex-wrap gap-3 text-xs text-slate-600">
-                <span className="inline-flex items-center gap-1.5"><span className="h-2.5 w-2.5 rounded-full bg-teal-700" />Övriga skolor</span>
+                <span className="inline-flex items-center gap-1.5"><span className="h-2.5 w-2.5 rounded-full bg-sky-700" />Kommunala/region</span>
+                <span className="inline-flex items-center gap-1.5"><span className="h-2.5 w-2.5 rounded-full bg-emerald-600" />Övriga fristående</span>
                 <span className="inline-flex items-center gap-1.5"><span className="h-2.5 w-2.5 rounded-full bg-purple-600" />AcadeMedia</span>
               </div>
             </div>
-            <div className="text-xs tabular-nums text-slate-500">n={insight.matchedSchools} · AcadeMedia {acadeMediaPoints.length}</div>
+            <div className="text-right text-xs tabular-nums text-slate-500">
+              n={insight.matchedSchools}<br />
+              {publicPoints.length} offentlig · {otherIndependentPoints.length} övr. fri · {acadeMediaPoints.length} AcadeMedia
+            </div>
           </div>
           <div className="h-[360px] w-full">
             <ResponsiveContainer>
@@ -196,7 +212,8 @@ export function AdmissionsMeritInsight({ insight }: Props) {
                   tickFormatter={(value) => `${fmt(Number(value), 0)} %`}
                 />
                 <Tooltip content={<ScatterTooltip />} cursor={{ stroke: "#94a3b8", strokeDasharray: "3 3" }} />
-                <Scatter name="Övriga skolor" data={otherPoints} fill="#0f766e" fillOpacity={0.68} />
+                <Scatter name="Kommunala/region" data={publicPoints} fill="#0369a1" fillOpacity={0.7} />
+                <Scatter name="Övriga fristående" data={otherIndependentPoints} fill="#059669" fillOpacity={0.76} />
                 <Scatter name="AcadeMedia" data={acadeMediaPoints} fill="#9333ea" fillOpacity={0.92} />
               </ScatterChart>
             </ResponsiveContainer>
