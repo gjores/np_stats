@@ -218,6 +218,61 @@ export function AdmissionsMeritInsight({ insight }: Props) {
               </ScatterChart>
             </ResponsiveContainer>
           </div>
+          <div className="mt-4">
+            <div className="mb-2 text-sm font-medium text-slate-800">Pearson r per driftsform</div>
+            <div className="text-xs text-slate-500 mb-2">
+              Hur starkt är sambandet inom varje grupp? Negativa värden = lägre antagningsmerit hänger ihop med högre andel betyg över NP.
+            </div>
+            <div className="overflow-x-auto">
+              <table className="min-w-full text-sm">
+                <thead>
+                  <tr className="border-b border-slate-200 text-left text-xs text-slate-500">
+                    <th className="py-2 pr-3 font-medium">Driftsform</th>
+                    <th className="px-3 py-2 text-right font-medium">n</th>
+                    <th className="px-3 py-2 text-right font-medium">Snittmerit</th>
+                    <th className="px-3 py-2 text-right font-medium">Snitt andel högre</th>
+                    <th className="px-3 py-2 text-right font-medium">r (merit · högre)</th>
+                    <th className="px-3 py-2 text-right font-medium">r (merit · netto)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {insight.categoryCorrelations.map((row) => (
+                    <tr key={row.category} className="border-b border-slate-100 last:border-0">
+                      <td className="py-2 pr-3">
+                        <span className="inline-flex items-center gap-1.5 font-medium text-slate-800">
+                          <span
+                            className="h-2.5 w-2.5 rounded-full"
+                            style={{
+                              backgroundColor:
+                                row.category === "academedia"
+                                  ? "#9333ea"
+                                  : row.category === "other-independent"
+                                    ? "#059669"
+                                    : "#0369a1",
+                            }}
+                          />
+                          {row.label}
+                        </span>
+                      </td>
+                      <td className="px-3 py-2 text-right tabular-nums text-slate-700">{row.count}</td>
+                      <td className="px-3 py-2 text-right tabular-nums text-slate-700">{fmt(row.avgMerit)}</td>
+                      <td className="px-3 py-2 text-right tabular-nums text-slate-700">{pct(row.avgAndelHogre)}</td>
+                      <td className="px-3 py-2 text-right tabular-nums text-slate-900">{fmt(row.pearsonHogre, 3)}</td>
+                      <td className="px-3 py-2 text-right tabular-nums text-slate-900">{fmt(row.pearsonNet, 3)}</td>
+                    </tr>
+                  ))}
+                  <tr className="border-t-2 border-slate-300 bg-slate-50">
+                    <td className="py-2 pr-3 font-medium text-slate-800">Alla</td>
+                    <td className="px-3 py-2 text-right tabular-nums text-slate-700">{insight.matchedSchools}</td>
+                    <td className="px-3 py-2 text-right tabular-nums text-slate-500">–</td>
+                    <td className="px-3 py-2 text-right tabular-nums text-slate-500">–</td>
+                    <td className="px-3 py-2 text-right tabular-nums font-semibold text-slate-900">{fmt(insight.pearsonHogre, 3)}</td>
+                    <td className="px-3 py-2 text-right tabular-nums font-semibold text-slate-900">{fmt(insight.pearsonNet, 3)}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
 
           <div className="rounded-lg border border-slate-200 bg-white p-4">

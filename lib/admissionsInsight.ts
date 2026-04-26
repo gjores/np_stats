@@ -93,6 +93,19 @@ export interface AdmissionSourceSummary {
   avgMerit: number | null;
 }
 
+export type CategoryKey = "academedia" | "other-independent" | "public";
+
+export interface CategoryCorrelation {
+  category: CategoryKey;
+  label: string;
+  count: number;
+  pearsonHogre: number | null;
+  pearsonNet: number | null;
+  avgMerit: number | null;
+  avgAndelHogre: number | null;
+  avgNetDeviation: number | null;
+}
+
 export interface AdmissionsInsight {
   points: AdmissionsScatterPoint[];
   bands: MeritBandSummary[];
@@ -107,6 +120,7 @@ export interface AdmissionsInsight {
   highMeritAvgHogre: number | null;
   lowMeritAvgNet: number | null;
   highMeritAvgNet: number | null;
+  categoryCorrelations: CategoryCorrelation[];
 }
 
 let cache: AdmissionsInsight | null = null;
@@ -356,6 +370,25 @@ export function loadAdmissionsInsight(): AdmissionsInsight {
     parsedSchoolAggregates: admissionBySchool.size,
     pearsonHogre: pearson(points.map((point) => ({ x: point.merit, y: point.andelHogre }))),
     pearsonNet: pearson(points.map((point) => ({ x: point.merit, y: point.netDeviation }))),
+    categoryCorrelations: (
+      [
+        { category: "public", label: "Kommunala/region" },
+        { category: "other-independent", label: "Övriga fristående" },
+        { category: "academedia", label: "AcadeMedia" },
+      ] as { category: CategoryKey; label: string }[]
+    ).map(({ category, label }) => {
+      const subset = points.filter((point) => point.schoolCategory === category);
+      return {
+        category,
+        label,
+        count: subset.length,
+        pearsonHogre: pearson(subset.map((point) => ({ x: point.merit, y: point.andelHogre }))),
+        pearsonNet: pearson(subset.map((point) => ({ x: point.merit, y: point.netDeviation }))),
+        avgMerit: average(subset.map((point) => point.merit)),
+        avgAndelHogre: average(subset.map((point) => point.andelHogre)),
+        avgNetDeviation: average(subset.map((point) => point.netDeviation)),
+      };
+    }),
     lowMeritAvgHogre: average(low.map((point) => point.andelHogre)),
     highMeritAvgHogre: average(high.map((point) => point.andelHogre)),
     lowMeritAvgNet: average(low.map((point) => point.netDeviation)),
