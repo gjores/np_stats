@@ -177,12 +177,110 @@ export default function OmPage() {
         </ul>
       </Section>
 
+      <Section title="Antagningsmerit (gymnasiet)">
+        <p>
+          Som ett separat lager finns även 2025 års <strong>slutliga antagningsmeriter</strong>
+          per gymnasieskola. Skolverket publicerar inte detta — det görs istället av ca två dussin
+          regionala gymnasieantagningar (Storsthlm, Göteborgsregionen, Skånegy, Fyrbodal,
+          Sjuhärad, Skaraborg, Halland, Östergötland, Uppsala, Kalmarsund, Dalarna/Gävleborg,
+          Västernorrland, Nyköping, Värmland, Gotland, Örebro län, Jönköping, Karlskrona,
+          Gymnasieantagning Nord, Katrineholm, Oskarshamn, Västervik, Jämtland m.fl.).
+          Varje region har sin egen sajt och sitt eget filformat.
+        </p>
+
+        <h3 className="font-semibold text-slate-900 mt-4">Insamling</h3>
+        <ol className="list-decimal pl-5 space-y-2">
+          <li>
+            <strong>Discover</strong> — <code className="px-1 bg-slate-100 rounded">scripts/admissions-discover.ts</code>{" "}
+            hämtar varje regions startsida (URL:er listade i{" "}
+            <code className="px-1 bg-slate-100 rounded">data/admissions-sources.json</code>),
+            extraherar alla länkar och poängsätter dem på filtyp,
+            årtal och nyckelord (slutlig, antagning, merit, jämförelsetal).
+          </li>
+          <li>
+            <strong>Download</strong> — <code className="px-1 bg-slate-100 rounded">scripts/admissions-download.ts</code>{" "}
+            laddar de högst rankade kandidaterna per källa, separerar
+            preliminära från slutliga och sparar råfilerna under{" "}
+            <code className="px-1 bg-slate-100 rounded">data_admissions/gymnasium/raw/&lt;region&gt;/</code>.
+          </li>
+          <li>
+            <strong>Parse</strong> — <code className="px-1 bg-slate-100 rounded">scripts/admissions-parse.ts</code>{" "}
+            försöker varje rådokument mot en uppsättning formatspecifika parsers och behåller den som ger
+            flest rader. Resultatet skrivs till{" "}
+            <code className="px-1 bg-slate-100 rounded">data/generated/admissions-gymnasium.json</code>.
+          </li>
+        </ol>
+
+        <h3 className="font-semibold text-slate-900 mt-4">Format som hanteras</h3>
+        <ul className="list-disc pl-5 space-y-1.5">
+          <li><strong>Excel</strong> (Storsthlm) — direkt kolumnmappning av <em>Antagningsgrans</em> och <em>Median</em>.</li>
+          <li><strong>IST/STATGT-PDF</strong> (Jämtland, Västernorrland, Nyköping, Västervik m.fl.) — tabell med <em>Lägsta jämförelsetal</em> och <em>Medel</em> per studieväg.</li>
+          <li><strong>Dexter-PDF</strong> — programkod, programnamn och skola följt av platser/sökande/antagna/min/medel.</li>
+          <li><strong>Region-specifika layout-PDF:er</strong> för Göteborgsregionen, Örebro län, Gotland — egna parsers per kolumnordning.</li>
+          <li><strong>HTML/JSON-API:er</strong> — Skånegy publicerar all data via{" "}
+            <code className="px-1 bg-slate-100 rounded">/wp-json/meritvarden/v1/merit-values</code>,
+            Östergötland renderas serverside på Gymnasiestudera (skolor i <code>&lt;h3&gt;</code>, programdata i accordion-paneler).
+          </li>
+          <li><strong>OCR-fallback</strong> — Uppsala läns och Nyköpings antagningar publiceras som <em>image-only</em> PDF:er
+            (Microsoft Print to PDF, scannerutskrifter). När <code className="px-1 bg-slate-100 rounded">pdftotext</code> ger
+            tom output kör <code className="px-1 bg-slate-100 rounded">pdftoppm</code> + Tesseract (svenska språkmodellen) per sida,
+            och resultatet matas igenom samma kolumnparser som de textbaserade PDF:erna.
+          </li>
+        </ul>
+
+        <h3 className="font-semibold text-slate-900 mt-4">Mappning mot NP-datasetet</h3>
+        <p>
+          Varje rad har skola, kommun, programnamn och meritvärden (lägsta/medel/median). De aggregeras till{" "}
+          <em>en post per skola</em> genom viktat medelvärde på antal antagna. Den aggregerade meriten matchas
+          sedan mot NP-aggregaten på <strong>normaliserat (skola, kommun)</strong> — gemener,
+          accent-stripping och borttagna specialtecken — och om det inte träffar exakt försöker vi en{" "}
+          <em>unik skolnamns-fallback</em> (samma skolnamn finns på exakt ett ställe i NP-datan).
+        </p>
+        <p>
+          Aktuell träff: drygt 290 av ~600 skolaggregat med meritdata har en motsvarighet i 2025 års NP-statistik.
+          Resten är bortfall: skolor som inte ingår i NP-rapporten (gymnasiesärskolor, små specialprogram), eller
+          där skolnamnet skiljer sig mellan källan och Skolverket (Västernorrland och Sjuhärad är de tydligaste
+          blindfläckarna idag, där namnen inte matchar).
+        </p>
+
+        <h3 className="font-semibold text-slate-900 mt-4">Att veta innan du tolkar</h3>
+        <ul className="list-disc pl-5 space-y-2">
+          <li>
+            <strong>Stickprov, inte folkräkning</strong> — täckningen avgörs av vilka regioner som hittills
+            har en fungerande parser. Storsthlm, Skånegy och Göteborgsregionen dominerar urvalet; mindre
+            län bidrar med några skolor var.
+          </li>
+          <li>
+            <strong>Mått varierar mellan källor</strong> — Storsthlm rapporterar <em>antagningsgrans</em>{" "}
+            och <em>median</em> men inget medel; Göteborgsregionen rapporterar medel men inget antal antagna;
+            Örebro rapporterar median istället för medel. Vi använder första tillgängliga av{" "}
+            <em>weighted mean → unweighted mean → weighted median</em> som meritvärde per skola — siffrorna är
+            därför inte hundraprocentigt jämförbara mellan regioner.
+          </li>
+          <li>
+            <strong>OCR-fel kan smyga sig in</strong> — Uppsala-tabellerna är tydligt strukturerade, men
+            Tesseract läser ibland t.ex. <code>41,1</code> som <code>MA</code>. Sådana rader filtreras
+            via plausibilitetskontroll (merit ≥ 50, korrekt kolumnformat) men enskilda rader bör verifieras
+            mot källfilen innan de citeras.
+          </li>
+          <li>
+            <strong>Sambandet ≠ kausalitet</strong> — Pearson r mellan antagningsmerit och NP-avvikelse
+            redovisas både totalt och per driftsform (kommunal/övrig fristående/AcadeMedia) på{" "}
+            <Link href="/gymnasium" className="text-sky-700 hover:underline">gymnasium-sidan</Link>. Den uppdelningen
+            avslöjar ett mönster som det poolade r:et döljer, men säger ingenting om varför skillnaden uppstår.
+          </li>
+        </ul>
+      </Section>
+
       <Section title="Kod">
         <p>
           Källkoden är en liten Next.js-app utan databas. De relevanta filerna för parsning och
           aggregat är <code className="px-1 bg-slate-100 rounded">scripts/build-dataset.ts</code>,{" "}
           <code className="px-1 bg-slate-100 rounded">scripts/build-dataset-grund.ts</code> och{" "}
-          <code className="px-1 bg-slate-100 rounded">lib/aggregate.ts</code>.
+          <code className="px-1 bg-slate-100 rounded">lib/aggregate.ts</code>. För antagningsmerit-pipelinen
+          (discover/download/parse/analyze) ligger logiken i{" "}
+          <code className="px-1 bg-slate-100 rounded">scripts/admissions-*.ts</code> och matchningen mot
+          NP-datasetet i <code className="px-1 bg-slate-100 rounded">lib/admissionsInsight.ts</code>.
         </p>
       </Section>
 
