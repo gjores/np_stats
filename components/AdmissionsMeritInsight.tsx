@@ -174,6 +174,26 @@ export function AdmissionsMeritInsight({ insight }: Props) {
           <Kpi label="Lägsta kvartilen" value={pp(lowerLift)} sub="Mer andel högre än högsta meritkvartilen" />
         </div>
 
+        <div className="rounded-lg border border-slate-200 bg-amber-50/60 p-4 text-sm text-slate-700">
+          <div className="text-sm font-medium text-slate-900">Så läser du Pearson r</div>
+          <p className="mt-1 leading-relaxed">
+            Pearson r mäter hur starkt två variabler rör sig linjärt tillsammans.
+            Värdet ligger mellan <strong>−1</strong> och <strong>+1</strong>: 0 betyder inget linjärt samband, +1 betyder att de följs åt
+            perfekt, −1 att de går åt motsatt håll. En tumregel är att |r| ≈ 0,1 är svagt, ≈ 0,3 är måttligt och ≥ 0,5 är starkt
+            — men på samhällsdata tenderar även måttliga värden vara meningsfulla.
+          </p>
+          <p className="mt-2 leading-relaxed">
+            Här är det specifikt sambandet mellan <em>antagningsmerit</em> (x-axeln) och <em>andel betyg över NP</em> (y-axeln).
+            Ett <strong>negativt r</strong> betyder alltså att skolor med lägre antagningsmerit tenderar att ge en större andel
+            betyg över NP-resultatet — vilket är hypotesen sidan undersöker. Ett r nära noll betyder att meriten inte säger något
+            om avvikelsen inom gruppen.
+          </p>
+          <p className="mt-2 leading-relaxed text-xs text-slate-500">
+            Viktigt: r mäter linjär association, inte orsakssamband. Ett extremvärde kan dra siffran kraftigt, och ett pooled r över
+            alla driftsformer kan dölja motsatta mönster i delgrupperna — därför redovisar vi även r per driftsform under scattern.
+          </p>
+        </div>
+
         <div className="grid grid-cols-1 gap-4 xl:grid-cols-[minmax(0,1.35fr)_minmax(360px,0.65fr)]">
           <div className="rounded-lg border border-slate-200 bg-white p-4">
             <div className="mb-3 flex flex-wrap items-baseline justify-between gap-2">
