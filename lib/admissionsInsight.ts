@@ -1,6 +1,6 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
-import type { HuvudmanType, Row } from "./types";
+import type { HuvudmanType, Row, Term } from "./types";
 
 interface AdmissionRow {
   sourceRegion: string;
@@ -93,6 +93,34 @@ export interface AdmissionSourceSummary {
   avgMerit: number | null;
 }
 
+export type CategoryKey = "academedia" | "other-independent" | "public";
+
+export interface CategoryCorrelation {
+  category: CategoryKey;
+  label: string;
+  count: number;
+  pearsonHogre: number | null;
+  pearsonNet: number | null;
+  avgMerit: number | null;
+  avgAndelHogre: number | null;
+  avgNetDeviation: number | null;
+}
+
+export interface AdmissionsTermComparison {
+  termKey: string;
+  termLabel: string;
+  points: AdmissionsScatterPoint[];
+  bands: MeritBandSummary[];
+  matchedSchools: number;
+  pearsonHogre: number | null;
+  pearsonNet: number | null;
+  lowMeritAvgHogre: number | null;
+  highMeritAvgHogre: number | null;
+  lowMeritAvgNet: number | null;
+  highMeritAvgNet: number | null;
+  categoryCorrelations: CategoryCorrelation[];
+}
+
 export interface AdmissionsInsight {
   points: AdmissionsScatterPoint[];
   bands: MeritBandSummary[];
@@ -107,6 +135,9 @@ export interface AdmissionsInsight {
   highMeritAvgHogre: number | null;
   lowMeritAvgNet: number | null;
   highMeritAvgNet: number | null;
+  categoryCorrelations: CategoryCorrelation[];
+  defaultTermKey: string;
+  termComparisons: AdmissionsTermComparison[];
 }
 
 let cache: AdmissionsInsight | null = null;
@@ -162,10 +193,10 @@ function aggregateAdmissions(rows: AdmissionRow[]): Map<string, SchoolAdmissionA
   return out;
 }
 
-function aggregateNp(rows: Row[]): Map<string, SchoolNpAggregate> {
+function aggregateNp(rows: Row[], term: Term): Map<string, SchoolNpAggregate> {
   const bySchool = new Map<string, Row[]>();
   for (const row of rows) {
-    if (row.termYear !== 2025) continue;
+    if (row.termYear !== term.year || row.termSemester !== term.semester) continue;
     const k = key(row.skola, row.kommun);
     bySchool.set(k, [...(bySchool.get(k) ?? []), row]);
   }
@@ -272,16 +303,13 @@ function admissionBand(admissions: SchoolAdmissionAggregate[], label: string, mi
   };
 }
 
-export function loadAdmissionsInsight(): AdmissionsInsight {
-  if (cache) return cache;
-  const admissions = JSON.parse(readFileSync(join(process.cwd(), "data", "generated", "admissions-gymnasium.json"), "utf8")) as AdmissionsPayload;
-  const dataset = JSON.parse(readFileSync(join(process.cwd(), "data", "generated", "dataset.json"), "utf8")) as DatasetPayload;
-  const acadeMedia = JSON.parse(readFileSync(join(process.cwd(), "data", "academedia.json"), "utf8")) as AcadeMediaPayload;
-  const acadeMediaOrgnrs = new Set(acadeMedia.orgnrs);
-
-  const admissionBySchool = aggregateAdmissions(admissions.rows);
-  const admissionAggregates = Array.from(admissionBySchool.values());
-  const npBySchool = aggregateNp(dataset.rows);
+function buildTermComparison(
+  term: Term,
+  datasetRows: Row[],
+  admissionBySchool: Map<string, SchoolAdmissionAggregate>,
+  acadeMediaOrgnrs: Set<string>
+): AdmissionsTermComparison {
+  const npBySchool = aggregateNp(datasetRows, term);
   const uniqueByName = uniqueNpByName(npBySchool);
   const points: AdmissionsScatterPoint[] = [];
 
@@ -319,6 +347,91 @@ export function loadAdmissionsInsight(): AdmissionsInsight {
   const sorted = [...points].sort((a, b) => a.merit - b.merit);
   const low = sorted.slice(0, Math.ceil(sorted.length / 4));
   const high = sorted.slice(Math.floor(sorted.length * 0.75));
+
+  const categoryCorrelations: CategoryCorrelation[] = (
+    [
+      { category: "public", label: "Kommunala/region" },
+      { category: "other-independent", label: "Övriga fristående" },
+      { category: "academedia", label: "AcadeMedia" },
+    ] as { category: CategoryKey; label: string }[]
+  ).map(({ category, label }) => {
+    const subset = points.filter((point) => point.schoolCategory === category);
+    return {
+      category,
+      label,
+      count: subset.length,
+      pearsonHogre: pearson(subset.map((point) => ({ x: point.merit, y: point.andelHogre }))),
+      pearsonNet: pearson(subset.map((point) => ({ x: point.merit, y: point.netDeviation }))),
+      avgMerit: average(subset.map((point) => point.merit)),
+      avgAndelHogre: average(subset.map((point) => point.andelHogre)),
+      avgNetDeviation: average(subset.map((point) => point.netDeviation)),
+    };
+  });
+
+  return {
+    termKey: term.key,
+    termLabel: term.label ?? term.key,
+    points,
+    bands: [
+      band(points, "<160", 0, 160),
+      band(points, "160-199", 160, 200),
+      band(points, "200-239", 200, 240),
+      band(points, "240+", 240, 500),
+    ],
+    matchedSchools: points.length,
+    pearsonHogre: pearson(points.map((point) => ({ x: point.merit, y: point.andelHogre }))),
+    pearsonNet: pearson(points.map((point) => ({ x: point.merit, y: point.netDeviation }))),
+    lowMeritAvgHogre: average(low.map((point) => point.andelHogre)),
+    highMeritAvgHogre: average(high.map((point) => point.andelHogre)),
+    lowMeritAvgNet: average(low.map((point) => point.netDeviation)),
+    highMeritAvgNet: average(high.map((point) => point.netDeviation)),
+    categoryCorrelations,
+  };
+}
+
+export function loadAdmissionsInsight(): AdmissionsInsight {
+  if (cache) return cache;
+  const admissions = JSON.parse(readFileSync(join(process.cwd(), "data", "generated", "admissions-gymnasium.json"), "utf8")) as AdmissionsPayload;
+  const dataset = JSON.parse(readFileSync(join(process.cwd(), "data", "generated", "dataset.json"), "utf8")) as DatasetPayload;
+  const acadeMedia = JSON.parse(readFileSync(join(process.cwd(), "data", "academedia.json"), "utf8")) as AcadeMediaPayload;
+  const acadeMediaOrgnrs = new Set(acadeMedia.orgnrs);
+
+  const admissionBySchool = aggregateAdmissions(admissions.rows);
+  const admissionAggregates = Array.from(admissionBySchool.values());
+
+  const springTerms = dataset.rows
+    .reduce<Term[]>((terms, row) => {
+      if (row.termSemester !== "VT" || terms.some((term) => term.key === row.termKey)) return terms;
+      terms.push({ key: row.termKey, year: row.termYear, semester: row.termSemester, label: row.termKey });
+      return terms;
+    }, [])
+    .sort((a, b) => b.year - a.year);
+
+  const termComparisons = springTerms.map((term) =>
+    buildTermComparison(term, dataset.rows, admissionBySchool, acadeMediaOrgnrs)
+  );
+
+  const emptyComparison: AdmissionsTermComparison = {
+    termKey: "",
+    termLabel: "",
+    points: [],
+    bands: [
+      band([], "<160", 0, 160),
+      band([], "160-199", 160, 200),
+      band([], "200-239", 200, 240),
+      band([], "240+", 240, 500),
+    ],
+    matchedSchools: 0,
+    pearsonHogre: null,
+    pearsonNet: null,
+    lowMeritAvgHogre: null,
+    highMeritAvgHogre: null,
+    lowMeritAvgNet: null,
+    highMeritAvgNet: null,
+    categoryCorrelations: [],
+  };
+  const defaultComparison = termComparisons[0] ?? emptyComparison;
+
   const parsedRowsBySource = new Map<string, number>();
   for (const row of admissions.rows) {
     parsedRowsBySource.set(row.sourceRegion, (parsedRowsBySource.get(row.sourceRegion) ?? 0) + 1);
@@ -337,13 +450,8 @@ export function loadAdmissionsInsight(): AdmissionsInsight {
     .sort((a, b) => b.parsedRows - a.parsedRows || a.source.localeCompare(b.source, "sv"));
 
   cache = {
-    points,
-    bands: [
-      band(points, "<160", 0, 160),
-      band(points, "160-199", 160, 200),
-      band(points, "200-239", 200, 240),
-      band(points, "240+", 240, 500),
-    ],
+    points: defaultComparison.points,
+    bands: defaultComparison.bands,
     admissionBands: [
       admissionBand(admissionAggregates, "<160", 0, 160),
       admissionBand(admissionAggregates, "160-199", 160, 200),
@@ -352,14 +460,17 @@ export function loadAdmissionsInsight(): AdmissionsInsight {
     ],
     sourceSummaries,
     parsedRows: admissions.rows.length,
-    matchedSchools: points.length,
+    matchedSchools: defaultComparison.matchedSchools,
     parsedSchoolAggregates: admissionBySchool.size,
-    pearsonHogre: pearson(points.map((point) => ({ x: point.merit, y: point.andelHogre }))),
-    pearsonNet: pearson(points.map((point) => ({ x: point.merit, y: point.netDeviation }))),
-    lowMeritAvgHogre: average(low.map((point) => point.andelHogre)),
-    highMeritAvgHogre: average(high.map((point) => point.andelHogre)),
-    lowMeritAvgNet: average(low.map((point) => point.netDeviation)),
-    highMeritAvgNet: average(high.map((point) => point.netDeviation)),
+    pearsonHogre: defaultComparison.pearsonHogre,
+    pearsonNet: defaultComparison.pearsonNet,
+    lowMeritAvgHogre: defaultComparison.lowMeritAvgHogre,
+    highMeritAvgHogre: defaultComparison.highMeritAvgHogre,
+    lowMeritAvgNet: defaultComparison.lowMeritAvgNet,
+    highMeritAvgNet: defaultComparison.highMeritAvgNet,
+    categoryCorrelations: defaultComparison.categoryCorrelations,
+    defaultTermKey: defaultComparison.termKey,
+    termComparisons,
   };
   return cache;
 }

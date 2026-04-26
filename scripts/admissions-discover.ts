@@ -69,6 +69,41 @@ async function fetchSource(source: AdmissionSource): Promise<string> {
   return await res.text();
 }
 
+const SOURCE_HANDLERS: Record<string, (source: AdmissionSource) => DiscoveredAdmissionFile[]> = {
+  ostergotland: (source) => [
+    {
+      sourceId: source.id,
+      sourceName: source.name,
+      sourceUrl: source.sourceUrl,
+      year: 2025,
+      round: "final",
+      format: "html",
+      label: "Slutlig antagningsstatistik 2025 (Östergötland)",
+      url: "https://www.gymnasiestudera.se/statistik/slutlig-antagningsstatistik/?ar=2025",
+      score: 100,
+    },
+  ],
+  skanegy: (source) => [
+    {
+      sourceId: source.id,
+      sourceName: source.name,
+      sourceUrl: source.sourceUrl,
+      year: 2025,
+      round: "final",
+      format: "json",
+      label: "Skånegy meritvärden API",
+      url: "https://skanegy.se/wp-json/meritvarden/v1/merit-values",
+      score: 100,
+    },
+  ],
+};
+
+function applyHandler(source: AdmissionSource, html: string): DiscoveredAdmissionFile[] | null {
+  const handler = SOURCE_HANDLERS[source.id];
+  if (!handler) return null;
+  return handler(source);
+}
+
 async function main() {
   const sources = JSON.parse(readFileSync(SOURCES_FILE, "utf8")) as AdmissionSource[];
   const allCandidates: DiscoveredAdmissionFile[] = [];
@@ -77,8 +112,10 @@ async function main() {
   for (const source of sources) {
     try {
       const html = await fetchSource(source);
+      const overrides = applyHandler(source, html) ?? [];
       const directCandidate = toCandidate(source, { label: source.name, url: source.sourceUrl });
       const candidates = [
+        ...overrides,
         ...(directCandidate ? [directCandidate] : []),
         ...extractLinks(html, source.sourceUrl)
         .map((link) => toCandidate(source, link))
@@ -86,7 +123,7 @@ async function main() {
       ]
         .sort((a, b) => b.score - a.score || a.label.localeCompare(b.label, "sv"));
       console.log(`${source.id}: ${candidates.length} candidate links`);
-      allCandidates.push(...candidates.slice(0, 20));
+      allCandidates.push(...candidates.slice(0, 25));
     } catch (err) {
       const message = err instanceof Error ? err.message : String(err);
       console.warn(`${source.id}: ${message}`);

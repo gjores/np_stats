@@ -3,6 +3,8 @@ node_modules/
 out/
 .DS_Store
 *.log
-data/generated/
+data/generated/*
+!data/generated/admissions-gymnasium.json
 tsconfig.tsbuildinfo
 data_admissions/gymnasium/raw/
+.ocr-cache/

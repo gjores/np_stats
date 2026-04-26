@@ -1,5 +1,6 @@
 "use client";
 
+import { useMemo, useState } from "react";
 import {
   Bar,
   BarChart,
@@ -58,14 +59,28 @@ function ScatterTooltip({ active, payload }: { active?: boolean; payload?: { pay
 }
 
 export function AdmissionsMeritInsight({ insight }: Props) {
+  const [selectedTermKey, setSelectedTermKey] = useState(insight.defaultTermKey);
+  const comparison = useMemo(
+    () =>
+      insight.termComparisons.find((term) => term.termKey === selectedTermKey) ??
+      insight.termComparisons[0],
+    [insight.termComparisons, selectedTermKey]
+  );
+  const points = comparison?.points ?? insight.points;
+  const bands = comparison?.bands ?? insight.bands;
+  const matchedSchools = comparison?.matchedSchools ?? insight.matchedSchools;
+  const termLabel = comparison?.termLabel ?? "VT25";
+  const categoryCorrelations = comparison?.categoryCorrelations ?? insight.categoryCorrelations;
+  const pearsonHogre = comparison?.pearsonHogre ?? insight.pearsonHogre;
+  const pearsonNet = comparison?.pearsonNet ?? insight.pearsonNet;
   const lowerLift =
-    insight.lowMeritAvgHogre !== null && insight.highMeritAvgHogre !== null
-      ? insight.lowMeritAvgHogre - insight.highMeritAvgHogre
+    comparison?.lowMeritAvgHogre !== null && comparison?.highMeritAvgHogre !== null
+      ? (comparison?.lowMeritAvgHogre ?? 0) - (comparison?.highMeritAvgHogre ?? 0)
       : null;
   const topSources = insight.sourceSummaries.slice(0, 10);
-  const acadeMediaPoints = insight.points.filter((point) => point.schoolCategory === "academedia");
-  const otherIndependentPoints = insight.points.filter((point) => point.schoolCategory === "other-independent");
-  const publicPoints = insight.points.filter((point) => point.schoolCategory === "public");
+  const acadeMediaPoints = points.filter((point) => point.schoolCategory === "academedia");
+  const otherIndependentPoints = points.filter((point) => point.schoolCategory === "other-independent");
+  const publicPoints = points.filter((point) => point.schoolCategory === "public");
 
   return (
     <div className="space-y-8">
@@ -155,23 +170,95 @@ export function AdmissionsMeritInsight({ insight }: Props) {
       </section>
 
       <section className="space-y-4">
-        <div>
-          <h2 className="text-lg font-semibold text-slate-900">Matchning mot NP-avvikelse</h2>
-          <p className="mt-1 max-w-4xl text-sm text-slate-600">
-            Detta är en separat analysvy där meritunderlaget ovan matchas mot 2025 års NP/betygsavvikelse per skola.
-            Färgerna visar skolgrupp för orientering; sambandet beräknas på skolpunkterna utan driftsformsjustering.
-          </p>
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <div>
+            <h2 className="text-lg font-semibold text-slate-900">Matchning mot NP-avvikelse</h2>
+            <p className="mt-1 max-w-4xl text-sm text-slate-600">
+              Detta är en separat analysvy där meritunderlaget ovan matchas mot vald vårtermins NP/betygsavvikelse per skola.
+              Färgerna visar skolgrupp för orientering; sambandet beräknas på skolpunkterna utan driftsformsjustering.
+            </p>
+          </div>
+          <label className="flex min-w-[190px] flex-col gap-1 text-sm">
+            <span className="text-xs font-medium text-slate-600">NP-vårtermin</span>
+            <select
+              className="rounded border border-slate-300 bg-white px-2 py-1.5 text-sm text-slate-900"
+              value={selectedTermKey}
+              onChange={(event) => setSelectedTermKey(event.target.value)}
+            >
+              {insight.termComparisons.map((term) => (
+                <option key={term.termKey} value={term.termKey}>
+                  {term.termLabel}
+                </option>
+              ))}
+            </select>
+          </label>
         </div>
 
         <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
           <Kpi
             label="Analysbara skolor"
-            value={insight.matchedSchools.toLocaleString("sv-SE")}
-            sub={`Av ${insight.parsedSchoolAggregates.toLocaleString("sv-SE")} skolaggregat med antagningsdata`}
+            value={matchedSchools.toLocaleString("sv-SE")}
+            sub={`${termLabel}, av ${insight.parsedSchoolAggregates.toLocaleString("sv-SE")} antagningsskolor`}
           />
-          <Kpi label="Merit vs högre betyg" value={fmt(insight.pearsonHogre, 3)} sub="Pearson r, negativt stödjer hypotesen" />
-          <Kpi label="Merit vs netto" value={fmt(insight.pearsonNet, 3)} sub="Högre minus lägre betyg än NP" />
+          <Kpi label="Merit vs högre betyg" value={fmt(pearsonHogre, 3)} sub={`Pearson r för ${termLabel}`} />
+          <Kpi label="Merit vs netto" value={fmt(pearsonNet, 3)} sub="Högre minus lägre betyg än NP" />
           <Kpi label="Lägsta kvartilen" value={pp(lowerLift)} sub="Mer andel högre än högsta meritkvartilen" />
+        </div>
+
+        <div className="rounded-lg border border-slate-200 bg-sky-50/60 p-4 text-sm text-slate-700">
+          <div className="text-sm font-medium text-slate-900">Hypotesen som testas</div>
+          <p className="mt-1 leading-relaxed">
+            <strong>H1 (meritavvikelse-hypotesen):</strong> skolor med lägre antagningsmerit
+            kompenserar systematiskt genom att sätta kursbetyg som ligger över elevens
+            NP-resultat — dvs. &quot;glädjebetyg&quot; som rörlig variabel. Det skulle synas
+            som ett tydligt negativt Pearson r mellan antagningsmerit och andel betyg över NP.
+            <br />
+            <strong>H0 (nollhypotes):</strong> antagningsmeriten säger ingenting om hur stor
+            andel av skolans betyg som hamnar över provresultatet.
+          </p>
+          <p className="mt-2 leading-relaxed">
+            <strong>Så här kan H1 motbevisas i den här vyn:</strong>
+          </p>
+          <ul className="mt-1 list-disc pl-5 space-y-1">
+            <li>r ligger stabilt nära noll (|r| ≲ 0,1) i en grupp över flera vårterminer.</li>
+            <li>r byter tecken mellan terminer eller mellan delgrupper utan tydlig förklaring.</li>
+            <li>
+              Sambandet försvinner när vi delar upp på driftsform (Simpson-effekt) — ett
+              negativt poolat r kan i praktiken bero på gruppmedelvärden, inte på inom-gruppsmönster.
+            </li>
+          </ul>
+          <p className="mt-2 leading-relaxed">
+            <strong>H1 styrks (men bevisas inte) av:</strong> ett konsekvent negativt r i
+            samma riktning över terminer och driftsformer, av tillräcklig storlek för att inte
+            försvinna när små eller brusiga regioner exkluderas.
+          </p>
+          <p className="mt-2 leading-relaxed text-xs text-slate-600">
+            Korrelationen ger en första indikation, men <em>kan inte ensamt avgöra</em> om låg merit
+            <em>orsakar</em> glädjebetyg. Konkurrerande förklaringar finns: NP är ett endags-prov
+            på ett begränsat kursavsnitt och kan systematiskt underskatta elever från
+            yrkesprogram eller skolor med annan profil; lärartäthet, programmix och social
+            bakgrund kan påverka både merit och betygsavvikelse oberoende av varandra.
+          </p>
+        </div>
+
+        <div className="rounded-lg border border-slate-200 bg-amber-50/60 p-4 text-sm text-slate-700">
+          <div className="text-sm font-medium text-slate-900">Så läser du Pearson r</div>
+          <p className="mt-1 leading-relaxed">
+            Pearson r mäter hur starkt två variabler rör sig linjärt tillsammans.
+            Värdet ligger mellan <strong>−1</strong> och <strong>+1</strong>: 0 betyder inget linjärt samband, +1 betyder att de följs åt
+            perfekt, −1 att de går åt motsatt håll. En tumregel är att |r| ≈ 0,1 är svagt, ≈ 0,3 är måttligt och ≥ 0,5 är starkt
+            — men på samhällsdata tenderar även måttliga värden vara meningsfulla.
+          </p>
+          <p className="mt-2 leading-relaxed">
+            Här är det specifikt sambandet mellan <em>antagningsmerit</em> (x-axeln) och <em>andel betyg över NP</em> (y-axeln).
+            Ett <strong>negativt r</strong> betyder alltså att skolor med lägre antagningsmerit tenderar att ge en större andel
+            betyg över NP-resultatet — vilket är hypotesen sidan undersöker. Ett r nära noll betyder att meriten inte säger något
+            om avvikelsen inom gruppen.
+          </p>
+          <p className="mt-2 leading-relaxed text-xs text-slate-500">
+            Viktigt: r mäter linjär association, inte orsakssamband. Ett extremvärde kan dra siffran kraftigt, och ett pooled r över
+            alla driftsformer kan dölja motsatta mönster i delgrupperna — därför redovisar vi även r per driftsform under scattern.
+          </p>
         </div>
 
         <div className="grid grid-cols-1 gap-4 xl:grid-cols-[minmax(0,1.35fr)_minmax(360px,0.65fr)]">
@@ -179,7 +266,7 @@ export function AdmissionsMeritInsight({ insight }: Props) {
             <div className="mb-3 flex flex-wrap items-baseline justify-between gap-2">
             <div>
               <div className="text-sm font-medium text-slate-800">Lägre merit tenderar att ligga högre på avvikelseaxeln</div>
-              <div className="text-xs text-slate-500">X: antagningsmerit. Y: andel elever med högre kursbetyg än NP-resultat.</div>
+              <div className="text-xs text-slate-500">X: antagningsmerit. Y: andel elever med högre kursbetyg än NP-resultat, {termLabel}.</div>
               <div className="mt-2 flex flex-wrap gap-3 text-xs text-slate-600">
                 <span className="inline-flex items-center gap-1.5"><span className="h-2.5 w-2.5 rounded-full bg-sky-700" />Kommunala/region</span>
                 <span className="inline-flex items-center gap-1.5"><span className="h-2.5 w-2.5 rounded-full bg-emerald-600" />Övriga fristående</span>
@@ -187,7 +274,7 @@ export function AdmissionsMeritInsight({ insight }: Props) {
               </div>
             </div>
             <div className="text-right text-xs tabular-nums text-slate-500">
-              n={insight.matchedSchools}<br />
+              n={matchedSchools}<br />
               {publicPoints.length} offentlig · {otherIndependentPoints.length} övr. fri · {acadeMediaPoints.length} AcadeMedia
             </div>
           </div>
@@ -218,6 +305,61 @@ export function AdmissionsMeritInsight({ insight }: Props) {
               </ScatterChart>
             </ResponsiveContainer>
           </div>
+          <div className="mt-4">
+            <div className="mb-2 text-sm font-medium text-slate-800">Pearson r per driftsform</div>
+            <div className="text-xs text-slate-500 mb-2">
+              Hur starkt är sambandet inom varje grupp? Negativa värden = lägre antagningsmerit hänger ihop med högre andel betyg över NP.
+            </div>
+            <div className="overflow-x-auto">
+              <table className="min-w-full text-sm">
+                <thead>
+                  <tr className="border-b border-slate-200 text-left text-xs text-slate-500">
+                    <th className="py-2 pr-3 font-medium">Driftsform</th>
+                    <th className="px-3 py-2 text-right font-medium">n</th>
+                    <th className="px-3 py-2 text-right font-medium">Snittmerit</th>
+                    <th className="px-3 py-2 text-right font-medium">Snitt andel högre</th>
+                    <th className="px-3 py-2 text-right font-medium">r (merit · högre)</th>
+                    <th className="px-3 py-2 text-right font-medium">r (merit · netto)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {categoryCorrelations.map((row) => (
+                    <tr key={row.category} className="border-b border-slate-100 last:border-0">
+                      <td className="py-2 pr-3">
+                        <span className="inline-flex items-center gap-1.5 font-medium text-slate-800">
+                          <span
+                            className="h-2.5 w-2.5 rounded-full"
+                            style={{
+                              backgroundColor:
+                                row.category === "academedia"
+                                  ? "#9333ea"
+                                  : row.category === "other-independent"
+                                    ? "#059669"
+                                    : "#0369a1",
+                            }}
+                          />
+                          {row.label}
+                        </span>
+                      </td>
+                      <td className="px-3 py-2 text-right tabular-nums text-slate-700">{row.count}</td>
+                      <td className="px-3 py-2 text-right tabular-nums text-slate-700">{fmt(row.avgMerit)}</td>
+                      <td className="px-3 py-2 text-right tabular-nums text-slate-700">{pct(row.avgAndelHogre)}</td>
+                      <td className="px-3 py-2 text-right tabular-nums text-slate-900">{fmt(row.pearsonHogre, 3)}</td>
+                      <td className="px-3 py-2 text-right tabular-nums text-slate-900">{fmt(row.pearsonNet, 3)}</td>
+                    </tr>
+                  ))}
+                  <tr className="border-t-2 border-slate-300 bg-slate-50">
+                    <td className="py-2 pr-3 font-medium text-slate-800">Alla</td>
+                    <td className="px-3 py-2 text-right tabular-nums text-slate-700">{matchedSchools}</td>
+                    <td className="px-3 py-2 text-right tabular-nums text-slate-500">–</td>
+                    <td className="px-3 py-2 text-right tabular-nums text-slate-500">–</td>
+                    <td className="px-3 py-2 text-right tabular-nums font-semibold text-slate-900">{fmt(pearsonHogre, 3)}</td>
+                    <td className="px-3 py-2 text-right tabular-nums font-semibold text-slate-900">{fmt(pearsonNet, 3)}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
 
           <div className="rounded-lg border border-slate-200 bg-white p-4">
@@ -227,7 +369,7 @@ export function AdmissionsMeritInsight({ insight }: Props) {
             </div>
             <div className="h-[260px] w-full">
               <ResponsiveContainer>
-                <BarChart data={insight.bands} margin={{ top: 8, right: 10, bottom: 0, left: -8 }}>
+                <BarChart data={bands} margin={{ top: 8, right: 10, bottom: 0, left: -8 }}>
                   <CartesianGrid stroke="#e2e8f0" strokeDasharray="3 3" vertical={false} />
                   <XAxis dataKey="label" tick={{ fontSize: 12 }} />
                   <YAxis tick={{ fontSize: 12 }} tickFormatter={(value) => `${fmt(Number(value), 0)} %`} />
@@ -243,7 +385,7 @@ export function AdmissionsMeritInsight({ insight }: Props) {
               </ResponsiveContainer>
             </div>
             <div className="mt-3 divide-y divide-slate-100 text-xs">
-              {insight.bands.map((row) => (
+              {bands.map((row) => (
                 <div key={row.label} className="grid grid-cols-[1fr_auto_auto] gap-3 py-2">
                   <span className="font-medium text-slate-700">Merit {row.label}</span>
                   <span className="tabular-nums text-slate-500">{row.count} skolor</span>
@@ -254,10 +396,44 @@ export function AdmissionsMeritInsight({ insight }: Props) {
           </div>
         </div>
 
-        <p className="text-xs text-slate-500">
-          Tolkning: punkterna visar association, inte kausalitet. Matchningen domineras fortfarande av de regioner där parsern är klar,
-          och vissa källor bidrar med median i stället för medelmerit.
-        </p>
+        <div className="rounded-lg border border-rose-200 bg-rose-50/60 p-4 text-sm text-slate-700">
+          <div className="text-sm font-medium text-slate-900">Var försiktig när du tolkar siffrorna</div>
+          <ul className="mt-2 list-disc pl-5 space-y-1.5 leading-relaxed">
+            <li>
+              <strong>Inte hela landet.</strong> Endast regioner där en parser är klar bidrar — Storsthlm, Skåne och Göteborgsregionen
+              dominerar urvalet, medan flera län bara har en handfull skolor. Resultatet är en bekvämlighetsurval, inte en
+              folkräkning, så Pearson r reflekterar de regioner som råkat vara billigast att skrapa.
+            </li>
+            <li>
+              <strong>Mått som inte är helt jämförbara.</strong> Storsthlm publicerar antagningsgrans + median men inget medel,
+              Göteborgsregionen tvärtom medel men inget antal antagna, Örebro median i stället för medel. Vi tar första
+              tillgängliga av <em>weighted mean → unweighted mean → weighted median</em>; rader är därför inte exakt jämförbara mellan källor.
+            </li>
+            <li>
+              <strong>Skolnamns-matchningen kan tappa skolor.</strong> Cirka hälften av antagningsskolorna med meritdata har en
+              motsvarighet i NP-datasetet. De som faller bort är inte slumpmässiga — Västernorrland och Sjuhärad är blindfläckar
+              just nu, vilket kan snedvrida r för specifika driftsformer.
+            </li>
+            <li>
+              <strong>NP är ett dagstillfälle.</strong> Andelen &quot;betyg över NP&quot; är inte synonym med glädjebetyg. Det kan
+              också vara att provet inte täcker hela kursinnehållet, eller att vissa elevgrupper presterar systematiskt sämre på
+              skarpa prov av icke-betygsmässiga skäl.
+            </li>
+            <li>
+              <strong>Ett enskilt r är osäkert.</strong> Termer rör sig — VT23/24/25 kan ge motstridiga signaler i samma grupp,
+              och små grupper (n &lt; 30) ger orimligt instabila r. Använd termväljaren för att se om mönstret är robust innan du
+              påstår något.
+            </li>
+            <li>
+              <strong>Korrelation ≠ kausalitet.</strong> Antagningsmerit, programmix, lärartäthet och social bakgrund är alla
+              förknippade. Att skolor med låg antagningsmerit har högre andel betyg över NP är förenligt med flera olika historier —
+              den här vyn kan inte ensam välja mellan dem.
+            </li>
+          </ul>
+          <p className="mt-3 text-xs text-slate-500">
+            Punkterna visar association, inte kausalitet. Jämförelsen använder NP-data från {termLabel}; byt termin för att se hur stabilt mönstret är.
+          </p>
+        </div>
       </section>
     </div>
   );
