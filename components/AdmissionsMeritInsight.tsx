@@ -205,6 +205,42 @@ export function AdmissionsMeritInsight({ insight }: Props) {
           <Kpi label="Lägsta kvartilen" value={pp(lowerLift)} sub="Mer andel högre än högsta meritkvartilen" />
         </div>
 
+        <div className="rounded-lg border border-slate-200 bg-sky-50/60 p-4 text-sm text-slate-700">
+          <div className="text-sm font-medium text-slate-900">Hypotesen som testas</div>
+          <p className="mt-1 leading-relaxed">
+            <strong>H1 (meritavvikelse-hypotesen):</strong> skolor med lägre antagningsmerit
+            kompenserar systematiskt genom att sätta kursbetyg som ligger över elevens
+            NP-resultat — dvs. &quot;glädjebetyg&quot; som rörlig variabel. Det skulle synas
+            som ett tydligt negativt Pearson r mellan antagningsmerit och andel betyg över NP.
+            <br />
+            <strong>H0 (nollhypotes):</strong> antagningsmeriten säger ingenting om hur stor
+            andel av skolans betyg som hamnar över provresultatet.
+          </p>
+          <p className="mt-2 leading-relaxed">
+            <strong>Så här kan H1 motbevisas i den här vyn:</strong>
+          </p>
+          <ul className="mt-1 list-disc pl-5 space-y-1">
+            <li>r ligger stabilt nära noll (|r| ≲ 0,1) i en grupp över flera vårterminer.</li>
+            <li>r byter tecken mellan terminer eller mellan delgrupper utan tydlig förklaring.</li>
+            <li>
+              Sambandet försvinner när vi delar upp på driftsform (Simpson-effekt) — ett
+              negativt poolat r kan i praktiken bero på gruppmedelvärden, inte på inom-gruppsmönster.
+            </li>
+          </ul>
+          <p className="mt-2 leading-relaxed">
+            <strong>H1 styrks (men bevisas inte) av:</strong> ett konsekvent negativt r i
+            samma riktning över terminer och driftsformer, av tillräcklig storlek för att inte
+            försvinna när små eller brusiga regioner exkluderas.
+          </p>
+          <p className="mt-2 leading-relaxed text-xs text-slate-600">
+            Korrelationen ger en första indikation, men <em>kan inte ensamt avgöra</em> om låg merit
+            <em>orsakar</em> glädjebetyg. Konkurrerande förklaringar finns: NP är ett endags-prov
+            på ett begränsat kursavsnitt och kan systematiskt underskatta elever från
+            yrkesprogram eller skolor med annan profil; lärartäthet, programmix och social
+            bakgrund kan påverka både merit och betygsavvikelse oberoende av varandra.
+          </p>
+        </div>
+
         <div className="rounded-lg border border-slate-200 bg-amber-50/60 p-4 text-sm text-slate-700">
           <div className="text-sm font-medium text-slate-900">Så läser du Pearson r</div>
           <p className="mt-1 leading-relaxed">
@@ -360,10 +396,44 @@ export function AdmissionsMeritInsight({ insight }: Props) {
           </div>
         </div>
 
-        <p className="text-xs text-slate-500">
-          Tolkning: punkterna visar association, inte kausalitet. Matchningen domineras fortfarande av de regioner där parsern är klar,
-          vissa källor bidrar med median i stället för medelmerit, och jämförelsen ovan använder NP-data från {termLabel}.
-        </p>
+        <div className="rounded-lg border border-rose-200 bg-rose-50/60 p-4 text-sm text-slate-700">
+          <div className="text-sm font-medium text-slate-900">Var försiktig när du tolkar siffrorna</div>
+          <ul className="mt-2 list-disc pl-5 space-y-1.5 leading-relaxed">
+            <li>
+              <strong>Inte hela landet.</strong> Endast regioner där en parser är klar bidrar — Storsthlm, Skåne och Göteborgsregionen
+              dominerar urvalet, medan flera län bara har en handfull skolor. Resultatet är en bekvämlighetsurval, inte en
+              folkräkning, så Pearson r reflekterar de regioner som råkat vara billigast att skrapa.
+            </li>
+            <li>
+              <strong>Mått som inte är helt jämförbara.</strong> Storsthlm publicerar antagningsgrans + median men inget medel,
+              Göteborgsregionen tvärtom medel men inget antal antagna, Örebro median i stället för medel. Vi tar första
+              tillgängliga av <em>weighted mean → unweighted mean → weighted median</em>; rader är därför inte exakt jämförbara mellan källor.
+            </li>
+            <li>
+              <strong>Skolnamns-matchningen kan tappa skolor.</strong> Cirka hälften av antagningsskolorna med meritdata har en
+              motsvarighet i NP-datasetet. De som faller bort är inte slumpmässiga — Västernorrland och Sjuhärad är blindfläckar
+              just nu, vilket kan snedvrida r för specifika driftsformer.
+            </li>
+            <li>
+              <strong>NP är ett dagstillfälle.</strong> Andelen &quot;betyg över NP&quot; är inte synonym med glädjebetyg. Det kan
+              också vara att provet inte täcker hela kursinnehållet, eller att vissa elevgrupper presterar systematiskt sämre på
+              skarpa prov av icke-betygsmässiga skäl.
+            </li>
+            <li>
+              <strong>Ett enskilt r är osäkert.</strong> Termer rör sig — VT23/24/25 kan ge motstridiga signaler i samma grupp,
+              och små grupper (n &lt; 30) ger orimligt instabila r. Använd termväljaren för att se om mönstret är robust innan du
+              påstår något.
+            </li>
+            <li>
+              <strong>Korrelation ≠ kausalitet.</strong> Antagningsmerit, programmix, lärartäthet och social bakgrund är alla
+              förknippade. Att skolor med låg antagningsmerit har högre andel betyg över NP är förenligt med flera olika historier —
+              den här vyn kan inte ensam välja mellan dem.
+            </li>
+          </ul>
+          <p className="mt-3 text-xs text-slate-500">
+            Punkterna visar association, inte kausalitet. Jämförelsen använder NP-data från {termLabel}; byt termin för att se hur stabilt mönstret är.
+          </p>
+        </div>
       </section>
     </div>
   );
